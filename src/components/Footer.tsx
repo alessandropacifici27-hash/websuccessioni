@@ -1,43 +1,50 @@
-import { Scale } from "lucide-react";
-
 const Footer = () => {
   return (
-    <footer className="bg-primary py-16">
+    <footer className="bg-card border-t border-border py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <a href="#home" className="font-display text-xl font-bold text-primary-foreground tracking-wide">
-              Sterling <span className="text-gradient-gold">&</span> Associates
+            <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
+              Web<span className="text-gradient-gold">Successioni</span>
             </a>
-            <p className="font-body text-primary-foreground/60 text-sm mt-4 leading-relaxed">
-              Providing exceptional legal representation with integrity and dedication for over three decades.
+            <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed">
+              Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
             </p>
           </div>
           <div>
-            <h4 className="font-display font-semibold text-primary-foreground mb-4">Quick Links</h4>
-            <div className="space-y-2">
-              {["Home", "Practice Areas", "About", "Testimonials", "Contact"].map((l) => (
-                <a key={l} href={`#${l.toLowerCase().replace(" ", "")}`} className="block font-body text-sm text-primary-foreground/60 hover:text-accent transition-colors">
-                  {l}
+            <h4 className="font-display text-lg font-semibold text-foreground mb-5">Navigazione</h4>
+            <div className="space-y-3">
+              {[
+                { label: "Home", href: "#home" },
+                { label: "Servizi", href: "#servizi" },
+                { label: "Chi Siamo", href: "#chi-siamo" },
+                { label: "Testimonianze", href: "#testimonianze" },
+                { label: "Contatti", href: "#contatti" },
+              ].map((l) => (
+                <a key={l.label} href={l.href} className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {l.label}
                 </a>
               ))}
             </div>
           </div>
           <div>
-            <h4 className="font-display font-semibold text-primary-foreground mb-4">Office Hours</h4>
-            <div className="font-body text-sm text-primary-foreground/60 space-y-1">
-              <p>Monday – Friday: 8:00 AM – 6:00 PM</p>
-              <p>Saturday: By Appointment</p>
-              <p>Sunday: Closed</p>
-              <p className="text-accent mt-3">Emergency line available 24/7</p>
+            <h4 className="font-display text-lg font-semibold text-foreground mb-5">Orari</h4>
+            <div className="font-body text-sm text-muted-foreground space-y-2">
+              <p>Lunedì – Venerdì: 9:00 – 18:00</p>
+              <p>Sabato: Su appuntamento</p>
+              <p>Domenica: Chiuso</p>
+              <p className="text-primary mt-4 font-medium">info@websuccessioni.it</p>
             </div>
           </div>
         </div>
-        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-xs text-primary-foreground/40">© 2026 Sterling & Associates. All rights reserved.</p>
+
+        <div className="line-gold w-full mb-8" />
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-body text-xs text-muted-foreground/60">© 2026 WebSuccessioni. Tutti i diritti riservati.</p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Disclaimer"].map((l) => (
-              <a key={l} href="#" className="font-body text-xs text-primary-foreground/40 hover:text-accent transition-colors">{l}</a>
+            {["Privacy Policy", "Cookie Policy", "Termini di Servizio"].map((l) => (
+              <a key={l} href="#" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">{l}</a>
             ))}
           </div>
         </div>
