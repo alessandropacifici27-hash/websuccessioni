@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const WHATSAPP_NUMBER = "393331234567";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Servizi", href: "#servizi" },
   { label: "Chi Siamo", href: "#chi-siamo" },
-  { label: "Testimonianze", href: "#testimonianze" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contatti", href: "#contatti" },
 ];
 
@@ -34,9 +36,18 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <Button variant="gold" size="sm">
-            <Phone className="w-3.5 h-3.5" /> Consulenza Gratuita
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="heroOutline" size="sm" asChild>
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+              </a>
+            </Button>
+            <Button variant="gold" size="sm" asChild>
+              <a href="tel:+393331234567">
+                <Phone className="w-3.5 h-3.5" /> Chiama Ora
+              </a>
+            </Button>
+          </div>
         </div>
 
         <button onClick={() => setOpen(!open)} className="lg:hidden text-foreground" aria-label="Menu">
@@ -58,9 +69,18 @@ const Navbar = () => {
                   {l.label}
                 </a>
               ))}
-              <Button variant="gold" size="sm" className="mt-2 w-fit">
-                <Phone className="w-3.5 h-3.5" /> Consulenza Gratuita
-              </Button>
+              <div className="flex gap-2 mt-2">
+                <Button variant="gold" size="sm" className="w-fit" asChild>
+                  <a href="tel:+393331234567">
+                    <Phone className="w-3.5 h-3.5" /> Chiama
+                  </a>
+                </Button>
+                <Button variant="heroOutline" size="sm" className="w-fit" asChild>
+                  <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
