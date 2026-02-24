@@ -1,12 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone } from "lucide-react";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+
+const WHATSAPP_NUMBER = "393331234567";
+const PHONE_NUMBER = "+393331234567";
+const EMAIL = "info@websuccessioni.it";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <img src={heroBg} alt="Studio professionale" className="absolute inset-0 w-full h-full object-cover" loading="eager" />
+      {/* Parallax background */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
       <div className="absolute inset-0 bg-hero-overlay" />
 
       <div className="relative z-10 container mx-auto px-4 py-40 text-center max-w-4xl">
@@ -46,11 +60,20 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.65 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <Button variant="hero" size="xl">
-            <Phone className="w-4 h-4" /> Richiedi Consulenza
+          <Button variant="hero" size="xl" asChild>
+            <a href={`tel:${PHONE_NUMBER}`}>
+              <Phone className="w-4 h-4" /> Chiama Ora
+            </a>
           </Button>
-          <Button variant="heroOutline" size="xl">
-            I Nostri Servizi <ArrowRight className="w-4 h-4" />
+          <Button variant="heroOutline" size="xl" asChild>
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Salve,%20vorrei%20richiedere%20un%20preventivo%20gratuito%20per%20una%20dichiarazione%20di%20successione.`} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="w-4 h-4" /> WhatsApp
+            </a>
+          </Button>
+          <Button variant="heroOutline" size="xl" asChild>
+            <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>
+              <Mail className="w-4 h-4" /> Scrivi Email
+            </a>
           </Button>
         </motion.div>
 
@@ -60,11 +83,10 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.9 }}
           className="font-body text-muted-foreground/60 text-xs tracking-wider mt-10"
         >
-          Consulenza gratuita · Preventivo trasparente · Nessun vincolo
+          Preventivo gratuito · Risposta entro 24h · Nessun vincolo
         </motion.p>
       </div>
 
-      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
