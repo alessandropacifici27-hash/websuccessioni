@@ -3,8 +3,8 @@ import { Phone, Mail, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 
-const WHATSAPP_NUMBER = "393331234567";
-const PHONE_NUMBER = "+393331234567";
+const WHATSAPP_NUMBER = "393477471921";
+const PHONE_NUMBER = "+393477471921";
 const EMAIL = "info@websuccessioni.it";
 
 const HeroSection = () => {

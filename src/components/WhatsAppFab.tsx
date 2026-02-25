@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const WHATSAPP_NUMBER = "393331234567";
+const WHATSAPP_NUMBER = "393477471921";
 
 const WhatsAppFab = () => {
   return (

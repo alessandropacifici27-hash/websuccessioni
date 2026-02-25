@@ -1,6 +1,6 @@
 import { Phone, Mail, MessageCircle } from "lucide-react";
 
-const WHATSAPP_NUMBER = "393331234567";
+const WHATSAPP_NUMBER = "393477471921";
 
 const socialLinks = [
   { label: "WhatsApp", href: `https://wa.me/${WHATSAPP_NUMBER}`, icon: "whatsapp" },
@@ -74,8 +74,8 @@ const Footer = () => {
               {[
                 { label: "Home", href: "#home" },
                 { label: "Servizi", href: "#servizi" },
-                { label: "Chi Siamo", href: "#chi-siamo" },
-                { label: "FAQ", href: "#faq" },
+              { label: "Chi Siamo", href: "/chi-siamo" },
+                { label: "FAQ", href: "/faq" },
                 { label: "Contatti", href: "#contatti" },
                 { label: "Cos'è la Successione", href: "/successione" },
               ].map((l) => (
@@ -88,8 +88,8 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Contatti</h4>
             <div className="space-y-4">
-              <a href="tel:+393331234567" className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                <Phone className="w-4 h-4 text-primary" /> +39 333 123 4567
+              <a href="tel:+393477471921" className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Phone className="w-4 h-4 text-primary" /> +39 347 747 1921
               </a>
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors">
                 <MessageCircle className="w-4 h-4 text-primary" /> WhatsApp
