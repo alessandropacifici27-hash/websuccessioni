@@ -6,7 +6,7 @@ import Testimonials from "@/components/Testimonials";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import FloatingCalculators from "@/components/FloatingCalculators";
+import DateCalculators from "@/components/DateCalculators";
 
 const Index = () => {
   return (
@@ -15,11 +15,11 @@ const Index = () => {
       <HeroSection />
       <StatsBar />
       <PracticeAreas />
+      <DateCalculators />
       <Testimonials />
       <FAQSection />
       <ContactSection />
       <Footer />
-      <FloatingCalculators />
     </main>
   );
 };
