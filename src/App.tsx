@@ -8,6 +8,8 @@ import Successione from "./pages/Successione";
 import ChiSiamo from "./pages/ChiSiamo";
 import ComeFunziona from "./pages/ComeFunziona";
 import FaqPage from "./pages/FaqPage";
+import ServiziOfferti from "./pages/ServiziOfferti";
+import StrumentiUtili from "./pages/StrumentiUtili";
 import NotFound from "./pages/NotFound";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/chi-siamo" element={<ChiSiamo />} />
           <Route path="/come-funziona" element={<ComeFunziona />} />
           <Route path="/faq" element={<FaqPage />} />
+          <Route path="/servizi-offerti" element={<ServiziOfferti />} />
+          <Route path="/strumenti-utili" element={<StrumentiUtili />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

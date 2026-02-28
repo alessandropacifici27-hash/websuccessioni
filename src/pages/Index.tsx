@@ -19,13 +19,23 @@ const Index = () => {
       <HeroSection />
       <StatsBar />
       <WhyChooseUs />
-      <PracticeAreas />
-      <HowItWorks />
+      <div className="hidden md:block">
+        <PracticeAreas />
+      </div>
+      <div className="hidden md:block">
+        <HowItWorks />
+      </div>
       <CtaBanner />
-      <DateCalculators />
+      <div className="hidden md:block">
+        <DateCalculators />
+      </div>
       <Testimonials />
-      <FAQSection />
-      <GuidesSection />
+      <div className="hidden md:block">
+        <FAQSection />
+      </div>
+      <div className="hidden md:block">
+        <GuidesSection />
+      </div>
       <ContactSection />
       <Footer />
     </main>
