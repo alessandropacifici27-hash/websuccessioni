@@ -62,7 +62,7 @@ const HeroSection = () => {
         >
           <Button variant="hero" size="xl" asChild>
             <a href={`tel:${PHONE_NUMBER}`}>
-              <Phone className="w-4 h-4" /> Chiama Ora
+              <Phone className="w-4 h-4" /> Chiamaci Ora
             </a>
           </Button>
           <Button variant="heroOutline" size="xl" asChild>
@@ -72,7 +72,7 @@ const HeroSection = () => {
           </Button>
           <Button variant="heroOutline" size="xl" asChild>
             <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>
-              <Mail className="w-4 h-4" /> Scrivi Email
+              <Mail className="w-4 h-4" /> Scrivici per Email
             </a>
           </Button>
         </motion.div>

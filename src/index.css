@@ -102,3 +102,10 @@
     height: 1px;
   }
 }
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
