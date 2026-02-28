@@ -52,6 +52,8 @@ const HeroSection = () => {
           className="font-body text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
           Trasformiamo la complessità burocratica in un percorso sereno. Ti accompagniamo con competenza, discrezione e la massima cura in ogni fase della pratica successoria.
+          <br /><br />
+          Il costo del servizio parte da 250€ a seconda della difficoltà della pratica.
         </motion.p>
 
         <motion.div
