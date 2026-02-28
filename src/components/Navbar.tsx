@@ -12,6 +12,8 @@ const navLinks = [
   { label: "Come Funziona", href: "/come-funziona", mobileVisible: false },
   { label: "FAQ", href: "/faq", mobileVisible: false },
   { label: "Contatti", href: "/#contatti", mobileVisible: true },
+  { label: "Servizi Offerti", href: "/servizi-offerti", mobileVisible: true, mobileOnly: true },
+  { label: "Strumenti Utili", href: "/strumenti-utili", mobileVisible: true, mobileOnly: true },
 ];
 
 const Navbar = () => {
@@ -40,7 +42,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-center h-16 px-4 gap-6 flex-wrap">
         <div className="flex items-center gap-4 md:gap-8">
           {navLinks.map((l) => {
-            const linkClass = `text-muted-foreground hover:text-primary text-[10px] sm:text-xs font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${!l.mobileVisible ? "hidden md:inline" : ""}`;
+            const linkClass = `text-muted-foreground hover:text-primary text-[10px] sm:text-xs font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${!l.mobileVisible ? "hidden md:inline" : ""} ${(l as any).mobileOnly ? "md:hidden" : ""} ${l.mobileVisible ? "md:border-0 border border-primary/30 rounded px-2 py-1" : ""}`;
             return l.href.startsWith("/#") ? (
               <a
                 key={l.href}

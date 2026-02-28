@@ -25,7 +25,7 @@ const reasons = [
 ];
 
 const valueProposition = {
-  title: "Qualità Notarile, Costo Accessibile",
+  title: "Offriamo una competenza e qualità del servizio al pari di uno studio notarile al costo di un CAF",
   description:
     "Offriamo un servizio a costi contenuti, paragonabili a quelli di un CAF, ma con la qualità, la precisione e l'efficienza di uno studio notarile. Il nostro team, composto da professionisti laureati in giurisprudenza che si avvalgono della consulenza di avvocati specializzati, garantisce un'assistenza di altissimo livello in ogni fase della pratica.",
   pricing: "A partire da 250€ — il costo varia in base alla complessità della pratica.",
@@ -47,6 +47,25 @@ const WhyChooseUs = () => {
             Perché <span className="text-gradient-gold italic">Sceglierci</span>
           </h2>
         </div>
+
+        {/* Value Proposition - moved before reason cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto mb-12 bg-card border border-primary/20 rounded-lg p-10 text-center glow-gold"
+        >
+          <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+            {valueProposition.title}
+          </h3>
+          <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
+            {valueProposition.description}
+          </p>
+          <p className="font-body text-primary font-semibold text-base md:text-lg tracking-wide">
+            {valueProposition.pricing}
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {reasons.map((r, i) => (
@@ -70,25 +89,6 @@ const WhyChooseUs = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Value Proposition */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-4xl mx-auto mt-16 bg-card border border-primary/20 rounded-lg p-10 text-center glow-gold"
-        >
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-            {valueProposition.title}
-          </h3>
-          <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
-            {valueProposition.description}
-          </p>
-          <p className="font-body text-primary font-semibold text-base md:text-lg tracking-wide">
-            {valueProposition.pricing}
-          </p>
-        </motion.div>
       </div>
     </section>
   );
