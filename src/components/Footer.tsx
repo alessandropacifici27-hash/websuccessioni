@@ -49,7 +49,7 @@ const Footer = () => {
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
               Web<span className="text-gradient-gold">Successioni</span>
             </a>
-            <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed">
+            <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">
               Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
             </p>
             {/* Social icons */}

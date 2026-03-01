@@ -12,13 +12,9 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Parallax background */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover md:bg-fixed"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
         }}
       />
       <div className="absolute inset-0 bg-hero-overlay" />
