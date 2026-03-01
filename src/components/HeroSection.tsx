@@ -19,7 +19,7 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
-      <div className="relative z-10 container mx-auto px-4 py-40 text-center max-w-4xl">
+      <div className="relative z-10 container mx-auto px-4 py-24 md:py-40 text-center max-w-4xl">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -56,21 +56,27 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
         >
-          <Button variant="hero" size="xl" asChild>
+          <Button variant="hero" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
             <a href={`tel:${PHONE_NUMBER}`}>
-              <Phone className="w-4 h-4" /> Chiamaci Ora
+              <Phone className="w-4 h-4" />
+              <span className="hidden md:inline">Chiamaci Ora</span>
+              <span className="md:hidden">Chiamaci</span>
             </a>
           </Button>
-          <Button variant="heroOutline" size="xl" asChild>
+          <Button variant="heroOutline" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
             <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Salve,%20vorrei%20richiedere%20un%20preventivo%20gratuito%20per%20una%20dichiarazione%20di%20successione.`} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-4 h-4" /> WhatsApp
+              <MessageCircle className="w-4 h-4" />
+              <span className="hidden md:inline">WhatsApp</span>
+              <span className="md:hidden">Scrivici su WhatsApp</span>
             </a>
           </Button>
-          <Button variant="heroOutline" size="xl" asChild>
+          <Button variant="heroOutline" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
             <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>
-              <Mail className="w-4 h-4" /> Scrivici per Email
+              <Mail className="w-4 h-4" />
+              <span className="hidden md:inline">Scrivici per Email</span>
+              <span className="md:hidden">Mandaci un'email</span>
             </a>
           </Button>
         </motion.div>

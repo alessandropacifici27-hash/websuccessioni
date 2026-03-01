@@ -13,6 +13,7 @@ import StrumentiUtili from "./pages/StrumentiUtili";
 import NotFound from "./pages/NotFound";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
+import ChatbotWidget from "./components/ChatbotWidget";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <WhatsAppFab />
+        <ChatbotWidget />
         <CookieBanner />
       </BrowserRouter>
     </TooltipProvider>
