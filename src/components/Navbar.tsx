@@ -38,11 +38,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-background/80 backdrop-blur-sm"}`}>
-      <div className="container mx-auto flex items-center justify-center h-16 px-4 gap-6 flex-wrap">
-        <div className="flex items-center gap-4 md:gap-8">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border md:bg-background/95" : "bg-background/70 backdrop-blur-sm md:bg-background/80"}`}>
+      <div className="container mx-auto flex items-center justify-center h-auto py-2 md:h-16 px-2 md:px-4 gap-1.5 md:gap-6 flex-wrap">
+        <div className="flex items-center gap-1.5 md:gap-8 flex-wrap justify-center">
           {navLinks.map((l) => {
-            const linkClass = `text-muted-foreground hover:text-primary text-[10px] sm:text-xs font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${!l.mobileVisible ? "hidden md:inline" : ""} ${(l as any).mobileOnly ? "md:hidden" : ""} ${l.mobileVisible ? "md:border-0 border border-primary/30 rounded px-2 py-1" : ""}`;
+            const linkClass = `text-muted-foreground hover:text-primary text-[9px] sm:text-xs font-body font-medium tracking-[0.08em] md:tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${!l.mobileVisible ? "hidden md:inline" : ""} ${(l as any).mobileOnly ? "md:hidden" : ""} ${l.mobileVisible ? "md:border-0 border border-primary/20 rounded px-1.5 py-0.5" : ""}`;
             return l.href.startsWith("/#") ? (
               <a
                 key={l.href}
