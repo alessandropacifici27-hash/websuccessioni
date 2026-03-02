@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 
 const info = [
-  { icon: Phone, label: "+39 333 123 4567" },
+  { icon: Phone, label: "+39 3477471921" },
   { icon: Mail, label: "info@websuccessioni.it" },
-  { icon: MapPin, label: "Via Roma 42, 00100 Roma (RM)" },
   { icon: Clock, label: "Lun – Ven: 9:00 – 18:00" },
 ];
 

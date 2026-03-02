@@ -53,7 +53,7 @@ const ChatbotWidget = () => {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 md:hidden">
+    <div className="fixed bottom-5 right-5 z-50">
       <AnimatePresence>
         {isOpen && (
           <motion.div
