@@ -27,7 +27,7 @@ const HeroSection = () => {
           className="inline-flex items-center gap-3 mb-10"
         >
           <span className="line-gold w-12 inline-block" />
-          <span className="text-primary font-body font-medium text-xs tracking-[0.35em] uppercase">Studio Professionale</span>
+          <span className="text-primary font-body font-medium text-xs tracking-[0.35em] uppercase">Servizi Professionali</span>
           <span className="line-gold w-12 inline-block" />
         </motion.div>
 
@@ -48,8 +48,6 @@ const HeroSection = () => {
           className="font-body text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light"
         >
           Trasformiamo la complessità burocratica in un percorso sereno. Ti accompagniamo con competenza, discrezione e la massima cura in ogni fase della pratica successoria.
-          <br /><br />
-          Il costo del servizio parte da 250€ a seconda della complessità del caso.
         </motion.p>
 
         <motion.div
