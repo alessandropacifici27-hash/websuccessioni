@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -8,12 +8,10 @@ const WHATSAPP_NUMBER = "393477471921";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Servizi", href: "/#servizi" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contatti", href: "/#contatti" },
-  { label: "Servizi Offerti", href: "/servizi-offerti" },
+  { label: "Servizi Proposti", href: "/servizi-offerti" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
 ];
 
@@ -22,6 +20,8 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +31,21 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on outside click
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (
+        mobileMenuRef.current && !mobileMenuRef.current.contains(e.target as Node) &&
+        hamburgerRef.current && !hamburgerRef.current.contains(e.target as Node)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [mobileOpen]);
 
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
@@ -87,6 +102,7 @@ const Navbar = () => {
         {/* Mobile hamburger */}
         <div className="md:hidden flex items-center ml-auto">
           <button
+            ref={hamburgerRef}
             onClick={() => setMobileOpen(!mobileOpen)}
             className="text-foreground p-2"
             aria-label="Menu"
@@ -100,6 +116,7 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send } from "lucide-react";
+import { X, Send, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Message {
@@ -38,10 +38,27 @@ const ChatbotWidget = () => {
   ]);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
+  const fabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (
+        chatRef.current && !chatRef.current.contains(e.target as Node) &&
+        fabRef.current && !fabRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [isOpen]);
 
   const handleSend = () => {
     const trimmed = input.trim();
@@ -57,11 +74,12 @@ const ChatbotWidget = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={chatRef}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.25 }}
-            className="absolute bottom-16 right-0 w-[85vw] max-w-[340px] h-[65vh] max-h-[480px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="absolute bottom-20 right-0 w-[85vw] max-w-[340px] h-[65vh] max-h-[480px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/50">
@@ -114,18 +132,26 @@ const ChatbotWidget = () => {
         )}
       </AnimatePresence>
 
-      {/* FAB */}
+      {/* FAB - Distinct chatbot icon with label */}
       <motion.button
+        ref={fabRef}
         onClick={() => setIsOpen(!isOpen)}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 2, duration: 0.3 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg glow-gold"
+        className="flex items-center gap-2 bg-primary rounded-full shadow-lg glow-gold px-4 h-14"
         aria-label="Apri chat assistente"
       >
-        {isOpen ? <X className="w-6 h-6 text-primary-foreground" /> : <MessageCircle className="w-6 h-6 text-primary-foreground" />}
+        {isOpen ? (
+          <X className="w-6 h-6 text-primary-foreground" />
+        ) : (
+          <>
+            <Bot className="w-6 h-6 text-primary-foreground" />
+            <span className="text-primary-foreground font-body text-sm font-semibold hidden sm:inline">Chat AI</span>
+          </>
+        )}
       </motion.button>
     </div>
   );

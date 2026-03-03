@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 const info = [
   { icon: Phone, label: "+39 3477471921" },
+  { icon: Phone, label: "02 92892296" },
   { icon: Mail, label: "info@websuccessioni.it" },
   { icon: Clock, label: "Lun – Ven: 9:00 – 18:00" },
 ];
@@ -28,8 +29,8 @@ const ContactSection = () => {
             </p>
 
             <div className="space-y-6">
-              {info.map((item) => (
-                <div key={item.label} className="flex items-center gap-5">
+              {info.map((item, i) => (
+                <div key={`${item.label}-${i}`} className="flex items-center gap-5">
                   <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
