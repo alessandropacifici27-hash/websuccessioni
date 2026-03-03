@@ -79,28 +79,38 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-background/80 backdrop-blur-sm"}`}>
-      <div className="container mx-auto flex items-center justify-between h-14 md:h-16 px-4">
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-6">
+      <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
+        {/* Desktop nav links - centered normally, left-aligned when CTA buttons visible */}
+        <div className={`hidden md:flex items-center gap-5 transition-all duration-300 ${pastHero ? "" : "mx-auto"}`}>
           {navLinks.map(renderLink)}
         </div>
 
-        {/* Desktop CTA buttons - appear after scrolling past hero */}
-        <div className={`hidden md:flex items-center gap-2 transition-all duration-300 ${pastHero ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}>
-          <Button variant="gold" size="sm" asChild>
-            <a href="tel:+393477471921">
-              <Phone className="w-3.5 h-3.5" /> Chiamaci Ora
-            </a>
-          </Button>
-          <Button variant="heroOutline" size="sm" asChild>
-            <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-3.5 h-3.5" /> Scrivici su WhatsApp
-            </a>
-          </Button>
-        </div>
+        {/* Desktop CTA buttons - absolute right, appear after scrolling past hero */}
+        <AnimatePresence>
+          {pastHero && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+              className="hidden md:flex items-center gap-2 ml-auto"
+            >
+              <Button variant="gold" size="sm" asChild>
+                <a href="tel:+393477471921">
+                  <Phone className="w-3.5 h-3.5" /> Chiamaci Ora
+                </a>
+              </Button>
+              <Button variant="heroOutline" size="sm" asChild>
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-3.5 h-3.5" /> Scrivici su WhatsApp
+                </a>
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Mobile hamburger */}
-        <div className="md:hidden flex items-center ml-auto">
+        <div className="md:hidden flex items-center absolute right-4">
           <button
             ref={hamburgerRef}
             onClick={() => setMobileOpen(!mobileOpen)}
