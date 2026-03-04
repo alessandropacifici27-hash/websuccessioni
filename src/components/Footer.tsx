@@ -130,9 +130,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-body text-xs text-muted-foreground/60">© 2026 WebSuccessioni. Tutti i diritti riservati.</p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Cookie Policy", "Termini di Servizio"].map((l) => (
-              <a key={l} href="#" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">{l}</a>
-            ))}
+            <Link to="/privacy-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Cookie Policy</Link>
+            <Link to="/termini-servizio" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Termini di Servizio</Link>
           </div>
         </div>
       </div>

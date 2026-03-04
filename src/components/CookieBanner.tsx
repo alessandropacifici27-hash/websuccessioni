@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Cookie, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const COOKIE_KEY = "websuccessioni_cookie_consent";
 
@@ -41,7 +42,7 @@ const CookieBanner = () => {
               <Cookie className="w-4 h-4 text-primary shrink-0" />
               <p className="font-body text-xs text-muted-foreground flex-1">
                 Utilizziamo cookie tecnici e di profilazione.{" "}
-                <a href="#" className="text-primary hover:underline">Cookie Policy</a>
+                <Link to="/cookie-policy" className="text-primary hover:underline">Cookie Policy</Link>
               </p>
               <div className="flex gap-2 shrink-0">
                 <Button variant="gold" size="sm" className="h-7 text-xs px-3" onClick={accept}>

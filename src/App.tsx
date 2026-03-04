@@ -10,6 +10,9 @@ import ComeFunziona from "./pages/ComeFunziona";
 import FaqPage from "./pages/FaqPage";
 import ServiziOfferti from "./pages/ServiziOfferti";
 import StrumentiUtili from "./pages/StrumentiUtili";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import TerminiServizio from "./pages/TerminiServizio";
 import NotFound from "./pages/NotFound";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
@@ -31,6 +34,9 @@ const App = () => (
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/servizi-offerti" element={<ServiziOfferti />} />
           <Route path="/strumenti-utili" element={<StrumentiUtili />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/termini-servizio" element={<TerminiServizio />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
