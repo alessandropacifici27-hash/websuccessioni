@@ -25,7 +25,7 @@ const reasons = [
 ];
 
 const valueProposition = {
-  title: "Offriamo competenza e qualità del servizio al pari di uno studio notarile ma costo di un CAF",
+  title: "Offriamo competenza e qualità del servizio al pari di uno studio notarile ma al costo di un CAF",
   description:
     "Offriamo un servizio a costi contenuti, paragonabili a quelli di un CAF, ma con la qualità, la precisione e l'efficienza di uno studio notarile. Il nostro team, composto da professionisti, tecnici del catasto ed avvocati, garantisce un'assistenza di altissimo livello in ogni fase della pratica.",
 };
