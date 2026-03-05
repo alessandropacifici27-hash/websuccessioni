@@ -32,6 +32,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   // Close mobile menu on outside click
   useEffect(() => {
     if (!mobileOpen) return;
@@ -47,31 +52,23 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [mobileOpen]);
 
-  const handleNavClick = (href: string) => {
-    setMobileOpen(false);
-    if (href.startsWith("/#")) {
-      const id = href.replace("/#", "");
-      if (location.pathname === "/") {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      } else {
-        window.location.href = href;
-      }
-    }
+  const isActive = (href: string) => {
+    if (href === "/") return location.pathname === "/";
+    return location.pathname === href;
   };
 
   const renderLink = (l: typeof navLinks[0]) => {
-    const linkClass = "text-muted-foreground hover:text-primary text-sm font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap";
-    return l.href.startsWith("/#") ? (
-      <a
+    const active = isActive(l.href);
+    const linkClass = `text-sm font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${
+      active ? "text-primary" : "text-muted-foreground hover:text-primary"
+    }`;
+    return (
+      <Link
         key={l.href}
-        href={l.href}
-        onClick={(e) => { e.preventDefault(); handleNavClick(l.href); }}
+        to={l.href}
+        onClick={() => setMobileOpen(false)}
         className={linkClass}
       >
-        {l.label}
-      </a>
-    ) : (
-      <Link key={l.href} to={l.href} onClick={() => setMobileOpen(false)} className={linkClass}>
         {l.label}
       </Link>
     );
@@ -80,19 +77,25 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-background/80 backdrop-blur-sm"}`}>
       <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
-        {/* Desktop nav links - centered normally, left-aligned when CTA buttons visible */}
-        <div className={`hidden md:flex items-center gap-5 transition-all duration-300 ${pastHero ? "" : "mx-auto"}`}>
+        {/* Desktop nav links - smooth centering transition */}
+        <div
+          className="hidden md:flex items-center gap-5 transition-all duration-500 ease-in-out"
+          style={{
+            marginLeft: pastHero ? "0" : "auto",
+            marginRight: pastHero ? "0" : "auto",
+          }}
+        >
           {navLinks.map(renderLink)}
         </div>
 
-        {/* Desktop CTA buttons - absolute right, appear after scrolling past hero */}
+        {/* Desktop CTA buttons */}
         <AnimatePresence>
           {pastHero && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="hidden md:flex items-center gap-2 ml-auto"
             >
               <Button variant="gold" size="sm" asChild>

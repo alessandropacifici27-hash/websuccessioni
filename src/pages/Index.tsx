@@ -28,9 +28,6 @@ const Index = () => {
       <div className="hidden md:hidden">
         <CtaBanner />
       </div>
-      <div className="hidden md:block">
-        <DateCalculators />
-      </div>
       <Testimonials />
       <div className="hidden md:block">
         <FAQSection />
