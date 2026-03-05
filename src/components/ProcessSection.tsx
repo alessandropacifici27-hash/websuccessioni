@@ -32,7 +32,7 @@ const ProcessSection = () => {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="relative text-center"
             >
-              <span className="font-display text-6xl font-bold text-primary/15 block mb-4">{s.num}</span>
+              <span className="font-display text-6xl font-bold text-primary/40 block mb-4">{s.num}</span>
               <h3 className="font-display text-xl font-semibold text-foreground mb-3">{s.title}</h3>
               <p className="font-body text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
               {i < steps.length - 1 && (
