@@ -24,11 +24,18 @@ const Navbar = () => {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      setPastHero(window.scrollY > window.innerHeight * 0.85);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          setPastHero(window.scrollY > window.innerHeight * 0.85);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -75,14 +82,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-background/80 backdrop-blur-sm"}`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        scrolled
+          ? "bg-background/60 backdrop-blur-md border-border/50"
+          : "bg-background/30 backdrop-blur-sm border-transparent"
+      }`}
+    >
       <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
-        {/* Desktop nav links - smooth centering transition */}
+        {/* Desktop nav links - GPU-accelerated smooth transition */}
         <div
-          className="hidden md:flex items-center gap-5 transition-all duration-500 ease-in-out"
+          className="hidden md:flex items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{
-            marginLeft: pastHero ? "0" : "auto",
-            marginRight: pastHero ? "0" : "auto",
+            transform: pastHero ? "translateX(0)" : "translateX(calc(50vw - 50% - 2rem))",
           }}
         >
           {navLinks.map(renderLink)}
@@ -134,7 +146,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-md border-b border-border"
+            className="md:hidden overflow-hidden bg-background/40 backdrop-blur-lg border-b border-border/30"
           >
             <div className="flex flex-col items-center gap-4 py-5 px-4">
               {navLinks.map(renderLink)}
