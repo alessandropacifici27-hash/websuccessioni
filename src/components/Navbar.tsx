@@ -6,9 +6,15 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const WHATSAPP_NUMBER = "393793511586";
 
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+
+const WHATSAPP_NUMBER = "393793511586";
+
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Contatti", href: "/#contatti" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-offerti" },
