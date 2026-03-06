@@ -1,5 +1,5 @@
 import { Phone, Mail, MessageCircle, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const WHATSAPP_NUMBER = "393793511586";
 
@@ -59,7 +59,28 @@ const footerNavLinks = [
 ];
 
 const Footer = () => {
-  return (
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleFooterNavClick = (href: string) => {
+    if (href.startsWith("/#")) {
+      const hash = href.slice(1);
+      if (location.pathname === "/") {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+      return;
+    }
+    navigate(href);
+    window.scrollTo(0, 0);
+  };
+
     <footer className="bg-card border-t border-border py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
