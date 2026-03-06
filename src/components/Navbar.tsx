@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 const WHATSAPP_NUMBER = "393793511586";
@@ -9,6 +9,7 @@ const WHATSAPP_NUMBER = "393793511586";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Contatti", href: "/#contatti" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-offerti" },
@@ -20,6 +21,7 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -39,10 +41,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to top on route change
+  // Scroll to top on route change (skip hash links)
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   // Close mobile menu on outside click
   useEffect(() => {
@@ -60,8 +64,27 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/";
+    if (href === "/") return location.pathname === "/" && !location.hash;
+    if (href.startsWith("/#")) return location.pathname === "/" && location.hash === href.slice(1);
     return location.pathname === href;
+  };
+
+  const handleNavClick = (href: string) => {
+    setMobileOpen(false);
+    if (href.startsWith("/#")) {
+      const hash = href.slice(1); // e.g. "#contatti"
+      if (location.pathname === "/") {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+      return;
+    }
   };
 
   const renderLink = (l: typeof navLinks[0]) => {
@@ -69,6 +92,19 @@ const Navbar = () => {
     const linkClass = `text-sm font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${
       active ? "text-primary" : "text-muted-foreground hover:text-primary"
     }`;
+
+    if (l.href.startsWith("/#")) {
+      return (
+        <button
+          key={l.href}
+          onClick={() => handleNavClick(l.href)}
+          className={linkClass}
+        >
+          {l.label}
+        </button>
+      );
+    }
+
     return (
       <Link
         key={l.href}

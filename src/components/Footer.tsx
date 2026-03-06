@@ -1,5 +1,5 @@
 import { Phone, Mail, MessageCircle, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const WHATSAPP_NUMBER = "393793511586";
 
@@ -51,6 +51,7 @@ const SocialIcon = ({ icon }: { icon: string }) => {
 const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Contatti", href: "/#contatti" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-offerti" },
@@ -58,6 +59,28 @@ const footerNavLinks = [
 ];
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleFooterNavClick = (href: string) => {
+    if (href.startsWith("/#")) {
+      const hash = href.slice(1);
+      if (location.pathname === "/") {
+        const el = document.querySelector(hash);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      }
+      return;
+    }
+    navigate(href);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="bg-card border-t border-border py-16">
       <div className="container mx-auto px-4">
@@ -89,14 +112,13 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Navigazione</h4>
             <div className="space-y-3">
               {footerNavLinks.map((l) => (
-                <Link
+                <button
                   key={l.label}
-                  to={l.href}
-                  onClick={() => window.scrollTo(0, 0)}
-                  className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => handleFooterNavClick(l.href)}
+                  className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors text-left"
                 >
                   {l.label}
-                </Link>
+                </button>
               ))}
             </div>
           </div>
