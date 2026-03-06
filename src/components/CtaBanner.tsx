@@ -25,14 +25,14 @@ const CtaBanner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+393477471921"
+              href="tel:+393793511586"
               className="inline-flex items-center justify-center gap-2.5 bg-primary text-primary-foreground font-body text-sm font-medium px-8 py-3.5 rounded-md hover:bg-primary/90 transition-colors duration-300"
             >
               <Phone className="w-4 h-4" />
               Chiamaci Ora
             </a>
             <a
-              href="https://wa.me/393477471921"
+              href="https://wa.me/393793511586"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2.5 bg-card border border-border text-foreground font-body text-sm font-medium px-8 py-3.5 rounded-md hover:border-primary/30 hover:glow-gold transition-all duration-300"
