@@ -51,6 +51,7 @@ const SocialIcon = ({ icon }: { icon: string }) => {
 const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
+  { label: "Contatti", href: "/#contatti" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-offerti" },
