@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
 const info = [
-  { icon: Phone, label: "+39 3477471921" },
-  { icon: Phone, label: "02 92892296" },
+  { icon: Phone, label: "+39 379 3511586" },
+  { icon: Phone, label: "+39 02 92892296" },
   { icon: Mail, label: "info@websuccessioni.it" },
   { icon: Clock, label: "Lun – Ven: 9:00 – 18:00" },
 ];

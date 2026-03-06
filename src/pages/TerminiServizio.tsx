@@ -80,7 +80,7 @@ const TerminiServizio = () => (
 
             <div>
               <h2 className="font-display text-2xl font-semibold text-foreground mb-4">11. Contatti</h2>
-              <p>Per qualsiasi domanda relativa ai presenti Termini e Condizioni, è possibile contattarci all'indirizzo email: <a href="mailto:info@websuccessioni.it" className="text-primary hover:underline">info@websuccessioni.it</a>, oppure telefonicamente al numero +39 347 747 1921.</p>
+              <p>Per qualsiasi domanda relativa ai presenti Termini e Condizioni, è possibile contattarci all'indirizzo email: <a href="mailto:info@websuccessioni.it" className="text-primary hover:underline">info@websuccessioni.it</a>, oppure telefonicamente al numero +39 379 3511586.</p>
             </div>
           </div>
         </div>

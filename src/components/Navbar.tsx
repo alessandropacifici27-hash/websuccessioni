@@ -4,7 +4,7 @@ import { Phone, MessageCircle, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
-const WHATSAPP_NUMBER = "393477471921";
+const WHATSAPP_NUMBER = "393793511586";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -111,7 +111,7 @@ const Navbar = () => {
               className="hidden md:flex items-center gap-2 ml-auto"
             >
               <Button variant="gold" size="sm" asChild>
-                <a href="tel:+393477471921">
+                <a href="tel:+393793511586">
                   <Phone className="w-3.5 h-3.5" /> Chiamaci Ora
                 </a>
               </Button>
