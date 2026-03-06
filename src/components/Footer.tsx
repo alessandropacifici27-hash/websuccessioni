@@ -112,14 +112,13 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Navigazione</h4>
             <div className="space-y-3">
               {footerNavLinks.map((l) => (
-                <Link
+                <button
                   key={l.label}
-                  to={l.href}
-                  onClick={() => window.scrollTo(0, 0)}
-                  className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => handleFooterNavClick(l.href)}
+                  className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors text-left"
                 >
                   {l.label}
-                </Link>
+                </button>
               ))}
             </div>
           </div>
