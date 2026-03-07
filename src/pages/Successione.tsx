@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, FileText, Users, Clock, Calculator, Building2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const sections = [
   {
@@ -46,63 +47,72 @@ const sections = [
 
 const Successione = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <section className="pt-32 pb-20 bg-background">
-        <div className="container mx-auto px-4">
-          <Button variant="ghost" size="sm" className="mb-8 text-muted-foreground" asChild>
-            <Link to="/">
-              <ArrowLeft className="w-4 h-4" /> Torna alla Home
-            </Link>
-          </Button>
+    <>
+      <Helmet>
+        <title>Dichiarazione di Successione Online | WebSuccessioni</title>
+        <meta
+          name="description"
+          content="Presenta la dichiarazione di successione online in modo semplice e veloce. Assistenza completa, tempi rapidi e costi accessibili con WebSuccessioni."
+        />
+      </Helmet>
+      <main className="min-h-screen">
+        <Navbar />
+        <section className="pt-32 pb-20 bg-background">
+          <div className="container mx-auto px-4">
+            <Button variant="ghost" size="sm" className="mb-8 text-muted-foreground" asChild>
+              <Link to="/">
+                <ArrowLeft className="w-4 h-4" /> Torna alla Home
+              </Link>
+            </Button>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl"
-          >
-            <div className="inline-flex items-center gap-3 mb-4">
-              <span className="line-gold w-8 inline-block" />
-              <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Guida Completa</p>
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              La Dichiarazione di <span className="text-gradient-gold italic">Successione</span>
-            </h1>
-            <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl">
-              Tutto quello che devi sapere sull'adempimento fiscale previsto dalla normativa italiana in caso di trasferimento di beni per causa di morte. Fonte: Agenzia delle Entrate.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="pb-32 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl space-y-12">
-            {sections.map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-card border border-border rounded-lg p-8 md:p-10 hover:border-primary/20 transition-colors duration-300"
-              >
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <s.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">{s.title}</h2>
-                </div>
-                <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed">{s.content}</p>
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-4xl"
+            >
+              <div className="inline-flex items-center gap-3 mb-4">
+                <span className="line-gold w-8 inline-block" />
+                <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Guida Completa</p>
+              </div>
+              <h1 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+                La Dichiarazione di <span className="text-gradient-gold italic">Successione</span>
+              </h1>
+              <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl">
+                Tutto quello che devi sapere sull'adempimento fiscale previsto dalla normativa italiana in caso di trasferimento di beni per causa di morte. Fonte: Agenzia delle Entrate.
+              </p>
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <Footer />
-    </main>
+        <section className="pb-32 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl space-y-12">
+              {sections.map((s, i) => (
+                <motion.div
+                  key={s.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="bg-card border border-border rounded-lg p-8 md:p-10 hover:border-primary/20 transition-colors duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <s.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">{s.title}</h2>
+                  </div>
+                  <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed">{s.content}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </main>
+    </>
   );
 };
 
