@@ -32,7 +32,7 @@ const ContactSection = () => {
     try {
       await emailjs.send(
         "service_i1pju5e",
-        "template_186031f",
+        "template_cffzon9",
         { from_name: nome.trim(), from_email: email.trim(), phone: telefono.trim() || "Non fornito", message: messaggio.trim() },
         "qFsjEtnqQNDnN5WlA"
       );
