@@ -67,8 +67,8 @@ const WhyChooseUs = () => {
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.1 }}
               className="group text-center bg-card border border-border rounded-lg p-8 hover:border-primary/25 transition-all duration-400 hover:glow-gold"
