@@ -21,6 +21,8 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-offerti', '/strumenti-utili'];
+  const isSubpage = SUBPAGES.includes(location.pathname);
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -130,7 +132,7 @@ const Navbar = () => {
         <div
           className="hidden md:flex items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{
-            transform: pastHero ? "translateX(0)" : "translateX(calc(50vw - 50% - 2rem))",
+            transform: (pastHero || isSubpage) ? "translateX(0)" : "translateX(calc(50vw - 50% - 2rem))",
           }}
         >
           {navLinks.map(renderLink)}
@@ -138,7 +140,7 @@ const Navbar = () => {
 
         {/* Desktop CTA buttons */}
         <AnimatePresence>
-          {pastHero && (
+          {(pastHero || isSubpage) && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
