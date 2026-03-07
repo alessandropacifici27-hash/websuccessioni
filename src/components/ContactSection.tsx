@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, Clock, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const info = [
   { icon: Phone, label: "+39 379 3511586" },
@@ -21,34 +22,30 @@ const ContactSection = () => {
   const [sending, setSending] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!nome.trim() || !email.trim() || !messaggio.trim()) {
-      toast({
-        title: "Campi obbligatori",
-        description: "Compila almeno nome, email e descrizione.",
-        variant: "destructive",
-      });
+      toast({ title: "Campi obbligatori", description: "Compila almeno nome, email e descrizione.", variant: "destructive" });
       return;
     }
-
     setSending(true);
-
-    const subject = encodeURIComponent(`Richiesta Consulenza Gratuita da ${nome.trim()}`);
-    const body = encodeURIComponent(
-      `Nome e Cognome: ${nome.trim()}\nTelefono: ${telefono.trim() || "Non fornito"}\nEmail: ${email.trim()}\n\nMessaggio:\n${messaggio.trim()}`
-    );
-
-    window.location.href = `mailto:info@websuccessioni.it?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        "service_lxed9sr",
+        "template_186031f",
+        { from_name: nome.trim(), from_email: email.trim(), phone: telefono.trim() || "Non fornito", message: messaggio.trim() },
+        "qFsjEtnqQNDnN5WlA"
+      );
+      toast({ title: "Messaggio inviato!", description: "Ti risponderemo entro 24 ore." });
+      setNome("");
+      setTelefono("");
+      setEmail("");
+      setMessaggio("");
+    } catch (error) {
+      toast({ title: "Errore nell'invio", description: "Riprova o contattaci direttamente su WhatsApp.", variant: "destructive" });
+    } finally {
       setSending(false);
-      toast({
-        title: "Client email aperto",
-        description: "Completa l'invio dal tuo programma di posta.",
-      });
-    }, 1000);
+    }
   };
 
   return (
@@ -107,7 +104,7 @@ const ContactSection = () => {
             </div>
             <Button variant="gold" size="lg" className="w-full" type="submit" disabled={sending}>
               <Send className="w-4 h-4" />
-              {sending ? "Apertura email..." : "Richiedi Consulenza Gratuita"}
+              {sending ? "Invio in corso..." : "Invia messaggio"}
             </Button>
             <p className="font-body text-xs text-muted-foreground text-center">Le tue informazioni sono trattate con la massima riservatezza.</p>
           </motion.form>
