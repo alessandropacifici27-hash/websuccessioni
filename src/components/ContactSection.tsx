@@ -31,7 +31,7 @@ const ContactSection = () => {
     setSending(true);
     try {
       await emailjs.send(
-        "service_lxed9sr",
+        "service_i1pju5e",
         "template_186031f",
         { from_name: nome.trim(), from_email: email.trim(), phone: telefono.trim() || "Non fornito", message: messaggio.trim() },
         "qFsjEtnqQNDnN5WlA"
