@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Contatti", href: "/#contatti" },
   { label: "Come Funziona", href: "/come-funziona" },
   { label: "FAQ", href: "/faq" },
-  { label: "Servizi Proposti", href: "/servizi-offerti" },
+  { label: "Servizi Proposti", href: "/servizi-proposti" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
 ];
 
@@ -21,7 +21,7 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-offerti', '/strumenti-utili'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili'];
   const isSubpage = SUBPAGES.includes(location.pathname);
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
