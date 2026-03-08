@@ -1047,7 +1047,7 @@ const IniziaPratica = () => {
                   disabled={sending}
                 >
                   <Send className="w-4 h-4" />
-                  {sending ? "Invio in corso..." : "Invia la tua Pratica"}
+                  {sending ? "Invio in corso..." : "Invia la Pratica"}
                 </Button>
               )}
             </div>
