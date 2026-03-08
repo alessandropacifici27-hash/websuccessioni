@@ -902,7 +902,7 @@ const IniziaPratica = () => {
             Modalità di pagamento
           </h3>
           <p className="font-body text-sm text-foreground/80">
-            Il pagamento dell'acconto di €50 avverrà tramite bonifico bancario. Le coordinate bancarie per il versamento ti saranno inviate via email entro pochi minuti dalla ricezione dei tuoi documenti, insieme al numero della tua pratica.
+            Il pagamento dell'acconto di €50 dovrà avvenire tramite bonifico bancario. Le coordinate bancarie per il versamento ti saranno inviate via email entro pochi minuti dalla ricezione dei tuoi documenti, insieme al numero della tua pratica.
           </p>
         </div>
       </motion.div>
