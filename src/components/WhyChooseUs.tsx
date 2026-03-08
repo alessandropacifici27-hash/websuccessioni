@@ -71,7 +71,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.1 }}
-              className="group text-center bg-card border border-border rounded-lg p-8 hover:border-primary/25 transition-all duration-400 hover:glow-gold"
+              className="group text-center bg-card border border-border rounded-lg p-8 hover:border-primary/25 hover:glow-gold will-change-[box-shadow] transition-[box-shadow_0.3s_ease,border-color_0.3s_ease]"
             >
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors duration-300">
                 <r.icon className="w-6 h-6 text-primary" />
