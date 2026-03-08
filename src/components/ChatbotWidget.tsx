@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 
 interface Message {
@@ -9,13 +10,11 @@ interface Message {
 }
 
 function renderMessageText(text: string) {
-  // Simple markdown-like rendering: **bold** and \n
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
   return parts.map((part, i) => {
     if (part.startsWith("**") && part.endsWith("**")) {
       return <strong key={i} className="font-semibold">{part.slice(2, -2)}</strong>;
     }
-    // Split by newlines
     const lines = part.split("\n");
     return lines.map((line, j) => (
       <span key={`${i}-${j}`}>
@@ -48,7 +47,6 @@ const ChatbotWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // Close on outside click
   useEffect(() => {
     if (!isOpen) return;
     const handleClick = (e: MouseEvent) => {
@@ -79,9 +77,7 @@ const ChatbotWidget = () => {
 
       const response = await fetch("/.netlify/functions/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: [
             ...conversationHistory,
@@ -99,7 +95,7 @@ Informazioni importanti su WebSuccessioni:
 - Tutto avviene online, nessun ufficio da visitare
 - Tempi di elaborazione: entro una settimana dalla ricezione dei documenti
 - Contatti: WhatsApp +39 379 3511586, email info@websuccessioni.it
-- Orari: lunedì-venerdì 9:00-18:00
+- Orari: lunedì-venerdì 9:00-18:00, sabato 9:00-13:00
 - Pagamento tramite bonifico bancario
 - La dichiarazione va presentare entro 12 mesi dal decesso
 
@@ -110,7 +106,7 @@ Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma co
       const data = await response.json();
       const botText = data.content?.[0]?.text || "Mi dispiace, si è verificato un errore. Contattaci su WhatsApp al +39 379 3511586.";
       setMessages((prev) => [...prev, { role: "bot", text: botText }]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [...prev, { role: "bot", text: "Si è verificato un errore. Contattaci direttamente su WhatsApp al +39 379 3511586 o via email a info@websuccessioni.it." }]);
     } finally {
       setIsTyping(false);
@@ -125,57 +121,67 @@ Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma co
         {isOpen && (
           <motion.div
             ref={chatRef}
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.25 }}
-            className="absolute bottom-20 right-0 w-[85vw] max-w-[370px] h-[70vh] max-h-[520px] bg-card border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            exit={{ opacity: 0, scale: 0.92, y: 24 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute bottom-20 right-0 w-[88vw] max-w-[400px] h-[72vh] max-h-[540px] bg-card/95 backdrop-blur-xl border border-border/60 rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5),0_0_40px_-10px_hsl(40_55%_55%/0.08)] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/50">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="font-display text-sm font-semibold text-foreground">Assistente WebSuccessioni</span>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border/50 bg-gradient-to-r from-secondary/80 to-secondary/40">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
+                  <img src={logo} alt="WebSuccessioni" className="w-9 h-9 object-contain brightness-150 drop-shadow-[0_0_6px_hsl(var(--primary)/0.5)]" />
+                </div>
+                <div>
+                  <p className="font-display text-sm font-semibold text-foreground leading-tight">Assistente AI</p>
+                  <p className="font-body text-[10px] text-muted-foreground tracking-wider uppercase">WebSuccessioni</p>
+                </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">
+              <button onClick={() => setIsOpen(false)} className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-all">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
               {messages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed ${
+                    className={`max-w-[82%] rounded-2xl px-4 py-3 text-[13px] leading-[1.6] ${
                       msg.role === "user"
-                        ? "bg-primary text-primary-foreground rounded-br-sm"
-                        : "bg-secondary text-foreground rounded-bl-sm"
+                        ? "bg-primary text-primary-foreground rounded-br-md shadow-sm"
+                        : "bg-secondary/70 text-foreground rounded-bl-md border border-border/30"
                     }`}
                   >
                     {renderMessageText(msg.text)}
                   </div>
-                </div>
+                </motion.div>
               ))}
 
               {isTyping && (
-                <div className="flex justify-start">
-                  <div className="bg-secondary text-foreground rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce [animation-delay:0ms]" />
-                    <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce [animation-delay:150ms]" />
-                    <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce [animation-delay:300ms]" />
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                  <div className="bg-secondary/70 text-foreground rounded-2xl rounded-bl-md border border-border/30 px-5 py-3.5 flex gap-1.5 items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce [animation-delay:0ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce [animation-delay:150ms]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50 animate-bounce [animation-delay:300ms]" />
                   </div>
-                </div>
+                </motion.div>
               )}
 
-              {/* Quick question buttons */}
               {showQuickQuestions && !isTyping && (
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-1">
                   {QUICK_QUESTIONS.map((q) => (
                     <button
                       key={q}
                       onClick={() => handleSend(q)}
-                      className="text-xs font-body px-3 py-1.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors"
+                      className="text-[11px] font-body px-3.5 py-2 rounded-xl border border-primary/20 text-primary/90 hover:bg-primary/8 hover:border-primary/40 transition-all duration-200"
                     >
                       {q}
                     </button>
@@ -187,24 +193,26 @@ Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma co
             </div>
 
             {/* Input */}
-            <div className="border-t border-border px-3 py-2.5 flex gap-2">
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && handleSend()}
-                placeholder="Scrivi un messaggio..."
-                className="flex-1 bg-secondary/60 text-foreground text-sm rounded-full px-4 py-2 outline-none placeholder:text-muted-foreground border border-border focus:border-primary/40 transition-colors"
-                disabled={isTyping}
-              />
-              <Button
-                variant="gold"
-                size="icon"
-                onClick={() => handleSend()}
-                className="rounded-full w-9 h-9 shrink-0"
-                disabled={isTyping}
-              >
-                <Send className="w-4 h-4" />
-              </Button>
+            <div className="border-t border-border/40 px-4 py-3 bg-secondary/20">
+              <div className="flex gap-2 items-center">
+                <input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                  placeholder="Scrivi un messaggio..."
+                  className="flex-1 bg-secondary/60 text-foreground text-sm rounded-xl px-4 py-2.5 outline-none placeholder:text-muted-foreground/60 border border-border/40 focus:border-primary/30 transition-colors font-body"
+                  disabled={isTyping}
+                />
+                <Button
+                  variant="gold"
+                  size="icon"
+                  onClick={() => handleSend()}
+                  className="rounded-xl w-10 h-10 shrink-0 shadow-sm"
+                  disabled={isTyping}
+                >
+                  <Send className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -217,17 +225,18 @@ Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma co
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 2, duration: 0.3 }}
-        whileHover={{ scale: 1.08 }}
+        whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 bg-primary rounded-full shadow-lg glow-gold px-4 h-14"
+        className="flex items-center gap-2.5 bg-primary rounded-2xl shadow-lg glow-gold px-5 h-13"
+        style={{ height: '52px' }}
         aria-label="Apri chat assistente"
       >
         {isOpen ? (
-          <X className="w-6 h-6 text-primary-foreground" />
+          <X className="w-5 h-5 text-primary-foreground" />
         ) : (
           <>
-            <Bot className="w-6 h-6 text-primary-foreground" />
-            <span className="text-primary-foreground font-body text-sm font-semibold hidden sm:inline">Chat AI</span>
+            <Bot className="w-5 h-5 text-primary-foreground" />
+            <span className="text-primary-foreground font-body text-xs font-semibold tracking-wide hidden sm:inline">Chat AI</span>
           </>
         )}
       </motion.button>
