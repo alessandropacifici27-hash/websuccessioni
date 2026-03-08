@@ -52,10 +52,10 @@ const HowItWorks = () => {
           {steps.map((s, i) => (
             <motion.div
               key={s.step}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.12 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.2, delay: i * 0.04 }}
               className="relative text-center"
             >
               <div className="relative z-10 w-16 h-16 rounded-full bg-background border-2 border-primary/30 flex items-center justify-center mx-auto mb-5">

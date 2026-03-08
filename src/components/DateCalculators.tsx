@@ -72,10 +72,10 @@ const DateCalculators = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto px-1">
           {/* Calculator 1: Death date → Succession deadline */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
@@ -112,10 +112,10 @@ const DateCalculators = () => {
 
           {/* Calculator 2: Submission date → Payment deadline */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2, delay: 0.04 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
@@ -152,10 +152,10 @@ const DateCalculators = () => {
 
           {/* Calculator 3: Inheritance Tax Calculator */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2, delay: 0.08 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
@@ -234,10 +234,10 @@ const DateCalculators = () => {
 
           {/* Tool 4: Kinship Degrees Table */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2, delay: 0.12 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
@@ -277,10 +277,10 @@ const DateCalculators = () => {
 
         {/* Hereditary Shares Info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.2, delay: 0.16 }}
           className="max-w-5xl mx-auto mt-10"
         >
           <div className={cardClass}>

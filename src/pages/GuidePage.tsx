@@ -89,11 +89,11 @@ const guides = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 8 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" as const },
+    transition: { duration: 0.2, delay: i * 0.03, ease: "easeOut" as const },
   }),
 };
 

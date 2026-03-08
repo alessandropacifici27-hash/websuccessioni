@@ -38,10 +38,10 @@ const PracticeAreas = () => {
           {areas.map((a, i) => (
             <motion.div
               key={a.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.2, delay: i * 0.04 }}
               className="group relative bg-card border border-border rounded-lg p-10 hover:border-primary/30 transition-all duration-500 hover:glow-gold"
             >
               <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-7 group-hover:bg-primary/20 transition-colors duration-300">
