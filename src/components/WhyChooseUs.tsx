@@ -67,9 +67,7 @@ const WhyChooseUs = () => {
           {reasons.map((r, i) => (
             <motion.div
               key={r.title}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 1 }}
               whileTap={{
                 boxShadow: "0 0 20px hsl(40 55% 55% / 0.4)",
                 borderColor: "hsl(40 55% 55% / 0.25)",
