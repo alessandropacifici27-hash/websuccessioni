@@ -24,6 +24,11 @@ const DocumentiDichiarazione = lazy(() => import("./pages/guide/DocumentiDichiar
 const ScadenzaDichiarazione = lazy(() => import("./pages/guide/ScadenzaDichiarazione"));
 const SuccessioneSenzaTestamento = lazy(() => import("./pages/guide/SuccessioneSenzaTestamento"));
 const VolturaSuccessione = lazy(() => import("./pages/guide/VolturaSuccessione"));
+const RinunciaEredita = lazy(() => import("./pages/guide/RinunciaEredita"));
+const SuccessioneConDebiti = lazy(() => import("./pages/guide/SuccessioneConDebiti"));
+const EredeVsLegatario = lazy(() => import("./pages/guide/EredeVsLegatario"));
+const SuccessioneAzienda = lazy(() => import("./pages/guide/SuccessioneAzienda"));
+const DirittiConiuge = lazy(() => import("./pages/guide/DirittiConiuge"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
