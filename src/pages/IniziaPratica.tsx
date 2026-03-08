@@ -952,8 +952,8 @@ const IniziaPratica = () => {
                 <Clock className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-2">2. Dichiarazione entro 48h</p>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
+                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">2. Dichiarazione entro 48h</p>
+                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
               </div>
             </motion.div>
 
