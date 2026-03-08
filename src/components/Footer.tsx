@@ -1,6 +1,6 @@
 import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.webp";
+import logo from "@/assets/logo.png";
 
 const WHATSAPP_NUMBER = "393793511586";
 
@@ -88,7 +88,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
-              <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain" />
+              <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain" />
             </a>
             <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">
               Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
