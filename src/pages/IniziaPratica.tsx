@@ -217,7 +217,7 @@ const IniziaPratica = () => {
       );
 
       setSuccessMessage(
-        `Pratica inviata con successo! A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
+        `Pratica inviata con successo! A breve verrà inviata un'email con il numero della pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
       );
       toast({
         title: "Pratica inviata con successo",
@@ -842,7 +842,7 @@ const IniziaPratica = () => {
 
         <div className="border border-primary/40 bg-card rounded-lg p-5">
           <p className="font-body text-sm text-foreground">
-            Dopo l'invio riceverai entro pochi minuti una email di conferma con il numero della tua pratica. Entro 24 ore ti contatteremo se avremo necessità di integrazioni documentali. La dichiarazione di successione completata ti sarà inviata entro 48 ore per la firma.
+            Dopo l'invio verrà inviata entro pochi minuti un'email di conferma con il numero della pratica. Entro 24 ore verrà inviata una comunicazione in caso di necessità di integrazioni documentali. La dichiarazione di successione completata sarà inviata entro 48 ore per la firma.
           </p>
         </div>
 
@@ -902,7 +902,7 @@ const IniziaPratica = () => {
             Modalità di pagamento
           </h3>
           <p className="font-body text-sm text-foreground/80">
-            Il pagamento dell'acconto di €50 dovrà avvenire tramite bonifico bancario. Le coordinate bancarie per il versamento ti saranno inviate via email entro pochi minuti dalla ricezione dei tuoi documenti, insieme al numero della tua pratica.
+            Il pagamento dell'acconto di €50 dovrà avvenire tramite bonifico bancario. Le coordinate bancarie per il versamento saranno inviate via email entro pochi minuti dalla ricezione dei documenti, insieme al numero della pratica.
           </p>
         </div>
       </motion.div>
@@ -912,10 +912,10 @@ const IniziaPratica = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Helmet>
-        <title>Inizia la tua Pratica | WebSuccessioni</title>
+        <title>Inizia la Pratica | WebSuccessioni</title>
         <meta
           name="description"
-          content="Avvia online la tua dichiarazione di successione. Carica i documenti, ricevi la dichiarazione completata entro 48 ore."
+          content="Avvia online la dichiarazione di successione. Carica i documenti e ricevi la dichiarazione completata entro 48 ore."
         />
       </Helmet>
 
@@ -927,15 +927,15 @@ const IniziaPratica = () => {
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">
-                Avvia la tua pratica
+                Avvia la pratica
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Inizia la tua <span className="text-gradient-gold italic">Pratica</span>
+              Inizia la <span className="text-gradient-gold italic">Pratica</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione.
+              Compila il form guidato in pochi minuti. Un professionista fornirà assistenza fino al deposito della dichiarazione.
             </p>
           </div>
 
