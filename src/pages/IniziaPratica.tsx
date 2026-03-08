@@ -232,77 +232,77 @@ const IniziaPratica = () => {
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Nome *
           </label>
           <input
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="Mario"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Cognome *
           </label>
           <input
             type="text"
             value={cognome}
             onChange={(e) => setCognome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="Rossi"
           />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Email *
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="mario.rossi@example.com"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Telefono *
           </label>
           <input
             type="tel"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="+39 333 000 0000"
           />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Codice Fiscale *
           </label>
           <input
             type="text"
             value={codiceFiscale}
             onChange={(e) => setCodiceFiscale(e.target.value.toUpperCase())}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
             placeholder="RSSMRA80A01H501U"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Ruolo nell'eredità
           </label>
           <select
             value={ruolo}
             onChange={(e) => setRuolo(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
           >
             <option value="">Seleziona</option>
             <option value="Erede">Erede</option>
@@ -314,14 +314,14 @@ const IniziaPratica = () => {
         </div>
       </div>
       <div>
-        <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
           Indirizzo di residenza *
         </label>
         <input
           type="text"
           value={indirizzoResidenza}
           onChange={(e) => setIndirizzoResidenza(e.target.value)}
-          className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+          className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
           placeholder="Via Roma 1, 20100 Milano (MI)"
         />
       </div>
@@ -339,62 +339,62 @@ const IniziaPratica = () => {
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Nome e Cognome del defunto *
           </label>
           <input
             type="text"
             value={defuntoNomeCognome}
             onChange={(e) => setDefuntoNomeCognome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="Nome Cognome"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Codice fiscale del defunto *
           </label>
           <input
             type="text"
             value={defuntoCodiceFiscale}
             onChange={(e) => setDefuntoCodiceFiscale(e.target.value.toUpperCase())}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
             placeholder="RSSMRA80A01H501U"
           />
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data di nascita del defunto *
           </label>
           <input
             type="date"
             value={defuntoDataNascita}
             onChange={(e) => setDefuntoDataNascita(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data del decesso *
           </label>
           <input
             type="date"
             value={defuntoDataDecesso}
             onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
           />
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Comune di residenza al decesso *
           </label>
           <input
             type="text"
             value={defuntoComuneResidenza}
             onChange={(e) => setDefuntoComuneResidenza(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             placeholder="Comune (Provincia)"
           />
         </div>
@@ -431,13 +431,13 @@ const IniziaPratica = () => {
 
         {tipoSuccessione === "testamentaria" && (
           <div className="mt-4">
-            <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+            <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
               Tipo di testamento *
             </label>
             <select
               value={tipoTestamento}
               onChange={(e) => setTipoTestamento(e.target.value)}
-              className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             >
               <option value="">Seleziona</option>
               <option value="Testamento olografo">Testamento olografo</option>
@@ -449,7 +449,7 @@ const IniziaPratica = () => {
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="space-y-3">
-          <p className="text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
+            <p className="text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
             Presenza di immobili nell'asse ereditario *
           </p>
           <div className="flex gap-3">
@@ -478,14 +478,14 @@ const IniziaPratica = () => {
           </div>
           {presenzaImmobili === "si" && (
             <div>
-              <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2 mt-2">
+              <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2 mt-2">
                 Descrizione immobili *
               </label>
               <textarea
                 value={descrizioneImmobili}
                 onChange={(e) => setDescrizioneImmobili(e.target.value)}
                 rows={3}
-                className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+                className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
                 placeholder="Es. appartamento a Milano, box auto, terreno agricolo..."
               />
             </div>
@@ -494,7 +494,7 @@ const IniziaPratica = () => {
 
         <div className="space-y-4">
           <div>
-            <p className="text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+            <p className="text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
               Presenza di conti correnti o investimenti *
             </p>
             <div className="flex gap-3">
@@ -523,7 +523,7 @@ const IniziaPratica = () => {
             </div>
           </div>
           <div>
-            <p className="text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+            <p className="text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
               Presenza di partecipazioni societarie o aziende individuali *
             </p>
             <div className="flex gap-3">
@@ -552,7 +552,7 @@ const IniziaPratica = () => {
             </div>
           </div>
           <div>
-            <p className="text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+            <p className="text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
               Presenza di imbarcazioni o aeromobili *
             </p>
             <div className="flex gap-3">
@@ -585,13 +585,13 @@ const IniziaPratica = () => {
 
       <div className="grid md:grid-cols-2 gap-6 items-start">
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Numero di eredi *
           </label>
           <select
             value={numeroEredi}
             onChange={(e) => setNumeroEredi(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
           >
             <option value="">Seleziona</option>
             <option value="1">1</option>
@@ -603,14 +603,14 @@ const IniziaPratica = () => {
           </select>
         </div>
         <div>
-          <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Note aggiuntive (facoltativo)
           </label>
           <textarea
             value={noteAggiuntive}
             onChange={(e) => setNoteAggiuntive(e.target.value)}
             rows={3}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
             placeholder="Eventuali precisazioni o informazioni utili sulla situazione ereditaria."
           />
         </div>
@@ -627,7 +627,7 @@ const IniziaPratica = () => {
       transition={{ duration: 0.25 }}
       className="space-y-6"
     >
-      <p className="font-body text-sm text-muted-foreground">
+      <p className="font-body text-lg md:text-xl text-muted-foreground">
         Seleziona le categorie di documenti che stai caricando e allega i file in un unico caricamento.
       </p>
       <div className="grid md:grid-cols-2 gap-4">
@@ -769,7 +769,7 @@ const IniziaPratica = () => {
       </div>
 
       <div className="space-y-3">
-        <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
+        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
           Carica tutti i documenti (PDF, JPG, PNG - max 10 file)
         </label>
         <input
@@ -779,20 +779,20 @@ const IniziaPratica = () => {
           onChange={(e) => setFiles(e.target.files)}
           className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:uppercase file:tracking-[0.16em] file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer"
         />
-        <p className="text-xs font-body text-muted-foreground">
+        <p className="text-sm font-body text-muted-foreground">
           In alternativa puoi inviare i documenti anche successivamente via email o WhatsApp indicando il numero della pratica che ti verrà assegnato.
         </p>
       </div>
 
       <div>
-        <label className="block text-xs font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
           Domande o informazioni aggiuntive (facoltativo)
         </label>
         <textarea
           value={domandeAggiuntive}
           onChange={(e) => setDomandeAggiuntive(e.target.value)}
           rows={4}
-          className="w-full bg-secondary border border-border rounded-md px-3 py-2 text-sm font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+          className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
           placeholder="Indica eventuali dubbi, richieste particolari o informazioni che ritieni utili."
         />
       </div>
@@ -915,10 +915,10 @@ const IniziaPratica = () => {
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-3">
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-3">
               Inizia la tua <span className="text-gradient-gold italic">Pratica di Successione</span>
             </h1>
-            <p className="font-body text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+            <p className="font-body text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
               Compila il form guidato in pochi minuti. Un professionista di WebSuccessioni prenderà in carico la tua richiesta e ti accompagnerà fino al deposito della dichiarazione.
             </p>
           </div>
@@ -930,16 +930,16 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4 }}
-              className="bg-card border border-primary/25 rounded-lg px-5 py-4 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
             >
               <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
                 <Upload className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">
+                <p className="font-display text-lg text-foreground font-semibold mb-1">
                   1. Carica i documenti
                 </p>
-                <p className="font-body text-xs text-muted-foreground">
+                <p className="font-body text-base text-muted-foreground">
                   Raccogli i documenti richiesti e caricali in modo sicuro sulla piattaforma.
                 </p>
               </div>
@@ -950,16 +950,16 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-card border border-primary/25 rounded-lg px-5 py-4 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
             >
               <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
                 <Clock className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">
+                <p className="font-display text-lg text-foreground font-semibold mb-1">
                   2. Ricevi la dichiarazione entro 48h
                 </p>
-                <p className="font-body text-xs text-muted-foreground">
+                <p className="font-body text-base text-muted-foreground">
                   I nostri professionisti elaborano la dichiarazione e te la inviano pronta per la firma.
                 </p>
               </div>
@@ -970,16 +970,16 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-card border border-primary/25 rounded-lg px-5 py-4 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
             >
               <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">
+                <p className="font-display text-lg text-foreground font-semibold mb-1">
                   3. Firma e registrazione
                 </p>
-                <p className="font-body text-xs text-muted-foreground">
+                <p className="font-body text-base text-muted-foreground">
                   Firmi digitalmente o in originale, noi ci occupiamo di tutta la registrazione telematica.
                 </p>
               </div>
@@ -1006,7 +1006,7 @@ const IniziaPratica = () => {
                       {index + 1}
                     </div>
                     <p
-                      className={`mt-2 text-[11px] md:text-xs font-body uppercase tracking-[0.16em] ${
+                      className={`mt-2 text-xs md:text-sm font-body uppercase tracking-[0.16em] ${
                         active || completed ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
@@ -1027,7 +1027,7 @@ const IniziaPratica = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-card border border-border rounded-xl p-6 md:p-8 shadow-lg shadow-black/20 space-y-8"
+            className="bg-card border border-border rounded-xl p-6 md:p-8 shadow-lg shadow-black/20 space-y-8 max-w-4xl mx-auto"
           >
             <AnimatePresence mode="wait">
               {step === 1 && renderStep1()}
