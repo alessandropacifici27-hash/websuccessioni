@@ -1,4 +1,4 @@
-import { Phone, Mail, MessageCircle, Send } from "lucide-react";
+import { Phone, Landmark, Mail, MessageCircle, Send } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
