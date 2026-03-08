@@ -924,24 +924,20 @@ const IniziaPratica = () => {
           </div>
 
           {/* Info cards */}
-          <div className="grid md:grid-cols-3 gap-4 mb-10">
+          <div className="grid md:grid-cols-3 gap-5 mb-12">
             <motion.div
               variants={cardVariants}
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4 }}
-              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
                 <Upload className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-1">
-                  1. Carica i documenti
-                </p>
-                <p className="font-body text-base text-muted-foreground">
-                  Raccogli i documenti richiesti e caricali in modo sicuro sulla piattaforma.
-                </p>
+                <p className="font-display text-sm text-foreground font-semibold mb-1">1. Carica i documenti</p>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
               </div>
             </motion.div>
 
@@ -950,18 +946,14 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
                 <Clock className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-1">
-                  2. Ricevi la dichiarazione entro 48h
-                </p>
-                <p className="font-body text-base text-muted-foreground">
-                  I nostri professionisti elaborano la dichiarazione e te la inviano pronta per la firma.
-                </p>
+                <p className="font-display text-sm text-foreground font-semibold mb-1">2. Dichiarazione entro 48h</p>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
               </div>
             </motion.div>
 
@@ -970,18 +962,14 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-card border border-primary/25 rounded-lg p-6 flex items-start gap-3 shadow-sm"
+              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
             >
-              <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center mt-1">
+              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
                 <CheckCircle2 className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-1">
-                  3. Firma e registrazione
-                </p>
-                <p className="font-body text-base text-muted-foreground">
-                  Firmi digitalmente o in originale, noi ci occupiamo di tutta la registrazione telematica.
-                </p>
+                <p className="font-display text-sm text-foreground font-semibold mb-1">3. Firma e registrazione</p>
+                <p className="font-body text-xs text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
               </div>
             </motion.div>
           </div>
