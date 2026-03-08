@@ -21,7 +21,7 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili', '/inizia-pratica-online'];
   const isSubpage = SUBPAGES.includes(location.pathname);
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
