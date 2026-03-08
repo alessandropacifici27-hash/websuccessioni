@@ -23,11 +23,11 @@ interface GuideArticleLayoutProps {
 }
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 8 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, delay: i * 0.08, ease: "easeOut" as const },
+    transition: { duration: 0.2, delay: i * 0.03, ease: "easeOut" as const },
   }),
 };
 
