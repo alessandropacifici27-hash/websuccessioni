@@ -77,10 +77,10 @@ const GuidesSection = () => {
             return (
               <motion.div
                 key={g.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.08 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.2, delay: i * 0.04 }}
               >
                 <button
                   onClick={() => toggle(i)}

@@ -9,10 +9,10 @@ const CtaBanner = () => {
       <div className="absolute inset-0 bg-background/80" />
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.2 }}
         className="container mx-auto px-4 relative z-10"
       >
         <div className="max-w-3xl mx-auto text-center">

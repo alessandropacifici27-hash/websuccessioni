@@ -277,10 +277,10 @@ const DateCalculators = () => {
 
         {/* Hereditary Shares Info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.2, delay: 0.16 }}
           className="max-w-5xl mx-auto mt-10"
         >
           <div className={cardClass}>

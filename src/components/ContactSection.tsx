@@ -113,10 +113,10 @@ const ContactSection = () => {
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 10 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2, delay: 0.05 }}
             className="bg-card border border-border rounded-lg p-10 space-y-6"
             onSubmit={handleSubmit}
           >
