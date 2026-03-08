@@ -64,7 +64,7 @@ const HeroSection = () => {
           className="mb-6"
         >
           <Button variant="hero" size="lg" className="md:h-12 md:px-10 md:text-sm h-11 px-8 text-xs shadow-md shadow-primary/15" asChild>
-            <a href="/inizia-pratica">
+            <a href="/inizia-pratica-online">
               Inizia Pratica Online
             </a>
           </Button>

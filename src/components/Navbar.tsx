@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = "393793511586";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
-  { label: "Inizia Pratica Online", href: "/inizia-pratica" },
+  { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },

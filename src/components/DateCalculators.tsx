@@ -69,7 +69,7 @@ const DateCalculators = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto px-1">
           {/* Calculator 1: Death date → Succession deadline */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

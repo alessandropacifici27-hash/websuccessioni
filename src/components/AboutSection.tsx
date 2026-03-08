@@ -26,7 +26,7 @@ const team = [
 
 const AboutSection = () => {
   return (
-    <section id="chi-siamo" className="py-24 bg-secondary">
+    <section id="chi-siamo" className="py-24 bg-background">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
         <motion.div

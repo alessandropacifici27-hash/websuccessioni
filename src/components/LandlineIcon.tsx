@@ -1,9 +1,10 @@
 const LandlineIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    <line x1="14" y1="2" x2="14" y2="5" />
-    <line x1="16.5" y1="2" x2="16.5" y2="7" />
-    <line x1="19" y1="2" x2="19" y2="5" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    {/* Handset */}
+    <path d="M5 4c0-1 .8-2 2-2h2c.5 0 1 .3 1.2.7L11.5 6c.2.5 0 1-.3 1.3L9.5 9c.7 1.5 2 3 3.5 3.5l1.7-1.7c.3-.3.8-.5 1.3-.3l3.3 1.3c.4.2.7.7.7 1.2v2c0 1.2-1 2-2 2C10 17 4 11 4 5c0-.3 0-.7.1-1z" />
+    {/* Base/cradle */}
+    <rect x="3" y="19" width="18" height="3" rx="1.5" />
+    <path d="M7 19v-1.5c0-.8.7-1.5 1.5-1.5h7c.8 0 1.5.7 1.5 1.5V19" />
   </svg>
 );
 
