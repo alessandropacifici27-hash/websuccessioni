@@ -936,8 +936,8 @@ const IniziaPratica = () => {
                 <Upload className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-2">1. Carica i documenti</p>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
+                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">1. Carica i documenti</p>
+                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
               </div>
             </motion.div>
 
