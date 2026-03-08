@@ -15,15 +15,15 @@ const sections = [
   },
   {
     title: "Bolli e spese accessorie",
-    content: "L'imposta di bollo è di 64 euro per ogni documento. La tassa ipotecaria per la trascrizione è di 35 euro. I tributi catastali per la voltura ammontano a circa 55 euro. I certificati necessari (anagrafici, visure, estratti atti) costano complessivamente tra 50 e 200 euro.",
+    content: "L'imposta di bollo è di 64 euro per ogni documento presentato. La tassa ipotecaria per la trascrizione è di 35 euro. I tributi catastali per la voltura ammontano a circa 55 euro. I certificati anagrafici, le visure e gli estratti di atti costano complessivamente tra 50 e 200 euro a seconda della situazione.",
   },
   {
     title: "Il costo del professionista",
-    content: "Per una successione semplice, senza immobili e con pochi eredi, il costo professionale si aggira tra 300 e 600 euro. Per successioni più complesse, con immobili e volture catastali, il costo può arrivare tra 600 e 1.500 euro. WebSuccessioni offre un servizio completamente online con tariffe trasparenti: contattaci per un preventivo personalizzato senza impegno.",
+    content: "Per una successione semplice senza immobili e con pochi eredi il costo professionale si aggira tra 300 e 600 euro. Per successioni più complesse con immobili e volture catastali il costo può arrivare tra 600 e 1.500 euro. WebSuccessioni offre un servizio completamente online con tariffe trasparenti: contattaci per un preventivo personalizzato senza impegno.",
   },
   {
-    title: "Esempio pratico",
-    content: "Un figlio eredita dal padre un appartamento del valore di 200.000 euro e un conto corrente di 30.000 euro. Essendo figlio, la franchigia è di 1.000.000 euro quindi l'imposta di successione non è dovuta. Sono invece dovute l'imposta ipotecaria (200.000 x 2% = 4.000 euro) e quella catastale (200.000 x 1% = 2.000 euro), salvo agevolazione prima casa. A questo si aggiunge il costo del professionista e le spese accessorie.",
+    title: "Esempio pratico di calcolo",
+    content: "Un figlio eredita dal padre un appartamento del valore catastale rivalutato di 200.000 euro e un conto corrente di 30.000 euro per un totale di 230.000 euro. Essendo figlio la franchigia è di 1.000.000 euro quindi l'imposta di successione non è dovuta. Sono invece dovute l'imposta ipotecaria pari a 4.000 euro e quella catastale pari a 2.000 euro, salvo agevolazione prima casa. A questo si aggiunge il costo del professionista e le spese per i certificati.",
   },
 ];
 

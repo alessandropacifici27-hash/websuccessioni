@@ -24,6 +24,11 @@ const DocumentiDichiarazione = lazy(() => import("./pages/guide/DocumentiDichiar
 const ScadenzaDichiarazione = lazy(() => import("./pages/guide/ScadenzaDichiarazione"));
 const SuccessioneSenzaTestamento = lazy(() => import("./pages/guide/SuccessioneSenzaTestamento"));
 const VolturaSuccessione = lazy(() => import("./pages/guide/VolturaSuccessione"));
+const RinunciaEredita = lazy(() => import("./pages/guide/RinunciaEredita"));
+const SuccessioneConDebiti = lazy(() => import("./pages/guide/SuccessioneConDebiti"));
+const EredeVsLegatario = lazy(() => import("./pages/guide/EredeVsLegatario"));
+const SuccessioneAzienda = lazy(() => import("./pages/guide/SuccessioneAzienda"));
+const DirittiConiuge = lazy(() => import("./pages/guide/DirittiConiuge"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -57,6 +62,11 @@ const App = () => (
             <Route path="/guide/scadenza-dichiarazione-successione" element={<ScadenzaDichiarazione />} />
             <Route path="/guide/successione-senza-testamento" element={<SuccessioneSenzaTestamento />} />
             <Route path="/guide/voltura-catastale-successione" element={<VolturaSuccessione />} />
+            <Route path="/guide/rinuncia-eredita" element={<RinunciaEredita />} />
+            <Route path="/guide/successione-con-debiti" element={<SuccessioneConDebiti />} />
+            <Route path="/guide/erede-vs-legatario" element={<EredeVsLegatario />} />
+            <Route path="/guide/successione-azienda-ditta" element={<SuccessioneAzienda />} />
+            <Route path="/guide/diritti-coniuge-superstite" element={<DirittiConiuge />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
