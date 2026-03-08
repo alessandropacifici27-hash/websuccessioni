@@ -199,8 +199,15 @@ const DateCalculators = () => {
                 type="checkbox"
                 checked={disabilityExemption}
                 onChange={(e) => setDisabilityExemption(e.target.checked)}
-                className="w-4 h-4 appearance-none rounded border border-border bg-secondary checked:bg-primary checked:border-primary focus:outline-none focus:ring-2 focus:ring-primary/40 transition-colors"
+                className="sr-only"
               />
+              <span
+                className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                  disabilityExemption ? "bg-primary border-primary" : "bg-secondary border-border"
+                }`}
+              >
+                {disabilityExemption && <span className="font-body text-[10px] leading-none text-primary-foreground">✓</span>}
+              </span>
               <span className="font-body text-sm text-foreground/80">Erede con disabilità grave (franchigia 1.500.000 €)</span>
             </label>
 
