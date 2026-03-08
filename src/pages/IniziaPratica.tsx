@@ -912,7 +912,7 @@ const IniziaPratica = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Helmet>
-        <title>Inizia la tua Pratica | WebSuccessioni</title>
+        <title>Inizia la Pratica | WebSuccessioni</title>
         <meta
           name="description"
           content="Avvia online la tua dichiarazione di successione. Carica i documenti, ricevi la dichiarazione completata entro 48 ore."
