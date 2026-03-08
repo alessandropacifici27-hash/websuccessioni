@@ -79,14 +79,28 @@ const ContactSection = () => {
             </p>
 
             <div className="space-y-6">
-              {info.map((item, i) => (
-                <div key={`${item.label}-${i}`} className="flex items-center gap-5">
-                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5 text-primary" />
+              {info.map((item, i) => {
+                const IconEl = item.icon === "whatsapp"
+                  ? () => <WhatsAppIcon />
+                  : item.icon === "telegram"
+                    ? () => <TelegramIcon />
+                    : item.icon;
+                const content = (
+                  <div className="flex items-center gap-5">
+                    <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                      {typeof item.icon === "string" ? <IconEl /> : <item.icon className="w-5 h-5 text-primary" />}
+                    </div>
+                    <p className="font-body text-sm text-foreground/80">{item.label}</p>
                   </div>
-                  <p className="font-body text-sm text-foreground/80">{item.label}</p>
-                </div>
-              ))}
+                );
+                return item.href ? (
+                  <a key={`${item.label}-${i}`} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} className="block hover:opacity-80 transition-opacity">
+                    {content}
+                  </a>
+                ) : (
+                  <div key={`${item.label}-${i}`}>{content}</div>
+                );
+              })}
             </div>
           </motion.div>
 

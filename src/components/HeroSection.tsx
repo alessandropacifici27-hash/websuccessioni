@@ -50,17 +50,27 @@ const HeroSection = () => {
           Trasformiamo la complessità burocratica in un percorso sereno. Ti accompagniamo con competenza, discrezione e la massima cura in ogni fase della pratica successoria.
         </motion.p>
 
+        {/* CTA principale - Inizia Pratica */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+          className="mb-5"
         >
-          <Button variant="hero" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
+          <Button variant="hero" size="xl" className="md:h-16 md:px-14 md:text-lg h-[3.4rem] px-10 text-[0.95rem] shadow-lg shadow-primary/20" asChild>
             <a href="/inizia-pratica">
               Inizia Pratica Online
             </a>
           </Button>
+        </motion.div>
+
+        {/* CTA contatto */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
+        >
           <Button variant="hero" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
             <a href={`tel:${PHONE_NUMBER}`}>
               <Phone className="w-4 h-4" />

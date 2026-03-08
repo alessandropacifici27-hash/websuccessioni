@@ -146,7 +146,7 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Orari</h4>
             <div className="font-body text-sm text-muted-foreground space-y-2">
               <p>Lunedì – Venerdì: 9:00 – 18:00</p>
-              <p>Sabato: Su appuntamento</p>
+              <p>Sabato: 9:00 – 13:00</p>
               <p>Domenica: Chiuso</p>
             </div>
           </div>

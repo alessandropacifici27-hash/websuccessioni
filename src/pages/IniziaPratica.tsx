@@ -1015,7 +1015,7 @@ const IniziaPratica = () => {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-card border border-border rounded-xl p-6 md:p-8 shadow-lg shadow-black/20 space-y-8 max-w-4xl mx-auto"
+            className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
           >
             <AnimatePresence mode="wait">
               {step === 1 && renderStep1()}
