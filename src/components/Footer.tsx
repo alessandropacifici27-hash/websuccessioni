@@ -57,6 +57,7 @@ const footerNavLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-offerti" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
+  { label: "Inizia Pratica", href: "/inizia-pratica" },
 ];
 
 const Footer = () => {

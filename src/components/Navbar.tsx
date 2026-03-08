@@ -15,6 +15,7 @@ const navLinks = [
   { label: "FAQ", href: "/faq" },
   { label: "Servizi Proposti", href: "/servizi-proposti" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
+  { label: "Inizia Pratica", href: "/inizia-pratica" },
 ];
 
 const Navbar = () => {
