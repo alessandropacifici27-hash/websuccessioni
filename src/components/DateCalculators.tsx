@@ -112,10 +112,10 @@ const DateCalculators = () => {
 
           {/* Calculator 2: Submission date → Payment deadline */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2, delay: 0.04 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
