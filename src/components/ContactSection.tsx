@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Landmark, Mail, Clock, Send } from "lucide-react";
+import { Phone, Mail, Clock, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
+import LandlineIcon from "@/components/LandlineIcon";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -20,12 +21,12 @@ const TelegramIcon = () => (
 );
 
 const info = [
-  { icon: Phone, label: "+39 379 3511586", href: "tel:+393793511586" },
-  { icon: Landmark, label: "+39 02 92892296", href: "tel:+390292892296" },
+  { icon: "phone" as const, label: "+39 379 3511586", href: "tel:+393793511586" },
+  { icon: "landline" as const, label: "+39 02 92892296", href: "tel:+390292892296" },
   { icon: "whatsapp" as const, label: "WhatsApp", href: "https://wa.me/393793511586" },
   { icon: "telegram" as const, label: "Telegram", href: "https://t.me/WebSuccessioni" },
-  { icon: Mail, label: "info@websuccessioni.it", href: "mailto:info@websuccessioni.it" },
-  { icon: Clock, label: "Lun – Ven: 9:00 – 18:00 | Sab: 9:00 – 13:00" },
+  { icon: "mail" as const, label: "info@websuccessioni.it", href: "mailto:info@websuccessioni.it" },
+  { icon: "clock" as const, label: "Lun – Ven: 9:00 – 18:00 | Sab: 9:00 – 13:00" },
 ];
 
 const ContactSection = () => {
@@ -62,6 +63,18 @@ const ContactSection = () => {
     }
   };
 
+  const renderIcon = (icon: string) => {
+    switch (icon) {
+      case "phone": return <Phone className="w-5 h-5 text-primary" />;
+      case "landline": return <LandlineIcon className="w-5 h-5 text-primary" />;
+      case "whatsapp": return <WhatsAppIcon />;
+      case "telegram": return <TelegramIcon />;
+      case "mail": return <Mail className="w-5 h-5 text-primary" />;
+      case "clock": return <Clock className="w-5 h-5 text-primary" />;
+      default: return null;
+    }
+  };
+
   return (
     <section id="contatti" className="py-32 bg-background">
       <div className="container mx-auto px-4">
@@ -80,15 +93,10 @@ const ContactSection = () => {
 
             <div className="space-y-6">
               {info.map((item, i) => {
-                const IconEl = item.icon === "whatsapp"
-                  ? () => <WhatsAppIcon />
-                  : item.icon === "telegram"
-                    ? () => <TelegramIcon />
-                    : item.icon;
                 const content = (
                   <div className="flex items-center gap-5">
                     <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 text-primary">
-                      {typeof item.icon === "string" ? <IconEl /> : <item.icon className="w-5 h-5 text-primary" />}
+                      {renderIcon(item.icon)}
                     </div>
                     <p className="font-body text-sm text-foreground/80">{item.label}</p>
                   </div>
