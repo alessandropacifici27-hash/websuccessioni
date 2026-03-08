@@ -38,12 +38,6 @@ const Index = () => {
           <CtaBanner />
         </div>
         <Testimonials />
-        <div className="hidden md:block">
-          <FAQSection />
-        </div>
-        <div className="hidden md:block">
-          <GuidesSection />
-        </div>
         <ContactSection />
         <Footer />
       </main>
