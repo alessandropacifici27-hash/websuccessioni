@@ -1,5 +1,6 @@
 import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.webp";
 
 const WHATSAPP_NUMBER = "393793511586";
 
@@ -87,7 +88,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
-              Web<span className="text-gradient-gold">Successioni</span>
+              <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain" />
             </a>
             <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">
               Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
@@ -155,7 +156,7 @@ const Footer = () => {
         <div className="line-gold w-full mb-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-xs text-muted-foreground/60">© 2026 WebSuccessioni. Tutti i diritti riservati.</p>
+          <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain" />
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/cookie-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Cookie Policy</Link>
