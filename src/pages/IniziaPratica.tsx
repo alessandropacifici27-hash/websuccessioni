@@ -217,7 +217,7 @@ const IniziaPratica = () => {
       );
 
       setSuccessMessage(
-        `Pratica inviata con successo! A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
+        `Pratica inviata con successo! A breve verrà inviata una email con il numero della pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
       );
       toast({
         title: "Pratica inviata con successo",
