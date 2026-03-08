@@ -65,10 +65,10 @@ const FAQSection = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.2 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.12 }}
           className="max-w-3xl mx-auto"
         >
           <Accordion type="single" collapsible className="space-y-3">

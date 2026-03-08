@@ -26,10 +26,10 @@ const Testimonials = () => {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.2, delay: i * 0.04 }}
+              viewport={{ once: true, margin: "-120px" }}
+              transition={{ duration: 0.12, delay: i * 0.02 }}
               className="bg-card rounded-lg p-9 border border-border relative group hover:border-primary/20 transition-colors duration-300"
             >
               <Quote className="w-10 h-10 text-primary/10 absolute top-7 right-7" />
