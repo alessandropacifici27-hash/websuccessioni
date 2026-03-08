@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.webp";
 
 const WHATSAPP_NUMBER = "393793511586";
@@ -64,9 +65,9 @@ const HeroSection = () => {
           className="mb-6"
         >
           <Button variant="hero" size="lg" className="md:h-12 md:px-10 md:text-sm h-11 px-8 text-xs shadow-md shadow-primary/15" asChild>
-            <a href="/inizia-pratica">
+            <Link to="/inizia-pratica-online">
               Inizia Pratica Online
-            </a>
+            </Link>
           </Button>
         </motion.div>
 

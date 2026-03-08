@@ -50,7 +50,7 @@ const DateCalculators = () => {
   const formatCurrency = (n: number) =>
     new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
-  const cardClass = "bg-background border border-border rounded-lg p-8 hover:border-primary/20 transition-colors duration-300";
+  const cardClass = "bg-background border border-border rounded-lg p-6 md:p-8 hover:border-primary/20 transition-colors duration-300";
 
   return (
     <section className="py-24 bg-card">
@@ -69,7 +69,7 @@ const DateCalculators = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto px-1">
           {/* Calculator 1: Death date → Succession deadline */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

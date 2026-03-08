@@ -10,7 +10,7 @@ const WHATSAPP_NUMBER = "393793511586";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
-  { label: "Inizia Pratica Online", href: "/inizia-pratica" },
+  { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },
@@ -21,7 +21,7 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili', '/inizia-pratica-online'];
   const isSubpage = SUBPAGES.includes(location.pathname);
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);

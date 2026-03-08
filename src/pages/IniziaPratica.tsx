@@ -924,20 +924,20 @@ const IniziaPratica = () => {
           </div>
 
           {/* Info cards */}
-          <div className="grid md:grid-cols-3 gap-5 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-14">
             <motion.div
               variants={cardVariants}
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4 }}
-              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
+              className="bg-card border border-primary/15 rounded-lg p-6 flex items-start gap-4"
             >
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <Upload className="w-4 h-4 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
+                <Upload className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">1. Carica i documenti</p>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
+                <p className="font-display text-base text-foreground font-semibold mb-1.5">1. Carica i documenti</p>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
               </div>
             </motion.div>
 
@@ -946,14 +946,14 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
+              className="bg-card border border-primary/15 rounded-lg p-6 flex items-start gap-4"
             >
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <Clock className="w-4 h-4 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
+                <Clock className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">2. Dichiarazione entro 48h</p>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
+                <p className="font-display text-base text-foreground font-semibold mb-1.5">2. Dichiarazione entro 48h</p>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
               </div>
             </motion.div>
 
@@ -962,28 +962,28 @@ const IniziaPratica = () => {
               initial="hidden"
               animate="visible"
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-card border border-primary/15 rounded-lg p-5 flex items-start gap-3"
+              className="bg-card border border-primary/15 rounded-lg p-6 flex items-start gap-4"
             >
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <CheckCircle2 className="w-4 h-4 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="font-display text-sm text-foreground font-semibold mb-1">3. Firma e registrazione</p>
-                <p className="font-body text-xs text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
+                <p className="font-display text-base text-foreground font-semibold mb-1.5">3. Firma e registrazione</p>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
               </div>
             </motion.div>
           </div>
 
           {/* Progress bar */}
-          <div className="mb-8">
-            <div className="flex justify-between mb-2">
+          <div className="mb-10">
+            <div className="flex justify-between mb-3">
               {steps.map((label, index) => {
                 const active = index === currentStepIndex;
                 const completed = index < currentStepIndex;
                 return (
-                  <div key={label} className="flex-1 flex flex-col items-center text-center">
+                  <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-body border ${
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
                         completed
                           ? "bg-primary text-primary-foreground border-primary"
                           : active
@@ -994,7 +994,7 @@ const IniziaPratica = () => {
                       {index + 1}
                     </div>
                     <p
-                      className={`mt-2 text-xs md:text-sm font-body uppercase tracking-[0.16em] ${
+                      className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
                         active || completed ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
@@ -1004,7 +1004,7 @@ const IniziaPratica = () => {
                 );
               })}
             </div>
-            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
+            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
               <div
                 className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
                 style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
