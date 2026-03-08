@@ -152,10 +152,10 @@ const DateCalculators = () => {
 
           {/* Calculator 3: Inheritance Tax Calculator */}
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.2, delay: 0.08 }}
+            viewport={{ once: true, margin: "-120px" }}
+            transition={{ duration: 0.12, delay: 0.04 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
