@@ -55,10 +55,10 @@ const AboutSection = () => {
           {team.map((t, i) => (
             <motion.div
               key={t.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.2, delay: i * 0.04 }}
               className="bg-card border border-border rounded-lg p-8 hover:border-primary/20 transition-colors duration-300"
             >
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
