@@ -8,101 +8,6 @@ interface Message {
   text: string;
 }
 
-interface QAPair {
-  keywords: string[];
-  answer: string;
-}
-
-const QA_DATABASE: QAPair[] = [
-  {
-    keywords: ["costo", "costa", "prezzo", "prezzi", "tariffa", "tariffe", "quanto"],
-    answer: "Il costo dipende dalla complessità della successione. Una successione semplice (senza immobili o con pochi beni) ha un costo inferiore rispetto a una più articolata. Contattaci tramite questa chat o su WhatsApp al +39 379 3511586 per ricevere un preventivo gratuito e personalizzato in pochi minuti."
-  },
-  {
-    keywords: ["documenti", "documento", "documentazione", "serve", "servono", "fornire", "necessari"],
-    answer: "I documenti necessari variano in base alla situazione, ma in generale sono:\n\n📋 **Documenti base obbligatori:** certificato di morte, documento d'identità e codice fiscale del defunto e di tutti gli eredi.\n\n🏠 **Se ci sono immobili:** visure catastali e atti di provenienza degli immobili.\n\n🏦 **Se ci sono conti bancari o investimenti:** estratti conto e documentazione finanziaria alla data del decesso.\n\nDopo il primo contatto ti inviamo una lista personalizzata e precisa in base alla tua situazione."
-  },
-  {
-    keywords: ["tempo", "tempi", "durata", "veloce", "quanto ci vuole", "giorni", "settimana"],
-    answer: "Una volta ricevuti tutti i documenti necessari, completiamo la dichiarazione di successione entro una settimana. Ti teniamo aggiornato durante tutto il processo e ti avvisiamo subito se dovesse servire qualcosa in più."
-  },
-  {
-    keywords: ["cos'è", "cosa è", "cos è", "dichiarazione di successione", "chi deve", "obbligat", "presentarla"],
-    answer: "La dichiarazione di successione è un documento fiscale obbligatorio da presentare all'Agenzia delle Entrate entro 12 mesi dalla data del decesso. Sono obbligati a presentarla gli eredi e i legatari. Con WebSuccessioni ci occupiamo noi di tutto — senza che tu debba recarti fisicamente in nessun ufficio."
-  },
-  {
-    keywords: ["online", "persona", "venire", "fisicamente", "sportello", "ufficio", "sede", "di persona"],
-    answer: "Tutto avviene comodamente online. Carichi i documenti dal sito, noi elaboriamo la pratica e ti inviamo tutto via email. Nessuno sportello, nessuna fila, nessun notaio da raggiungere fisicamente."
-  },
-  {
-    keywords: ["legale", "valido", "legalmente", "valida", "ufficiale", "riconosciut"],
-    answer: "Sì, assolutamente. La dichiarazione viene redatta e presentata telematicamente all'Agenzia delle Entrate nel pieno rispetto della normativa vigente. Riceverai la ricevuta ufficiale di presentazione come conferma."
-  },
-  {
-    keywords: ["dopo", "invio", "inviato", "cosa succede", "procedura", "iter", "processo"],
-    answer: "Ricevi subito una conferma via email. Il nostro team verifica che tutto sia completo, elabora la dichiarazione e te la invia per una revisione finale prima della presentazione ufficiale. Entro una settimana hai tutto pronto."
-  },
-  {
-    keywords: ["scadenza", "termine", "entro quando", "12 mesi", "sanzioni", "multa", "ritardo"],
-    answer: "La legge prevede 12 mesi dalla data del decesso. Superato questo termine si rischiano sanzioni e interessi. Non aspettare — contattaci subito e ti aiutiamo a essere in regola per tempo."
-  },
-  {
-    keywords: ["complicat", "complessa", "più eredi", "molti eredi", "immobili", "conti", "investimenti", "difficile"],
-    answer: "Nessun problema, gestiamo anche successioni complesse che includono immobili, conti correnti, investimenti e più eredi. In fase di preventivo valutiamo la tua situazione e ti diciamo esattamente cosa serve e quanto costa."
-  },
-  {
-    keywords: ["preventivo", "stima", "quotazione"],
-    answer: "Semplicissimo — scrivici tramite questa chat oppure contattaci su WhatsApp al +39 379 3511586. Ti risponderemo in tempi brevi con un preventivo gratuito e senza impegno."
-  },
-  {
-    keywords: ["contatt", "telefono", "email", "chiamare", "scrivere", "whatsapp", "raggiungere", "orari"],
-    answer: "Puoi usare questa chat, scriverci via email a info@websuccessioni.it oppure contattarci su WhatsApp al +39 379 3511586. Siamo disponibili dal lunedì al venerdì, dalle 9:00 alle 18:00."
-  },
-  {
-    keywords: ["pagament", "pagare", "come si paga", "metodo", "bonifico", "carta"],
-    answer: "Accettiamo pagamenti tramite bonifico bancario. Riceverai tutti i dettagli una volta confermato il preventivo. Il pagamento è richiesto prima della presentazione della dichiarazione."
-  },
-  {
-    keywords: ["voltura", "catast", "catastale"],
-    answer: "Ci occupiamo anche della voltura catastale degli immobili ereditati, un passaggio necessario per aggiornare l'intestazione catastale a nome degli eredi. È inclusa nel nostro servizio completo di dichiarazione di successione."
-  },
-  {
-    keywords: ["imposte", "tasse", "imposta", "franchigia", "aliquota", "aliquote"],
-    answer: "Le imposte di successione variano in base al grado di parentela e al valore dei beni ereditati. Per coniuge e figli si applica un'aliquota del 4% con franchigia di 1.000.000€ ciascuno. Per fratelli e sorelle il 6% con franchigia di 100.000€. Per altri parenti il 6% senza franchigia. Per estranei l'8%. Contattaci per un calcolo preciso sulla tua situazione."
-  },
-  {
-    keywords: ["ciao", "salve", "buongiorno", "buonasera", "hey", "salut"],
-    answer: "Ciao! 👋 Come posso aiutarti? Puoi chiedermi informazioni su costi, documenti necessari, tempi di lavorazione, scadenze e molto altro riguardo la dichiarazione di successione."
-  },
-  {
-    keywords: ["grazie", "ringrazio", "gentile", "perfetto"],
-    answer: "Grazie a te! Se hai altre domande non esitare a chiedere. Siamo qui per aiutarti. 😊"
-  }
-];
-
-function findAnswer(input: string): string {
-  const lower = input.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-  let bestMatch: { answer: string; matchCount: number } | null = null;
-
-  for (const qa of QA_DATABASE) {
-    let matchCount = 0;
-    for (const keyword of qa.keywords) {
-      const normalizedKeyword = keyword.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      if (lower.includes(normalizedKeyword)) {
-        matchCount++;
-      }
-    }
-    if (matchCount > 0 && (!bestMatch || matchCount > bestMatch.matchCount)) {
-      bestMatch = { answer: qa.answer, matchCount };
-    }
-  }
-
-  if (bestMatch) return bestMatch.answer;
-
-  return "Grazie per il tuo messaggio! Non ho trovato una risposta specifica alla tua domanda. Per assistenza personalizzata, contattaci su WhatsApp al +39 379 3511586 o via email a info@websuccessioni.it. Saremo felici di aiutarti!";
-}
-
 function renderMessageText(text: string) {
   // Simple markdown-like rendering: **bold** and \n
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -158,7 +63,7 @@ const ChatbotWidget = () => {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isOpen]);
 
-  const handleSend = (text?: string) => {
+  const handleSend = async (text?: string) => {
     const trimmed = (text || input).trim();
     if (!trimmed) return;
     const userMsg: Message = { role: "user", text: trimmed };
@@ -166,12 +71,54 @@ const ChatbotWidget = () => {
     setInput("");
     setIsTyping(true);
 
-    // Simulate typing delay for natural feel
-    setTimeout(() => {
-      const botMsg: Message = { role: "bot", text: findAnswer(trimmed) };
-      setMessages((prev) => [...prev, botMsg]);
+    try {
+      const conversationHistory = messages.map((msg) => ({
+        role: msg.role === "user" ? "user" : "assistant",
+        content: msg.text,
+      }));
+
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 1000,
+          system: `Sei l'assistente virtuale di WebSuccessioni, un servizio professionale online per la presentazione delle dichiarazioni di successione in Italia. 
+        
+Il tuo compito è rispondere in modo chiaro, preciso e professionale alle domande degli utenti riguardo:
+- Dichiarazioni di successione (costi, documenti necessari, tempi, scadenze)
+- Volture catastali
+- Imposte di successione e franchigie
+- Come funziona il servizio WebSuccessioni
+
+Informazioni importanti su WebSuccessioni:
+- Tutto avviene online, nessun ufficio da visitare
+- Tempi di elaborazione: entro una settimana dalla ricezione dei documenti
+- Contatti: WhatsApp +39 379 3511586, email info@websuccessioni.it
+- Orari: lunedì-venerdì 9:00-18:00
+- Pagamento tramite bonifico bancario
+- La dichiarazione va presentata entro 12 mesi dal decesso
+
+Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma completo. Se la domanda non riguarda le successioni o il servizio, reindirizza gentilmente l'utente verso i temi di tua competenza. Non inventare prezzi specifici — invita sempre a richiedere un preventivo gratuito personalizzato.`,
+          messages: [
+            ...conversationHistory,
+            { role: "user", content: trimmed },
+          ],
+        }),
+      });
+
+      const data = await response.json();
+      const botText = data.content?.[0]?.text || "Mi dispiace, si è verificato un errore. Contattaci su WhatsApp al +39 379 3511586.";
+      setMessages((prev) => [...prev, { role: "bot", text: botText }]);
+    } catch (error) {
+      setMessages((prev) => [...prev, { role: "bot", text: "Si è verificato un errore. Contattaci direttamente su WhatsApp al +39 379 3511586 o via email a info@websuccessioni.it." }]);
+    } finally {
       setIsTyping(false);
-    }, 600 + Math.random() * 800);
+    }
   };
 
   const showQuickQuestions = messages.length <= 1;
