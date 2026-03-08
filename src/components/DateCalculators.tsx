@@ -50,7 +50,7 @@ const DateCalculators = () => {
   const formatCurrency = (n: number) =>
     new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
-  const cardClass = "bg-background border border-border rounded-lg p-8 hover:border-primary/20 transition-colors duration-300";
+  const cardClass = "bg-background border border-border rounded-lg p-6 md:p-8 hover:border-primary/20 transition-colors duration-300";
 
   return (
     <section className="py-24 bg-card">

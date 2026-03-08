@@ -975,15 +975,15 @@ const IniziaPratica = () => {
           </div>
 
           {/* Progress bar */}
-          <div className="mb-8">
-            <div className="flex justify-between mb-2">
+          <div className="mb-10">
+            <div className="flex justify-between mb-3">
               {steps.map((label, index) => {
                 const active = index === currentStepIndex;
                 const completed = index < currentStepIndex;
                 return (
-                  <div key={label} className="flex-1 flex flex-col items-center text-center">
+                  <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-body border ${
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
                         completed
                           ? "bg-primary text-primary-foreground border-primary"
                           : active
@@ -994,7 +994,7 @@ const IniziaPratica = () => {
                       {index + 1}
                     </div>
                     <p
-                      className={`mt-2 text-xs md:text-sm font-body uppercase tracking-[0.16em] ${
+                      className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
                         active || completed ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
@@ -1004,7 +1004,7 @@ const IniziaPratica = () => {
                 );
               })}
             </div>
-            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
+            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
               <div
                 className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
                 style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
