@@ -915,7 +915,7 @@ const IniziaPratica = () => {
         <title>Inizia la Pratica | WebSuccessioni</title>
         <meta
           name="description"
-          content="Avvia online la tua dichiarazione di successione. Carica i documenti, ricevi la dichiarazione completata entro 48 ore."
+          content="Avvia online la dichiarazione di successione. Carica i documenti e ricevi la dichiarazione completata entro 48 ore."
         />
       </Helmet>
 
