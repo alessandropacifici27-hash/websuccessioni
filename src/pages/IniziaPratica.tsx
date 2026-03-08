@@ -940,54 +940,28 @@ const IniziaPratica = () => {
           </div>
 
           {/* Info cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-14">
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.4 }}
-              className="bg-card border border-primary/15 rounded-lg p-7 flex items-start gap-5"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <Upload className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">1. Carica i documenti</p>
-                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Raccogli e carica i documenti richiesti in modo sicuro.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.4, delay: 0.05 }}
-              className="bg-card border border-primary/15 rounded-lg p-7 flex items-start gap-5"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <Clock className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">2. Dichiarazione entro 48h</p>
-                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Elaboriamo la dichiarazione e te la inviamo pronta per la firma.</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="bg-card border border-primary/15 rounded-lg p-7 flex items-start gap-5"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
-                <CheckCircle2 className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">3. Firma e registrazione</p>
-                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
-              </div>
-            </motion.div>
+          <div className="grid md:grid-cols-3 gap-5 mb-14">
+            {[
+              { icon: Upload, title: "Carica i documenti", desc: "Raccogli e carica i documenti richiesti in modo sicuro." },
+              { icon: Clock, title: "Dichiarazione entro 48h", desc: "Elaboriamo la dichiarazione e te la inviamo pronta per la firma." },
+              { icon: CheckCircle2, title: "Firma e registrazione", desc: "Firmi e noi ci occupiamo della registrazione telematica." },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="bg-card border border-primary/15 rounded-xl p-6 text-center"
+              >
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <card.icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="font-body text-[10px] text-primary/50 tracking-widest uppercase">Passo {String(i + 1).padStart(2, "0")}</span>
+                <p className="font-display text-lg font-semibold text-foreground mt-1.5 mb-2">{card.title}</p>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
+              </motion.div>
+            ))}
           </div>
 
           {/* Progress bar */}
