@@ -18,6 +18,12 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const TerminiServizio = lazy(() => import("./pages/TerminiServizio"));
 const IniziaPratica = lazy(() => import("./pages/IniziaPratica"));
+const GuidePage = lazy(() => import("./pages/GuidePage"));
+const CostoDichiarazione = lazy(() => import("./pages/guide/CostoDichiarazione"));
+const DocumentiDichiarazione = lazy(() => import("./pages/guide/DocumentiDichiarazione"));
+const ScadenzaDichiarazione = lazy(() => import("./pages/guide/ScadenzaDichiarazione"));
+const SuccessioneSenzaTestamento = lazy(() => import("./pages/guide/SuccessioneSenzaTestamento"));
+const VolturaSuccessione = lazy(() => import("./pages/guide/VolturaSuccessione"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -45,6 +51,12 @@ const App = () => (
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-servizio" element={<TerminiServizio />} />
             <Route path="/inizia-pratica-online" element={<IniziaPratica />} />
+            <Route path="/guide" element={<GuidePage />} />
+            <Route path="/guide/costo-dichiarazione-successione" element={<CostoDichiarazione />} />
+            <Route path="/guide/documenti-dichiarazione-successione" element={<DocumentiDichiarazione />} />
+            <Route path="/guide/scadenza-dichiarazione-successione" element={<ScadenzaDichiarazione />} />
+            <Route path="/guide/successione-senza-testamento" element={<SuccessioneSenzaTestamento />} />
+            <Route path="/guide/voltura-catastale-successione" element={<VolturaSuccessione />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

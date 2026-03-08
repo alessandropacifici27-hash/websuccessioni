@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
+  { label: "Guide", href: "/guide" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },
@@ -21,8 +22,8 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili', '/inizia-pratica-online'];
-  const isSubpage = SUBPAGES.includes(location.pathname);
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili', '/inizia-pratica-online', '/guide'];
+  const isSubpage = SUBPAGES.includes(location.pathname) || location.pathname.startsWith('/guide/');
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
