@@ -199,7 +199,7 @@ const DateCalculators = () => {
                 type="checkbox"
                 checked={disabilityExemption}
                 onChange={(e) => setDisabilityExemption(e.target.checked)}
-                className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
+                className="w-4 h-4 rounded border-border bg-secondary accent-primary focus:ring-primary"
               />
               <span className="font-body text-sm text-foreground/80">Erede con disabilità grave (franchigia 1.500.000 €)</span>
             </label>
