@@ -130,7 +130,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
         <a href="/" className="flex items-center mr-6">
-          <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain" />
+          <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain brightness-150" />
         </a>
         {/* Desktop nav links - GPU-accelerated smooth transition */}
         <div

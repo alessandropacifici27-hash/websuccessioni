@@ -156,7 +156,6 @@ const Footer = () => {
         <div className="line-gold w-full mb-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <img src={logo} alt="WebSuccessioni" className="h-10 w-auto object-contain" />
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/cookie-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Cookie Policy</Link>
