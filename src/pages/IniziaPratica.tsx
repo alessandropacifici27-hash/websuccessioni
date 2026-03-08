@@ -842,7 +842,7 @@ const IniziaPratica = () => {
 
         <div className="border border-primary/40 bg-card rounded-lg p-5">
           <p className="font-body text-sm text-foreground">
-            Dopo l'invio riceverai entro pochi minuti una email di conferma con il numero della tua pratica. Entro 24 ore ti contatteremo se avremo necessità di integrazioni documentali. La dichiarazione di successione completata ti sarà inviata entro 48 ore per la firma.
+            Dopo l'invio verrà inviata entro pochi minuti una email di conferma con il numero della pratica. Entro 24 ore sarà nostra cura richiedere eventuali integrazioni documentali. La dichiarazione di successione completata sarà inviata entro 48 ore per la firma.
           </p>
         </div>
 
