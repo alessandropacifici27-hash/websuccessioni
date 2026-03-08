@@ -1,10 +1,23 @@
 const LandlineIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
-    {/* Handset */}
-    <path d="M5 4c0-1 .8-2 2-2h2c.5 0 1 .3 1.2.7L11.5 6c.2.5 0 1-.3 1.3L9.5 9c.7 1.5 2 3 3.5 3.5l1.7-1.7c.3-.3.8-.5 1.3-.3l3.3 1.3c.4.2.7.7.7 1.2v2c0 1.2-1 2-2 2C10 17 4 11 4 5c0-.3 0-.7.1-1z" />
-    {/* Base/cradle */}
-    <rect x="3" y="19" width="18" height="3" rx="1.5" />
-    <path d="M7 19v-1.5c0-.8.7-1.5 1.5-1.5h7c.8 0 1.5.7 1.5 1.5V19" />
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    {/* Rotary dial base */}
+    <ellipse cx="12" cy="16" rx="10" ry="5" />
+    {/* Dial circle */}
+    <circle cx="12" cy="15" r="4" />
+    {/* Finger holes on dial */}
+    <circle cx="12" cy="12.2" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="14.2" cy="13" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="15" cy="15" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="14.2" cy="17" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="17.8" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="9.8" cy="17" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="9" cy="15" r="0.6" fill="currentColor" stroke="none" />
+    <circle cx="9.8" cy="13" r="0.6" fill="currentColor" stroke="none" />
+    {/* Handset resting on top */}
+    <path d="M4 11.5c0-2.5 1.5-5 3.5-6.5C9 3.8 10.5 3 12 3s3 .8 4.5 2c2 1.5 3.5 4 3.5 6.5" strokeWidth="2.2" />
+    {/* Earpiece & mouthpiece */}
+    <rect x="2.5" y="10" width="3.5" height="4" rx="1.5" fill="currentColor" stroke="currentColor" strokeWidth="0.5" />
+    <rect x="18" y="10" width="3.5" height="4" rx="1.5" fill="currentColor" stroke="currentColor" strokeWidth="0.5" />
   </svg>
 );
 
