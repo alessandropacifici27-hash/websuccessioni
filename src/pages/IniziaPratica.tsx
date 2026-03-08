@@ -927,15 +927,15 @@ const IniziaPratica = () => {
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">
-                Avvia la tua pratica
+                Avvia la pratica
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Inizia la tua <span className="text-gradient-gold italic">Pratica</span>
+              Inizia la <span className="text-gradient-gold italic">Pratica</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione.
+              Compila il form guidato in pochi minuti. Un professionista fornirà assistenza fino al deposito della dichiarazione.
             </p>
           </div>
 
