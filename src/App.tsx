@@ -51,6 +51,12 @@ const App = () => (
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-servizio" element={<TerminiServizio />} />
             <Route path="/inizia-pratica-online" element={<IniziaPratica />} />
+            <Route path="/guide" element={<GuidePage />} />
+            <Route path="/guide/costo-dichiarazione-successione" element={<CostoDichiarazione />} />
+            <Route path="/guide/documenti-dichiarazione-successione" element={<DocumentiDichiarazione />} />
+            <Route path="/guide/scadenza-dichiarazione-successione" element={<ScadenzaDichiarazione />} />
+            <Route path="/guide/successione-senza-testamento" element={<SuccessioneSenzaTestamento />} />
+            <Route path="/guide/voltura-catastale-successione" element={<VolturaSuccessione />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
