@@ -70,7 +70,14 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.1 }}
+              whileTap={{
+                boxShadow: "0 0 20px hsl(40 55% 55% / 0.4)",
+                borderColor: "hsl(40 55% 55% / 0.25)",
+              }}
+              transition={{
+                duration: 0.2,
+                opacity: { duration: 0.45, delay: i * 0.1 },
+              }}
               className="group text-center bg-card border border-border rounded-lg p-8 hover:border-primary/25 hover:glow-gold will-change-[box-shadow] transition-[box-shadow_0.3s_ease,border-color_0.3s_ease]"
             >
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-colors duration-300">
