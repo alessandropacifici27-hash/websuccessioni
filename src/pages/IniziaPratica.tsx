@@ -968,8 +968,8 @@ const IniziaPratica = () => {
                 <CheckCircle2 className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="font-display text-lg text-foreground font-semibold mb-2">3. Firma e registrazione</p>
-                <p className="font-body text-base text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
+                <p className="font-display text-xl md:text-2xl text-foreground font-bold mb-2">3. Firma e registrazione</p>
+                <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed">Firmi e noi ci occupiamo della registrazione telematica.</p>
               </div>
             </motion.div>
           </div>
