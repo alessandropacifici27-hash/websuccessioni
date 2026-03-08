@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -62,8 +62,24 @@ const IniziaPratica = () => {
   const [docTestamento, setDocTestamento] = useState(false);
   const [docSpesePassivita, setDocSpesePassivita] = useState(false);
   const [docAltro, setDocAltro] = useState(false);
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [fileUrls, setFileUrls] = useState<string>("");
   const [domandeAggiuntive, setDomandeAggiuntive] = useState("");
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js";
+    script.async = true;
+    script.onload = () => {
+      (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
+      (window as any).UPLOADCARE_LOCALE = "it";
+      (window as any).UPLOADCARE_TABS = "file camera url";
+      (window as any).UPLOADCARE_MULTIPLE = true;
+    };
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const currentStepIndex = step - 1;
 
@@ -142,67 +158,52 @@ const IniziaPratica = () => {
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const praticaNumber = `WS-${year}-${randomNum}`;
 
-    const selectedDocs = [
-      docDefunto && "Documenti del defunto",
-      docEredi && "Documenti degli eredi",
-      docImmobili && "Documenti immobili",
-      docRapportiBancari && "Rapporti bancari",
-      docSocietari && "Documenti societari/aziendali",
-      docTestamento && "Documenti testamento",
-      docSpesePassivita && "Spese funerarie e passività",
-      docAltro && "Altro",
-    ]
-      .filter(Boolean)
-      .join(", ");
-
-    const fileNames = files ? Array.from(files).map((f) => f.name).join(", ") : "Nessun file allegato (verranno condivisi separatamente)";
+    const defuntoParts = defuntoNomeCognome.trim().split(/\s+/);
+    const defuntoNome = defuntoParts[0] ?? "";
+    const defuntoCognome = defuntoParts.slice(1).join(" ") ?? "";
 
     const templateParams = {
-      pratica_number: praticaNumber,
-      // Step 1
-      dichiarante_nome: nome.trim(),
-      dichiarante_cognome: cognome.trim(),
-      dichiarante_email: email.trim(),
-      dichiarante_telefono: telefono.trim(),
-      dichiarante_codice_fiscale: codiceFiscale.trim(),
-      dichiarante_indirizzo_residenza: indirizzoResidenza.trim(),
-      dichiarante_ruolo: ruolo || "Non specificato",
-      // Step 2
-      defunto_nome_cognome: defuntoNomeCognome.trim(),
+      nome: nome.trim(),
+      cognome: cognome.trim(),
+      email: email.trim(),
+      telefono: telefono.trim(),
+      codice_fiscale: codiceFiscale.trim(),
+      indirizzo: indirizzoResidenza.trim(),
+      ruolo: ruolo.trim(),
+      defunto_nome: defuntoNome,
+      defunto_cognome: defuntoCognome,
       defunto_data_nascita: defuntoDataNascita,
       defunto_data_decesso: defuntoDataDecesso,
-      defunto_codice_fiscale: defuntoCodiceFiscale.trim(),
-      defunto_comune_residenza: defuntoComuneResidenza.trim(),
+      defunto_cf: defuntoCodiceFiscale.trim(),
+      defunto_comune: defuntoComuneResidenza.trim(),
       tipo_successione:
         tipoSuccessione === "legittima"
           ? "Successione legittima (senza testamento)"
           : tipoSuccessione === "testamentaria"
             ? "Successione testamentaria (con testamento)"
-            : "Non specificato",
-      tipo_testamento: tipoTestamento || "Non applicabile",
-      presenza_immobili: presenzaImmobili === "si" ? "Sì" : presenzaImmobili === "no" ? "No" : "Non specificato",
-      descrizione_immobili: descrizioneImmobili || "Non compilato",
-      presenza_rapporti_bancari: presenzaRapportiBancari === "si" ? "Sì" : presenzaRapportiBancari === "no" ? "No" : "Non specificato",
-      presenza_partecipazioni: presenzaPartecipazioni === "si" ? "Sì" : presenzaPartecipazioni === "no" ? "No" : "Non specificato",
-      presenza_imbarcazioni: presenzaImbarcazioni === "si" ? "Sì" : presenzaImbarcazioni === "no" ? "No" : "Non specificato",
+            : "",
+      tipo_testamento: tipoTestamento || "",
+      immobili: presenzaImmobili === "si" ? "Sì" : presenzaImmobili === "no" ? "No" : "",
+      immobili_descrizione: presenzaImmobili === "si" ? descrizioneImmobili : "",
+      conti_correnti: presenzaRapportiBancari === "si" ? "Sì" : presenzaRapportiBancari === "no" ? "No" : "",
+      partecipazioni: presenzaPartecipazioni === "si" ? "Sì" : presenzaPartecipazioni === "no" ? "No" : "",
+      imbarcazioni: presenzaImbarcazioni === "si" ? "Sì" : presenzaImbarcazioni === "no" ? "No" : "",
       numero_eredi: numeroEredi,
-      note_aggiuntive: noteAggiuntive || "Non compilate",
-      // Step 3
-      categorie_documenti: selectedDocs || "Non selezionate",
-      nomi_file: fileNames,
-      domande_informazioni_aggiuntive: domandeAggiuntive || "Non compilate",
+      note: noteAggiuntive || "",
+      file_urls: fileUrls || "",
+      domande: domandeAggiuntive || "",
     };
 
     try {
       await emailjs.send(
         "service_i1pju5e",
-        "template_cffzon9",
+        "yzxkt76",
         templateParams,
         "qFsjEtnqQNDnN5WlA"
       );
 
       setSuccessMessage(
-        `Pratica inviata con successo! Riceverai una email di conferma a breve. Il numero della tua pratica è: ${praticaNumber}`
+        `Pratica inviata con successo! A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
       );
       toast({
         title: "Pratica inviata con successo",
@@ -773,14 +774,17 @@ const IniziaPratica = () => {
           Carica tutti i documenti (PDF, JPG, PNG - max 10 file)
         </label>
         <input
-          type="file"
-          multiple
-          accept=".pdf,.jpg,.jpeg,.png"
-          onChange={(e) => setFiles(e.target.files)}
-          className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:uppercase file:tracking-[0.16em] file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer"
+          type="hidden"
+          role="uploadcare-uploader"
+          data-public-key="f1ded879783f3f762a86"
+          data-multiple="true"
+          data-locale="it"
+          onChange={(e: any) => {
+            if (e.target.value) setFileUrls(e.target.value);
+          }}
         />
-        <p className="text-sm font-body text-muted-foreground">
-          In alternativa puoi inviare i documenti anche successivamente via email o WhatsApp indicando il numero della pratica che ti verrà assegnato.
+        <p className="font-body text-sm text-muted-foreground mt-2">
+          Carica tutti i documenti disponibili (PDF, JPG, PNG). Puoi caricare più file contemporaneamente.
         </p>
       </div>
 
@@ -884,7 +888,7 @@ const IniziaPratica = () => {
             Modalità di pagamento
           </h3>
           <p className="font-body text-sm text-foreground/80">
-            Il pagamento dell'acconto (€100) avverrà tramite bonifico bancario. Le coordinate bancarie ti saranno inviate via email dopo la conferma di ricezione dei tuoi documenti.
+            Il pagamento dell'acconto di €50 avverrà tramite bonifico bancario. Le coordinate bancarie per il versamento ti saranno inviate via email entro pochi minuti dalla ricezione dei tuoi documenti, insieme al numero della tua pratica.
           </p>
         </div>
       </motion.div>
@@ -899,8 +903,6 @@ const IniziaPratica = () => {
           name="description"
           content="Avvia online la tua dichiarazione di successione. Carica i documenti, ricevi la dichiarazione completata entro 48 ore."
         />
-        <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" />
-        <script>{`UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";`}</script>
       </Helmet>
 
       <Navbar />
