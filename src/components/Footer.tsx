@@ -1,4 +1,4 @@
-import { Phone, Mail, MessageCircle, Send } from "lucide-react";
+import { Phone, Landmark, Mail, MessageCircle, Send } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -129,7 +129,7 @@ const Footer = () => {
                 <Phone className="w-4 h-4 text-primary" /> +39 379 3511586
               </a>
               <a href="tel:+390292892296" className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors">
-                <Phone className="w-4 h-4 text-primary" /> +39 02 92892296
+                <Landmark className="w-4 h-4 text-primary" /> +39 02 92892296
               </a>
               <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors">
                 <MessageCircle className="w-4 h-4 text-primary" /> WhatsApp
@@ -146,7 +146,7 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Orari</h4>
             <div className="font-body text-sm text-muted-foreground space-y-2">
               <p>Lunedì – Venerdì: 9:00 – 18:00</p>
-              <p>Sabato: Su appuntamento</p>
+              <p>Sabato: 9:00 – 13:00</p>
               <p>Domenica: Chiuso</p>
             </div>
           </div>

@@ -7,8 +7,6 @@ import HowItWorks from "@/components/HowItWorks";
 import CtaBanner from "@/components/CtaBanner";
 import DateCalculators from "@/components/DateCalculators";
 import Testimonials from "@/components/Testimonials";
-import FAQSection from "@/components/FAQSection";
-import GuidesSection from "@/components/GuidesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
@@ -38,12 +36,6 @@ const Index = () => {
           <CtaBanner />
         </div>
         <Testimonials />
-        <div className="hidden md:block">
-          <FAQSection />
-        </div>
-        <div className="hidden md:block">
-          <GuidesSection />
-        </div>
         <ContactSection />
         <Footer />
       </main>
