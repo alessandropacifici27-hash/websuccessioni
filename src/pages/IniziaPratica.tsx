@@ -906,8 +906,8 @@ const IniziaPratica = () => {
       <Navbar />
 
       <main className="flex-1 pt-24 pb-16">
-        <section className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10">
+        <section className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">
@@ -915,11 +915,11 @@ const IniziaPratica = () => {
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-3">
-              Inizia la tua <span className="text-gradient-gold italic">Pratica di Successione</span>
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Inizia la tua <span className="text-gradient-gold italic">Pratica</span>
             </h1>
-            <p className="font-body text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
-              Compila il form guidato in pochi minuti. Un professionista di WebSuccessioni prenderà in carico la tua richiesta e ti accompagnerà fino al deposito della dichiarazione.
+            <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione.
             </p>
           </div>
 
