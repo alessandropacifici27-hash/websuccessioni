@@ -130,8 +130,8 @@ Rispondi sempre in italiano, in modo cordiale e professionale. Sii conciso ma co
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-border/50 bg-gradient-to-r from-secondary/80 to-secondary/40">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-primary/15 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-primary" />
+                <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
+                  <img src={logo} alt="WebSuccessioni" className="w-9 h-9 object-contain brightness-150 drop-shadow-[0_0_6px_hsl(var(--primary)/0.5)]" />
                 </div>
                 <div>
                   <p className="font-display text-sm font-semibold text-foreground leading-tight">Assistente AI</p>
