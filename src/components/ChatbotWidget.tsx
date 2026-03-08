@@ -27,7 +27,7 @@ function renderMessageText(text: string) {
 }
 
 const QUICK_QUESTIONS = [
-  "Quanto costa?",
+  "Qual è il costo del servizio?",
   "Quali documenti servono?",
   "Quanto tempo ci vuole?",
   "Come vi contatto?",

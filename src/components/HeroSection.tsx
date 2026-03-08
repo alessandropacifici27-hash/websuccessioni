@@ -57,6 +57,11 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
         >
           <Button variant="hero" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
+            <a href="/inizia-pratica">
+              Inizia Pratica Online
+            </a>
+          </Button>
+          <Button variant="hero" size="xl" className="md:h-14 md:px-10 md:text-base h-[3.15rem] px-8 text-[0.85rem]" asChild>
             <a href={`tel:${PHONE_NUMBER}`}>
               <Phone className="w-4 h-4" />
               Chiamaci Ora

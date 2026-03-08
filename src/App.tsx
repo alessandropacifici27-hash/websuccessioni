@@ -6,9 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Successione from "./pages/Successione";
 import ChiSiamo from "./pages/ChiSiamo";
-import ComeFunziona from "./pages/ComeFunziona";
 import FaqPage from "./pages/FaqPage";
-import ServiziOfferti from "./pages/ServiziOfferti";
 import StrumentiUtili from "./pages/StrumentiUtili";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -31,9 +29,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/successione" element={<Successione />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />
-          <Route path="/come-funziona" element={<ComeFunziona />} />
           <Route path="/faq" element={<FaqPage />} />
-          <Route path="/servizi-proposti" element={<ServiziOfferti />} />
           <Route path="/strumenti-utili" element={<StrumentiUtili />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />

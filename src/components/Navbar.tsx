@@ -10,12 +10,10 @@ const WHATSAPP_NUMBER = "393793511586";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
-  { label: "Contatti", href: "/#contatti" },
-  { label: "Come Funziona", href: "/come-funziona" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Servizi Proposti", href: "/servizi-proposti" },
+  { label: "Inizia Pratica Online", href: "/inizia-pratica" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
-  { label: "Inizia Pratica", href: "/inizia-pratica" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contatti", href: "/#contatti" },
 ];
 
 const Navbar = () => {
@@ -131,7 +129,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
         <a href="/" className="flex items-center mr-6">
-          <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain brightness-150" />
+          <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain brightness-150 rounded-xl" />
         </a>
         {/* Desktop nav links - GPU-accelerated smooth transition */}
         <div

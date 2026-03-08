@@ -52,12 +52,10 @@ const SocialIcon = ({ icon }: { icon: string }) => {
 const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
-  { label: "Contatti", href: "/#contatti" },
-  { label: "Come Funziona", href: "/come-funziona" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Servizi Proposti", href: "/servizi-offerti" },
+  { label: "Inizia Pratica Online", href: "/inizia-pratica" },
   { label: "Strumenti Utili", href: "/strumenti-utili" },
-  { label: "Inizia Pratica", href: "/inizia-pratica" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Contatti", href: "/#contatti" },
 ];
 
 const Footer = () => {
@@ -89,7 +87,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
-              <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain" />
+              <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain rounded-xl" />
             </a>
             <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">
               Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
