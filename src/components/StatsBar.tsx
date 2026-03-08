@@ -12,10 +12,10 @@ const StatsBar = () => {
     <section className="relative z-10 -mt-1">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.2 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.12 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-lg overflow-hidden border border-border glow-gold"
         >
           {stats.map((s) => (

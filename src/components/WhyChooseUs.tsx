@@ -49,10 +49,10 @@ const WhyChooseUs = () => {
 
         {/* Value Proposition */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.2 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.12 }}
           className="max-w-4xl mx-auto mb-12 bg-card border border-primary/20 rounded-lg p-10 text-center glow-gold"
         >
           <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">

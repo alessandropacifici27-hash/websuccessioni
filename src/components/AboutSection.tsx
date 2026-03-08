@@ -72,10 +72,10 @@ const AboutSection = () => {
 
         {/* Closing statement */}
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.2, delay: 0.1 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.12 }}
           className="text-center mt-14"
         >
           <p className="font-body text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
