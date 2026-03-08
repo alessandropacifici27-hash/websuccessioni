@@ -7,11 +7,11 @@ const sections = [
   },
   {
     title: "Chi sono gli eredi legittimi",
-    content: "La legge prevede una gerarchia precisa. Al primo posto ci sono i figli: se il defunto lascia solo figli, questi ereditano in parti uguali. Se lascia sia il coniuge che figli, il coniuge ha diritto a un terzo dell'eredità e i figli si dividono i restanti due terzi. Se il defunto lascia solo il coniuge senza figli, il coniuge eredita l'intero patrimonio. In assenza di coniuge e figli subentrano i genitori e i fratelli. Solo in assenza di tutti questi eredi subentrano i parenti fino al sesto grado.",
+    content: "La legge prevede una gerarchia precisa. Al primo posto ci sono i figli: se il defunto lascia solo figli questi ereditano in parti uguali. Se lascia sia il coniuge che figli, il coniuge ha diritto a un terzo e i figli si dividono i restanti due terzi. Se lascia solo il coniuge senza figli, il coniuge eredita tutto. In assenza di coniuge e figli subentrano i genitori e i fratelli. Solo in assenza di tutti questi eredi subentrano i parenti fino al sesto grado.",
   },
   {
     title: "La quota del coniuge superstite",
-    content: "Il coniuge superstite ha sempre diritto alla quota legittima dell'eredità, che varia in base alla presenza di altri eredi. Con un solo figlio, coniuge e figlio si dividono l'eredità al 50% ciascuno. Con due o più figli, il coniuge ha diritto a un quarto e i figli si dividono i restanti tre quarti. Il coniuge ha inoltre sempre diritto di abitazione sulla casa familiare e di uso dei mobili che la arredano.",
+    content: "Il coniuge superstite ha sempre diritto alla quota legittima che varia in base alla presenza di altri eredi. Con un solo figlio, coniuge e figlio si dividono al 50%. Con due o più figli, il coniuge ha diritto a un quarto e i figli si dividono i tre quarti. Il coniuge ha inoltre sempre diritto di abitazione sulla casa familiare e di uso dei mobili che la arredano.",
   },
   {
     title: "I diritti dei figli nati fuori dal matrimonio",
@@ -19,13 +19,13 @@ const sections = [
   },
   {
     title: "Cosa fare concretamente",
-    content: "Quando si apre una successione senza testamento è necessario: verificare chi sono gli eredi legittimi secondo le norme del Codice Civile, raccogliere tutta la documentazione necessaria, presentare la dichiarazione di successione entro 12 mesi dal decesso, procedere alla divisione dei beni tra gli eredi. WebSuccessioni ti guida in ogni fase del processo gestendo la pratica completamente online.",
+    content: "Quando si apre una successione senza testamento bisogna: verificare chi sono gli eredi legittimi secondo il Codice Civile, raccogliere tutta la documentazione necessaria, presentare la dichiarazione di successione entro 12 mesi dal decesso e procedere alla divisione dei beni. WebSuccessioni ti guida in ogni fase gestendo la pratica completamente online.",
   },
 ];
 
 const SuccessioneSenzaTestamento = () => (
   <GuideArticleLayout
-    seoTitle="Successione senza testamento: cosa fare e come funziona | WebSuccessioni"
+    seoTitle="Successione senza testamento: chi eredita e come funziona | WebSuccessioni"
     seoDescription="Guida completa alla successione legittima: chi sono gli eredi, come si dividono i beni e cosa fare quando il defunto non ha lasciato testamento."
     canonical="/guide/successione-senza-testamento"
     category="Successione"

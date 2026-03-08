@@ -62,6 +62,11 @@ const App = () => (
             <Route path="/guide/scadenza-dichiarazione-successione" element={<ScadenzaDichiarazione />} />
             <Route path="/guide/successione-senza-testamento" element={<SuccessioneSenzaTestamento />} />
             <Route path="/guide/voltura-catastale-successione" element={<VolturaSuccessione />} />
+            <Route path="/guide/rinuncia-eredita" element={<RinunciaEredita />} />
+            <Route path="/guide/successione-con-debiti" element={<SuccessioneConDebiti />} />
+            <Route path="/guide/erede-vs-legatario" element={<EredeVsLegatario />} />
+            <Route path="/guide/successione-azienda-ditta" element={<SuccessioneAzienda />} />
+            <Route path="/guide/diritti-coniuge-superstite" element={<DirittiConiuge />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

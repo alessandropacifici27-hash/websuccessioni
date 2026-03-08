@@ -46,6 +46,46 @@ const guides = [
     time: "5 min",
     link: "/guide/voltura-catastale-successione",
   },
+  {
+    category: "Rinuncia",
+    categoryColor: "bg-violet-500/15 text-violet-400",
+    title: "Come rinunciare all'eredità: guida completa",
+    description: "Quando conviene rinunciare, come si fa, entro quali termini e quali conseguenze comporta per gli altri eredi.",
+    time: "5 min",
+    link: "/guide/rinuncia-eredita",
+  },
+  {
+    category: "Debiti",
+    categoryColor: "bg-red-500/15 text-red-400",
+    title: "Successione con debiti: cosa fare e come tutelarsi",
+    description: "Come scoprire se il defunto aveva debiti, quando conviene rinunciare e come accettare con beneficio di inventario.",
+    time: "6 min",
+    link: "/guide/successione-con-debiti",
+  },
+  {
+    category: "Nozioni",
+    categoryColor: "bg-teal-500/15 text-teal-400",
+    title: "Differenza tra erede e legatario nella successione",
+    description: "Due figure giuridiche molto diverse tra loro: cosa cambia in termini di diritti, obblighi e responsabilità.",
+    time: "4 min",
+    link: "/guide/erede-vs-legatario",
+  },
+  {
+    category: "Aziende",
+    categoryColor: "bg-orange-500/15 text-orange-400",
+    title: "Dichiarazione di successione con azienda o ditta individuale",
+    description: "Come si valuta e si dichiara un'azienda o una ditta individuale nell'asse ereditario e quali documenti servono.",
+    time: "6 min",
+    link: "/guide/successione-azienda-ditta",
+  },
+  {
+    category: "Coniuge",
+    categoryColor: "bg-pink-500/15 text-pink-400",
+    title: "Diritti del coniuge superstite nella successione",
+    description: "Quota di eredità, diritto di abitazione sulla casa familiare e tutele particolari previste dalla legge italiana.",
+    time: "5 min",
+    link: "/guide/diritti-coniuge-superstite",
+  },
 ];
 
 const cardVariants = {
@@ -64,7 +104,7 @@ const GuidePage = () => {
         <title>Guide sulla Dichiarazione di Successione | WebSuccessioni</title>
         <meta
           name="description"
-          content="Guide complete e aggiornate sulla dichiarazione di successione: costi, documenti, scadenze, voltura catastale e successione senza testamento."
+          content="Guide complete e aggiornate sulla dichiarazione di successione: costi, documenti, scadenze, rinuncia eredità, diritti del coniuge e molto altro."
         />
         <link rel="canonical" href="https://www.websuccessioni.it/guide" />
       </Helmet>
@@ -119,7 +159,7 @@ const GuidePage = () => {
               >
                 <Link
                   to={guide.link}
-                  className="group block bg-card border border-border rounded-xl p-7 hover:border-primary/30 transition-colors duration-300 h-full"
+                  className="group block bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors duration-300 h-full"
                 >
                   <span className={`inline-block font-body text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-4 ${guide.categoryColor}`}>
                     {guide.category}
