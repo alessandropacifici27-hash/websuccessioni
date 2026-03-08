@@ -30,10 +30,10 @@ const AboutSection = () => {
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.2 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-3 mb-4">
