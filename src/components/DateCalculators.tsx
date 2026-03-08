@@ -72,10 +72,10 @@ const DateCalculators = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-5xl mx-auto px-1">
           {/* Calculator 1: Death date → Succession deadline */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.2 }}
             className={cardClass}
           >
             <div className="flex items-center gap-3 mb-6">
