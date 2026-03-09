@@ -177,6 +177,7 @@ const IniziaPratica = () => {
     const defuntoCognome = defuntoParts.slice(1).join(" ") ?? "";
 
     const templateParams = {
+      name: nome.trim() + " " + cognome.trim(),
       nome: nome.trim(),
       cognome: cognome.trim(),
       email: email.trim(),
