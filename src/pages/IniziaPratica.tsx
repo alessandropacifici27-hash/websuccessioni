@@ -73,27 +73,34 @@ const IniziaPratica = () => {
       (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
       (window as any).UPLOADCARE_LOCALE = "it";
       (window as any).UPLOADCARE_MULTIPLE = true;
-
-      setTimeout(() => {
-        const uc = (window as any).uploadcare;
-        if (uc) {
-          const widget = uc.Widget("[role~=uploadcare-uploader]");
-          widget.onChange((fileGroup: any) => {
-            if (fileGroup) {
-              fileGroup.promise().then((group: any) => {
-                const urls = group.files().map((f: any) => f.cdnUrl).join(", ");
-                setFileUrls(urls);
-              });
-            }
-          });
-        }
-      }, 500);
     };
     document.body.appendChild(script);
     return () => {
       document.body.removeChild(script);
     };
   }, []);
+
+  useEffect(() => {
+    if (step !== 3) return;
+    const uc = (window as any).uploadcare;
+    if (!uc) return;
+    const timer = setTimeout(() => {
+      try {
+        const widget = uc.Widget("[role~=uploadcare-uploader]");
+        widget.onChange((fileGroup: any) => {
+          if (fileGroup) {
+            fileGroup.promise().then((group: any) => {
+              const urls = group.files().map((f: any) => f.cdnUrl).join(", ");
+              setFileUrls(urls);
+            });
+          }
+        });
+      } catch (e) {
+        console.log("Uploadcare widget not ready yet");
+      }
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [step]);
 
   const currentStepIndex = step - 1;
 
