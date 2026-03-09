@@ -214,7 +214,7 @@ const IniziaPratica = () => {
         "service_i1pju5e",
         "yzxkt76",
         templateParams,
-        "qFsjEtnqQNDnN5WlA"
+        {publicKey: "qFsjEtnqQNDnN5WlA"}
       );
 
       setSuccessMessage(
