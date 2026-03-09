@@ -25,8 +25,10 @@ const cardVariants = {
 const IniziaPratica = () => {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
-  const [sending, setSending] = useState(false);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [praticaNum, setPraticaNum] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // STEP 1
   const [nome, setNome] = useState("");
@@ -69,23 +71,21 @@ const IniziaPratica = () => {
     const script = document.createElement("script");
     script.src = "https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js";
     script.async = true;
-    script.onload = () => {
-      (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
-      (window as any).UPLOADCARE_LOCALE = "it";
-      (window as any).UPLOADCARE_MULTIPLE = true;
-    };
     document.body.appendChild(script);
     return () => {
-      document.body.removeChild(script);
+      if (document.body.contains(script)) document.body.removeChild(script);
     };
   }, []);
 
   useEffect(() => {
     if (step !== 3) return;
-    const uc = (window as any).uploadcare;
-    if (!uc) return;
     const timer = setTimeout(() => {
+      const uc = (window as any).uploadcare;
+      if (!uc) return;
       try {
+        (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
+        (window as any).UPLOADCARE_MULTIPLE = true;
+        (window as any).UPLOADCARE_LOCALE = "it";
         const widget = uc.Widget("[role~=uploadcare-uploader]");
         widget.onChange((fileGroup: any) => {
           if (fileGroup) {
@@ -96,7 +96,7 @@ const IniziaPratica = () => {
           }
         });
       } catch (e) {
-        console.log("Uploadcare widget not ready yet");
+        console.log("Uploadcare init:", e);
       }
     }, 800);
     return () => clearTimeout(timer);
@@ -167,21 +167,22 @@ const IniziaPratica = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Mantiene la validazione dei campi obbligatori prima dell'invio
     if (!validateStep(1) || !validateStep(2)) {
       setStep(1);
       return;
     }
 
-    setSending(true);
-    setSuccessMessage(null);
+    setIsSubmitting(true);
 
     const year = new Date().getFullYear();
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const praticaNumber = `WS-${year}-${randomNum}`;
 
-    const defuntoParts = defuntoNomeCognome.trim().split(/\s+/);
+    const defuntoParts = defuntoNomeCognome.trim().split(" ");
     const defuntoNome = defuntoParts[0] ?? "";
-    const defuntoCognome = defuntoParts.slice(1).join(" ") ?? "";
+    const defuntoCognome = defuntoParts.slice(1).join(" ");
 
     const templateParams = {
       nome: nome.trim(),
@@ -211,7 +212,7 @@ const IniziaPratica = () => {
       imbarcazioni: presenzaImbarcazioni === "si" ? "Sì" : presenzaImbarcazioni === "no" ? "No" : "",
       numero_eredi: numeroEredi,
       note: noteAggiuntive || "",
-      file_urls: fileUrls || "",
+      file_urls: fileUrls || "Nessun file caricato",
       domande: domandeAggiuntive || "",
     };
 
@@ -222,24 +223,13 @@ const IniziaPratica = () => {
         templateParams,
         "qFsjEtnqQNDnN5WlA"
       );
-
-      setSuccessMessage(
-        `Pratica inviata con successo! A breve verrà inviata una email con il numero della pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
-      );
-      toast({
-        title: "Pratica inviata con successo",
-        description: `Numero pratica: ${praticaNumber}`,
-      });
-      setStep(4);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      setSubmitSuccess(true);
+      setPraticaNum(praticaNumber);
     } catch (error) {
-      toast({
-        title: "Errore nell'invio",
-        description: "Si è verificato un problema durante l'invio della pratica. Riprova o contattaci direttamente.",
-        variant: "destructive",
-      });
+      console.error("Errore invio EmailJS:", error);
+      setSubmitError(true);
     } finally {
-      setSending(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -841,12 +831,6 @@ const IniziaPratica = () => {
         transition={{ duration: 0.25 }}
         className="space-y-6"
       >
-        {successMessage && (
-          <div className="border border-primary/40 bg-primary/5 text-primary rounded-lg px-4 py-3 font-body text-sm">
-            {successMessage}
-          </div>
-        )}
-
         <div className="border border-primary/40 bg-card rounded-lg p-5">
           <p className="font-body text-sm text-foreground">
             Dopo l'invio verrà inviata entro pochi minuti una email di conferma con il numero della pratica. Entro 24 ore sarà nostra cura richiedere eventuali integrazioni documentali. La dichiarazione di successione completata sarà inviata entro 48 ore per la firma.
@@ -1010,55 +994,78 @@ const IniziaPratica = () => {
           </div>
 
           {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
-          >
-            <AnimatePresence mode="wait">
-              {step === 1 && renderStep1()}
-              {step === 2 && renderStep2()}
-              {step === 3 && renderStep3()}
-              {step === 4 && renderStep4()}
-            </AnimatePresence>
+          {submitSuccess ? (
+            <div className="bg-card border border-border rounded-xl p-8 md:p-10 shadow-lg shadow-black/20 text-center space-y-6">
+              <h2 className="font-display text-3xl md:text-4xl text-primary font-semibold">
+                Pratica inviata con successo!
+              </h2>
+              <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
+                A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50.
+              </p>
+              <div className="font-display text-2xl md:text-3xl text-primary">
+                {praticaNum}
+              </div>
+              <Button variant="gold" size="lg" className="font-body mt-2" asChild>
+                <a href="/">Torna alla Home</a>
+              </Button>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
+            >
+              <AnimatePresence mode="wait">
+                {step === 1 && renderStep1()}
+                {step === 2 && renderStep2()}
+                {step === 3 && renderStep3()}
+                {step === 4 && renderStep4()}
+              </AnimatePresence>
 
-            <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
-              <div className="flex gap-2">
-                {step > 1 && (
+              {submitError && (
+                <div className="border border-destructive/40 bg-destructive/10 text-destructive rounded-lg px-4 py-3 font-body text-sm">
+                  Si è verificato un errore durante l'invio della pratica. Per favore riprova più tardi.
+                </div>
+              )}
+
+              <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
+                <div className="flex gap-2">
+                  {step > 1 && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={handleBack}
+                      className="font-body"
+                    >
+                      Indietro
+                    </Button>
+                  )}
+                  {step < 4 && (
+                    <Button
+                      type="button"
+                      variant="gold"
+                      onClick={handleNext}
+                      className="font-body"
+                    >
+                      Avanti
+                    </Button>
+                  )}
+                </div>
+
+                {step === 4 && (
                   <Button
-                    type="button"
-                    variant="outline"
-                    onClick={handleBack}
-                    className="font-body"
-                  >
-                    Indietro
-                  </Button>
-                )}
-                {step < 4 && (
-                  <Button
-                    type="button"
+                    type="submit"
                     variant="gold"
-                    onClick={handleNext}
-                    className="font-body"
+                    size="lg"
+                    className="font-body flex items-center gap-2 justify-center"
+                    disabled={isSubmitting}
                   >
-                    Avanti
+                    <Send className="w-4 h-4" />
+                    {isSubmitting ? "Invio in corso..." : "Invia la Pratica"}
                   </Button>
                 )}
               </div>
-
-              {step === 4 && (
-                <Button
-                  type="submit"
-                  variant="gold"
-                  size="lg"
-                  className="font-body flex items-center gap-2 justify-center"
-                  disabled={sending}
-                >
-                  <Send className="w-4 h-4" />
-                  {sending ? "Invio in corso..." : "Invia la Pratica"}
-                </Button>
-              )}
-            </div>
-          </form>
+            </form>
+          )}
         </section>
       </main>
 
