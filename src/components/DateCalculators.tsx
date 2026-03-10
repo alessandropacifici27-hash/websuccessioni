@@ -76,13 +76,13 @@ const DateCalculators = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.12 }}
-            className={cardClass}
+            className={`w-full min-w-0 ${cardClass}`}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Calendar className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-base font-semibold text-foreground leading-tight">Scadenza presentazione Dichiarazione di Successione</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground leading-tight whitespace-normal">Scadenza presentazione Dichiarazione<br />di Successione</h3>
             </div>
             <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
               Inserisci la data di decesso per calcolare il termine di presentazione della dichiarazione di successione (12 mesi).
@@ -95,7 +95,7 @@ const DateCalculators = () => {
                 type="date"
                 value={deathDate}
                 onChange={(e) => setDeathDate(e.target.value)}
-                className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
               />
               <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
             </div>
@@ -119,13 +119,13 @@ const DateCalculators = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.12, delay: 0.02 }}
-            className={cardClass}
+            className={`w-full min-w-0 ${cardClass}`}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Clock className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-base font-semibold text-foreground leading-tight">Scadenza pagamento Imposte di Successione</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground leading-tight whitespace-normal">Scadenza pagamento Imposte<br />di Successione</h3>
             </div>
             <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
               Per le successioni successive al 1° gennaio 2025 l'imposta deve essere corrisposta entro 90 giorni dal termine di presentazione della dichiarazione di successione. Per le successioni ante 1° gennaio 2025 il termine di pagamento è di 60 giorni dalla notifica dell'avviso di liquidazione.
@@ -138,7 +138,7 @@ const DateCalculators = () => {
                 type="date"
                 value={submissionDate}
                 onChange={(e) => setSubmissionDate(e.target.value)}
-                className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
               />
               <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
             </div>
@@ -154,15 +154,6 @@ const DateCalculators = () => {
                 </div>
               </motion.div>
             )}
-
-            <div className="mt-8 pt-6 border-t border-border">
-              <h4 className="font-display text-sm font-semibold text-foreground mb-3">Pagamento dell'imposta di successione</h4>
-              <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-3">
-                <p>
-                  L'imposta, autoliquidata dal contribuente, deve essere corrisposta entro 90 giorni dal termine di presentazione della dichiarazione di successione. Per le successioni aperte prima del 1° gennaio 2025, l'imposta continua ad essere liquidata dagli uffici competenti dell'Agenzia delle Entrate: in questo caso almeno il 20% dell'imposta dovuta deve essere versato a titolo di acconto entro 60 giorni dalla notifica dell'avviso di liquidazione.
-                </p>
-              </div>
-            </div>
           </motion.div>
 
           {/* Calculator 3: Inheritance Tax Calculator */}
