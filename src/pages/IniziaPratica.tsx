@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -24,6 +24,7 @@ const cardVariants = {
 
 const IniziaPratica = () => {
   const [step, setStep] = useState(1);
+  const stepRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -96,6 +97,13 @@ const IniziaPratica = () => {
   }, []);
 
   const currentStepIndex = step - 1;
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      stepRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [step]);
 
   const handleNext = () => {
     if (!validateStep(step)) return;
@@ -1003,10 +1011,26 @@ const IniziaPratica = () => {
             className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
           >
             <AnimatePresence mode="wait">
-              {step === 1 && renderStep1()}
-              {step === 2 && renderStep2()}
-              {step === 3 && renderStep3()}
-              {step === 4 && renderStep4()}
+              {step === 1 && (
+                <div ref={stepRef}>
+                  {renderStep1()}
+                </div>
+              )}
+              {step === 2 && (
+                <div ref={stepRef}>
+                  {renderStep2()}
+                </div>
+              )}
+              {step === 3 && (
+                <div ref={stepRef}>
+                  {renderStep3()}
+                </div>
+              )}
+              {step === 4 && (
+                <div ref={stepRef}>
+                  {renderStep4()}
+                </div>
+              )}
             </AnimatePresence>
 
             <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
