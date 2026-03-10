@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Clock, CheckCircle2, Send } from "lucide-react";
+import { Upload, Clock, CheckCircle2, Send, CheckCircle, Calendar } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 type SuccessionType = "legittima" | "testamentaria" | "";
@@ -24,11 +24,11 @@ const cardVariants = {
 
 const IniziaPratica = () => {
   const [step, setStep] = useState(1);
+  const [hasStarted, setHasStarted] = useState(false);
+  const stepRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
-  const [praticaNum, setPraticaNum] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // STEP 1
   const [nome, setNome] = useState("");
@@ -65,47 +65,69 @@ const IniziaPratica = () => {
   const [docSpesePassivita, setDocSpesePassivita] = useState(false);
   const [docAltro, setDocAltro] = useState(false);
   const [fileUrls, setFileUrls] = useState<string>("");
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
   const [domandeAggiuntive, setDomandeAggiuntive] = useState("");
 
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js";
     script.async = true;
+    script.onload = () => {
+      (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
+      (window as any).UPLOADCARE_LOCALE = "it";
+      (window as any).UPLOADCARE_MULTIPLE = true;
+
+      setTimeout(() => {
+        const uc = (window as any).uploadcare;
+        if (uc) {
+          const widget = uc.Widget("[role~=uploadcare-uploader]");
+          widget.onChange((fileGroup: any) => {
+            if (fileGroup) {
+              setIsUploading(true);
+              fileGroup.promise().then((group: any) => {
+                const files = group.files();
+                const list = files.map((f: any) => ({
+                  name: f.name ?? "Documento",
+                  url: f.cdnUrl ?? "",
+                }));
+                setUploadedFiles(list);
+                setFileUrls(list.map((f) => f.url).join(", "));
+                setIsUploading(false);
+              }).catch(() => {
+                setIsUploading(false);
+              });
+            } else {
+              setUploadedFiles([]);
+              setFileUrls("");
+            }
+          });
+        }
+      }, 500);
+    };
     document.body.appendChild(script);
     return () => {
-      if (document.body.contains(script)) document.body.removeChild(script);
+      document.body.removeChild(script);
     };
   }, []);
 
-  useEffect(() => {
-    if (step !== 3) return;
-    const timer = setTimeout(() => {
-      const uc = (window as any).uploadcare;
-      if (!uc) return;
-      try {
-        (window as any).UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
-        (window as any).UPLOADCARE_MULTIPLE = true;
-        (window as any).UPLOADCARE_LOCALE = "it";
-        const widget = uc.Widget("[role~=uploadcare-uploader]");
-        widget.onChange((fileGroup: any) => {
-          if (fileGroup) {
-            fileGroup.promise().then((group: any) => {
-              const urls = group.files().map((f: any) => f.cdnUrl).join(", ");
-              setFileUrls(urls);
-            });
-          }
-        });
-      } catch (e) {
-        console.log("Uploadcare init:", e);
-      }
-    }, 800);
-    return () => clearTimeout(timer);
-  }, [step]);
-
   const currentStepIndex = step - 1;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+    const t = setTimeout(() => {
+      stepRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
+    return () => clearTimeout(t);
+  }, [step, hasStarted]);
 
   const handleNext = () => {
     if (!validateStep(step)) return;
+    setHasStarted(true);
     setStep((prev) => Math.min(prev + 1, 4));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -167,24 +189,24 @@ const IniziaPratica = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Mantiene la validazione dei campi obbligatori prima dell'invio
     if (!validateStep(1) || !validateStep(2)) {
       setStep(1);
       return;
     }
 
-    setIsSubmitting(true);
+    setSending(true);
+    setSuccessMessage(null);
 
     const year = new Date().getFullYear();
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const praticaNumber = `WS-${year}-${randomNum}`;
 
-    const defuntoParts = defuntoNomeCognome.trim().split(" ");
+    const defuntoParts = defuntoNomeCognome.trim().split(/\s+/);
     const defuntoNome = defuntoParts[0] ?? "";
-    const defuntoCognome = defuntoParts.slice(1).join(" ");
+    const defuntoCognome = defuntoParts.slice(1).join(" ") ?? "";
 
     const templateParams = {
+      name: nome.trim() + " " + cognome.trim(),
       nome: nome.trim(),
       cognome: cognome.trim(),
       email: email.trim(),
@@ -212,24 +234,29 @@ const IniziaPratica = () => {
       imbarcazioni: presenzaImbarcazioni === "si" ? "Sì" : presenzaImbarcazioni === "no" ? "No" : "",
       numero_eredi: numeroEredi,
       note: noteAggiuntive || "",
-      file_urls: fileUrls || "Nessun file caricato",
+      file_urls: fileUrls || "",
       domande: domandeAggiuntive || "",
     };
 
     try {
-      await emailjs.send(
-        "service_i1pju5e",
-        "yzxkt76",
-        templateParams,
-        "qFsjEtnqQNDnN5WlA"
+      await emailjs.send("service_i1pju5e", "template_uaendkg", templateParams, { publicKey: "qFsjEtnqQNDnN5WlA" });
+      setSuccessMessage(
+        `Pratica inviata con successo! A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
       );
-      setSubmitSuccess(true);
-      setPraticaNum(praticaNumber);
+      toast({
+        title: "Pratica inviata con successo",
+        description: `Numero pratica: ${praticaNumber}`,
+      });
+      setStep(4);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
-      console.error("Errore invio EmailJS:", error);
-      setSubmitError(true);
+      toast({
+        title: "Errore nell'invio",
+        description: "Si è verificato un problema durante l'invio della pratica. Riprova o contattaci direttamente.",
+        variant: "destructive",
+      });
     } finally {
-      setIsSubmitting(false);
+      setSending(false);
     }
   };
 
@@ -376,27 +403,33 @@ const IniziaPratica = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
-        <div>
+        <div className="min-w-0">
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data di nascita del defunto *
           </label>
-          <input
-            type="date"
-            value={defuntoDataNascita}
-            onChange={(e) => setDefuntoDataNascita(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
-          />
+          <div className="relative w-full max-w-full box-border">
+            <input
+              type="date"
+              value={defuntoDataNascita}
+              onChange={(e) => setDefuntoDataNascita(e.target.value)}
+              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+          </div>
         </div>
-        <div>
+        <div className="min-w-0">
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data del decesso *
           </label>
-          <input
-            type="date"
-            value={defuntoDataDecesso}
-            onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
-          />
+          <div className="relative w-full max-w-full box-border">
+            <input
+              type="date"
+              value={defuntoDataDecesso}
+              onChange={(e) => setDefuntoDataDecesso(e.target.value)}
+              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+          </div>
         </div>
         <div>
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
@@ -780,23 +813,58 @@ const IniziaPratica = () => {
         </label>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
           Carica tutti i documenti (PDF, JPG, PNG - max 10 file)
         </label>
-        <input
-          type="hidden"
-          role="uploadcare-uploader"
-          data-public-key="f1ded879783f3f762a86"
-          data-multiple="true"
-          data-locale="it"
-          onChange={(e: any) => {
-            if (e.target.value) setFileUrls(e.target.value);
-          }}
-        />
-        <p className="font-body text-sm text-muted-foreground mt-2">
-          Carica tutti i documenti disponibili (PDF, JPG, PNG). Puoi caricare più file contemporaneamente.
-        </p>
+
+        {/* Area drop/upload con stile dorato */}
+        <div className="border-2 border-dashed border-yellow-500/60 bg-yellow-500/5 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[180px] transition-colors hover:bg-yellow-500/10 hover:border-yellow-500/80">
+          <Upload className="w-10 h-10 text-yellow-600/80 mb-3 shrink-0" strokeWidth={1.5} />
+          <p className="font-body text-base text-foreground mb-1">
+            Trascina qui i tuoi documenti o clicca per selezionarli
+          </p>
+          <p className="font-body text-sm text-muted-foreground">
+            Formati accettati: PDF, JPG, PNG — Max 10MB per file
+          </p>
+          <div
+            className="mt-3 [&_.uc-widget-button]:!min-h-[40px] [&_.uc-widget-button]:!rounded-lg [&_.uc-widget-button]:!bg-yellow-500/20 [&_.uc-widget-button]:!border [&_.uc-widget-button]:!border-yellow-500/50 [&_.uc-widget-button]:!text-foreground [&_.uc-widget-button]:!font-body"
+            role="uploadcare-uploader"
+            data-public-key="f1ded879783f3f762a86"
+            data-multiple="true"
+            data-locale="it"
+          />
+        </div>
+
+        {/* Barra di progresso durante il caricamento */}
+        {isUploading && (
+          <div className="space-y-2">
+            <p className="font-body text-sm text-muted-foreground">Caricamento in corso...</p>
+            <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+              <div
+                className="h-full bg-green-500 rounded-full"
+                style={{ animation: "uploadcare-progress 1.2s ease-in-out infinite" }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Lista file caricati con icona verde */}
+        {uploadedFiles.length > 0 && (
+          <ul className="space-y-2">
+            {uploadedFiles.map((file, index) => (
+              <li
+                key={`${file.url}-${index}`}
+                className="flex items-center justify-between gap-3 rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 font-body text-sm text-foreground"
+              >
+                <span className="truncate flex-1 min-w-0" title={file.name}>
+                  {file.name}
+                </span>
+                <CheckCircle className="w-5 h-5 shrink-0 text-green-500 flex-shrink-0" />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div>
@@ -831,9 +899,15 @@ const IniziaPratica = () => {
         transition={{ duration: 0.25 }}
         className="space-y-6"
       >
+        {successMessage && (
+          <div className="border border-primary/40 bg-primary/5 text-primary rounded-lg px-4 py-3 font-body text-sm">
+            {successMessage}
+          </div>
+        )}
+
         <div className="border border-primary/40 bg-card rounded-lg p-5">
           <p className="font-body text-sm text-foreground">
-            Dopo l'invio verrà inviata entro pochi minuti una email di conferma con il numero della pratica. Entro 24 ore sarà nostra cura richiedere eventuali integrazioni documentali. La dichiarazione di successione completata sarà inviata entro 48 ore per la firma.
+            Dopo l'invio riceverai entro pochi minuti una email di conferma con il numero della tua pratica. Entro 24 ore ti contatteremo se avremo necessità di integrazioni documentali. La dichiarazione di successione completata ti sarà inviata entro 48 ore per la firma.
           </p>
         </div>
 
@@ -893,7 +967,7 @@ const IniziaPratica = () => {
             Modalità di pagamento
           </h3>
           <p className="font-body text-sm text-foreground/80">
-            Il pagamento dell'acconto di €50 dovrà avvenire tramite bonifico bancario. Le coordinate bancarie per il versamento saranno inviate via email entro pochi minuti dalla ricezione dei documenti, insieme al numero della pratica.
+            Il pagamento dell'acconto di €50 dovrà avvenire tramite bonifico bancario. Le coordinate bancarie per il versamento ti saranno inviate via email entro pochi minuti dalla ricezione dei tuoi documenti, insieme al numero della tua pratica.
           </p>
         </div>
       </motion.div>
@@ -903,10 +977,10 @@ const IniziaPratica = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Helmet>
-        <title>Inizia la Pratica | WebSuccessioni</title>
+        <title>Inizia la tua Pratica | WebSuccessioni</title>
         <meta
           name="description"
-          content="Avvia online la dichiarazione di successione. Carica i documenti e ricevi la dichiarazione completata entro 48 ore."
+          content="Avvia online la tua dichiarazione di successione. Carica i documenti, ricevi la dichiarazione completata entro 48 ore."
         />
       </Helmet>
 
@@ -918,12 +992,12 @@ const IniziaPratica = () => {
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">
-                Avvia la pratica
+                Procedura rapida
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Inizia la <span className="text-gradient-gold italic">Pratica</span>
+              Inizia la tua <span className="text-gradient-gold italic">Pratica</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione.
@@ -955,64 +1029,49 @@ const IniziaPratica = () => {
             ))}
           </div>
 
-          {/* Progress bar */}
-          <div className="mb-10">
-            <div className="flex justify-between mb-3">
-              {steps.map((label, index) => {
-                const active = index === currentStepIndex;
-                const completed = index < currentStepIndex;
-                return (
-                  <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
-                        completed
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : active
-                            ? "bg-primary/10 text-primary border-primary"
-                            : "bg-secondary text-muted-foreground border-border"
-                      }`}
-                    >
-                      {index + 1}
+          {/* Blocco 4 step (progress + form) */}
+          <div ref={stepRef}>
+            <div className="mb-10">
+              <div className="flex justify-between mb-3">
+                {steps.map((label, index) => {
+                  const active = index === currentStepIndex;
+                  const completed = index < currentStepIndex;
+                  return (
+                    <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
+                          completed
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : active
+                              ? "bg-primary/10 text-primary border-primary"
+                              : "bg-secondary text-muted-foreground border-border"
+                        }`}
+                      >
+                        {index + 1}
+                      </div>
+                      <p
+                        className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
+                          active || completed ? "text-primary" : "text-muted-foreground"
+                        }`}
+                      >
+                        {label}
+                      </p>
                     </div>
-                    <p
-                      className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
-                        active || completed ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    >
-                      {label}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
-              <div
-                className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
-                style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Form */}
-          {submitSuccess ? (
-            <div className="bg-card border border-border rounded-xl p-8 md:p-10 shadow-lg shadow-black/20 text-center space-y-6">
-              <h2 className="font-display text-3xl md:text-4xl text-primary font-semibold">
-                Pratica inviata con successo!
-              </h2>
-              <p className="font-body text-base md:text-lg text-muted-foreground max-w-xl mx-auto">
-                A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50.
-              </p>
-              <div className="font-display text-2xl md:text-3xl text-primary">
-                {praticaNum}
+                  );
+                })}
               </div>
-              <Button variant="gold" size="lg" className="font-body mt-2" asChild>
-                <a href="/">Torna alla Home</a>
-              </Button>
+              <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
+                <div
+                  className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
+                />
+              </div>
             </div>
-          ) : (
+
+            {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
+              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7 overflow-hidden w-full"
             >
               <AnimatePresence mode="wait">
                 {step === 1 && renderStep1()}
@@ -1021,51 +1080,45 @@ const IniziaPratica = () => {
                 {step === 4 && renderStep4()}
               </AnimatePresence>
 
-              {submitError && (
-                <div className="border border-destructive/40 bg-destructive/10 text-destructive rounded-lg px-4 py-3 font-body text-sm">
-                  Si è verificato un errore durante l'invio della pratica. Per favore riprova più tardi.
-                </div>
-              )}
-
-              <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
-                <div className="flex gap-2">
-                  {step > 1 && (
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={handleBack}
-                      className="font-body"
-                    >
-                      Indietro
-                    </Button>
-                  )}
-                  {step < 4 && (
-                    <Button
-                      type="button"
-                      variant="gold"
-                      onClick={handleNext}
-                      className="font-body"
-                    >
-                      Avanti
-                    </Button>
-                  )}
-                </div>
-
-                {step === 4 && (
+            <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
+              <div className="flex gap-2">
+                {step > 1 && (
                   <Button
-                    type="submit"
-                    variant="gold"
-                    size="lg"
-                    className="font-body flex items-center gap-2 justify-center"
-                    disabled={isSubmitting}
+                    type="button"
+                    variant="outline"
+                    onClick={handleBack}
+                    className="font-body"
                   >
-                    <Send className="w-4 h-4" />
-                    {isSubmitting ? "Invio in corso..." : "Invia la Pratica"}
+                    Indietro
+                  </Button>
+                )}
+                {step < 4 && (
+                  <Button
+                    type="button"
+                    variant="gold"
+                    onClick={handleNext}
+                    className="font-body"
+                  >
+                    Avanti
                   </Button>
                 )}
               </div>
-            </form>
-          )}
+
+              {step === 4 && (
+                <Button
+                  type="submit"
+                  variant="gold"
+                  size="lg"
+                  className="font-body flex items-center gap-2 justify-center"
+                  disabled={sending}
+                >
+                  <Send className="w-4 h-4" />
+                  {sending ? "Invio in corso..." : "Invia la tua Pratica"}
+                </Button>
+              )}
+            </div>
+          </form>
+          </div>
         </section>
       </main>
 
@@ -1075,4 +1128,3 @@ const IniziaPratica = () => {
 };
 
 export default IniziaPratica;
-

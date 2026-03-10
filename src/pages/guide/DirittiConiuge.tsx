@@ -1,28 +1,5 @@
 import GuideArticleLayout from "./GuideArticleLayout";
 
-const sections = [
-  {
-    title: "La quota del coniuge superstite",
-    content: "Il coniuge superstite è sempre tra i primi eredi nella successione italiana e ha diritto a una quota che varia in base alla presenza di altri eredi. Se il defunto lascia solo il coniuge senza figli né altri parenti il coniuge eredita tutto. Se lascia il coniuge e un solo figlio entrambi ereditano al 50%. Se lascia il coniuge e due o più figli il coniuge ha diritto a un quarto e i figli si dividono i tre quarti. Se lascia il coniuge e genitori o fratelli il coniuge ha diritto ai due terzi.",
-  },
-  {
-    title: "Il diritto di abitazione sulla casa familiare",
-    content: "Oltre alla quota ereditaria il coniuge superstite ha sempre diritto di abitare nella casa che costituiva la residenza familiare e di usare i mobili che la arredano. Questo diritto di abitazione è riconosciuto anche quando il valore della quota ereditaria è inferiore al valore del diritto stesso. Non può essere tolto dal testamento: è un diritto che la legge garantisce in ogni caso.",
-  },
-  {
-    title: "La quota di riserva",
-    content: "Il coniuge ha diritto a una quota di riserva chiamata legittima che non può essere eliminata nemmeno dal testamento. Se il testamento lede la quota di riserva del coniuge, questi può impugnarlo con l'azione di riduzione. La quota di riserva del coniuge è pari a un quarto del patrimonio in presenza di figli, alla metà in assenza di figli.",
-  },
-  {
-    title: "Coniuge separato e divorziato",
-    content: "Il coniuge legalmente separato mantiene i diritti successori salvo che la separazione sia stata pronunciata con addebito a suo carico: in quel caso perde il diritto alla quota di riserva ma mantiene solo il diritto agli alimenti se ne aveva diritto. Il coniuge divorziato invece perde completamente i diritti successori al momento del divorzio. Mantiene solo il diritto a un assegno periodico a carico dell'eredità se al momento della morte riceveva un assegno divorzile.",
-  },
-  {
-    title: "Differenza con il convivente di fatto",
-    content: "Il convivente di fatto non ha diritti successori salvo quanto eventualmente previsto dal testamento. La legge Cirinnà del 2016 ha introdotto alcune tutele per i conviventi di fatto: il convivente superstite ha diritto di continuare ad abitare nella casa comune per un periodo da due a cinque anni in base alla durata della convivenza. Non ha però diritto alla quota ereditaria né alla quota di riserva.",
-  },
-];
-
 const DirittiConiuge = () => (
   <GuideArticleLayout
     seoTitle="Diritti del coniuge superstite nella successione | WebSuccessioni"
@@ -32,8 +9,39 @@ const DirittiConiuge = () => (
     categoryColor="bg-pink-500/15 text-pink-400"
     title="Diritti del coniuge superstite nella successione"
     highlightWord="successione"
-    sections={sections}
-  />
+  >
+    <p>
+      I diritti successori del coniuge superstite sono fissati dal Codice civile
+      <span className="text-sm text-gray-400 italic ml-1">(art. 581 c.c.)</span>. Oltre alla quota ereditaria, al coniuge spetta il diritto di abitazione sulla casa che era residenza familiare e l'uso dei mobili che la arredano
+      <span className="text-sm text-gray-400 italic ml-1">(art. 540, comma 2, c.c.)</span>. La quota di riserva (legittima) del coniuge non può essere lesa dal testamento ed è pari ad almeno la metà del patrimonio in assenza di figli
+      <span className="text-sm text-gray-400 italic ml-1">(art. 540, comma 1, c.c.)</span>.
+    </p>
+
+    <h2>La quota del coniuge superstite</h2>
+    <p>
+      Il coniuge superstite è sempre tra i primi eredi nella successione italiana e ha diritto a una quota che varia in base alla presenza di altri eredi. Se il defunto lascia solo il coniuge senza figli né altri parenti il coniuge eredita tutto. Se lascia il coniuge e un solo figlio entrambi ereditano al 50%. Se lascia il coniuge e due o più figli il coniuge ha diritto a un quarto e i figli si dividono i tre quarti. Se lascia il coniuge e genitori o fratelli il coniuge ha diritto ai due terzi.
+    </p>
+
+    <h2>Il diritto di abitazione sulla casa familiare</h2>
+    <p>
+      Oltre alla quota ereditaria il coniuge superstite ha sempre diritto di abitare nella casa che costituiva la residenza familiare e di usare i mobili che la arredano. Questo diritto di abitazione è riconosciuto anche quando il valore della quota ereditaria è inferiore al valore del diritto stesso. Non può essere tolto dal testamento: è un diritto che la legge garantisce in ogni caso.
+    </p>
+
+    <h2>La quota di riserva</h2>
+    <p>
+      Il coniuge ha diritto a una quota di riserva chiamata legittima che non può essere eliminata nemmeno dal testamento. Se il testamento lede la quota di riserva del coniuge, questi può impugnarlo con l'azione di riduzione. La quota di riserva del coniuge è pari a un quarto del patrimonio in presenza di figli, alla metà in assenza di figli.
+    </p>
+
+    <h2>Coniuge separato e divorziato</h2>
+    <p>
+      Il coniuge legalmente separato mantiene i diritti successori salvo che la separazione sia stata pronunciata con addebito a suo carico: in quel caso perde il diritto alla quota di riserva ma mantiene solo il diritto agli alimenti se ne aveva diritto. Il coniuge divorziato invece perde completamente i diritti successori al momento del divorzio. Mantiene solo il diritto a un assegno periodico a carico dell'eredità se al momento della morte riceveva un assegno divorzile.
+    </p>
+
+    <h2>Differenza con il convivente di fatto</h2>
+    <p>
+      Il convivente di fatto non ha diritti successori salvo quanto eventualmente previsto dal testamento. La legge Cirinnà del 2016 ha introdotto alcune tutele per i conviventi di fatto: il convivente superstite ha diritto di continuare ad abitare nella casa comune per un periodo da due a cinque anni in base alla durata della convivenza. Non ha però diritto alla quota ereditaria né alla quota di riserva.
+    </p>
+  </GuideArticleLayout>
 );
 
 export default DirittiConiuge;

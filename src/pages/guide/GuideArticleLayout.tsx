@@ -19,7 +19,8 @@ interface GuideArticleLayoutProps {
   categoryColor: string;
   title: string;
   highlightWord: string;
-  sections: Section[];
+  sections?: Section[];
+  children?: React.ReactNode;
 }
 
 const sectionVariants = {
@@ -39,9 +40,11 @@ const GuideArticleLayout = ({
   categoryColor,
   title,
   highlightWord,
-  sections,
+  sections = [],
+  children,
 }: GuideArticleLayoutProps) => {
   const titleParts = title.split(highlightWord);
+  const articleMode = Boolean(children);
 
   return (
     <>
@@ -54,7 +57,7 @@ const GuideArticleLayout = ({
       <Navbar />
 
       <article className="pt-28 pb-24 bg-background min-h-screen">
-        <div className="container mx-auto px-4 max-w-3xl">
+        <div className={`container mx-auto px-4 ${articleMode ? "max-w-4xl" : "max-w-3xl"}`}>
           {/* Back link */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
             <Link
@@ -75,11 +78,9 @@ const GuideArticleLayout = ({
             <span className={`inline-block font-body text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-5 ${categoryColor}`}>
               {category}
             </span>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-[hsl(45,60%,65%)] to-primary bg-clip-text text-transparent mb-4">
               {titleParts[0]}
-              <span className="italic bg-gradient-to-r from-primary to-[hsl(45,60%,65%)] bg-clip-text text-transparent">
-                {highlightWord}
-              </span>
+              <span className="italic">{highlightWord}</span>
               {titleParts[1] || ""}
             </h1>
             <div className="flex items-center gap-4 font-body text-sm text-muted-foreground">
@@ -89,27 +90,38 @@ const GuideArticleLayout = ({
             </div>
           </motion.header>
 
-          {/* Sections */}
-          <div className="space-y-6">
-            {sections.map((section, i) => (
-              <motion.section
-                key={i}
-                custom={i}
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                className="bg-card border border-border rounded-xl p-8"
-              >
-                <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                  {section.title}
-                </h2>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  {section.content}
-                </p>
-              </motion.section>
-            ))}
-          </div>
+          {/* Article body (discursive) or Sections (cards) */}
+          {articleMode ? (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-4xl mx-auto space-y-10 py-4 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:font-semibold [&_h2]:text-primary [&_h2]:mt-12 [&_h2]:mb-4 [&_h3]:font-display [&_h3]:text-xl [&_h3]:md:text-2xl [&_h3]:font-semibold [&_h3]:text-primary/90 [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:font-body [&_p]:text-muted-foreground [&_p]:leading-relaxed [&_ul]:font-body [&_ul]:text-muted-foreground [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2 [&_li]:marker:text-primary"
+            >
+              {children}
+            </motion.div>
+          ) : (
+            <div className="space-y-6">
+              {sections.map((section, i) => (
+                <motion.section
+                  key={i}
+                  custom={i}
+                  variants={sectionVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="bg-card border border-border rounded-xl p-8"
+                >
+                  <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                    {section.title}
+                  </h2>
+                  <p className="font-body text-muted-foreground leading-relaxed">
+                    {section.content}
+                  </p>
+                </motion.section>
+              ))}
+            </div>
+          )}
 
           {/* CTA */}
           <motion.div

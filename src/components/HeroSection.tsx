@@ -57,21 +57,7 @@ const HeroSection = () => {
           Trasformiamo la complessità burocratica in un percorso sereno. Ti accompagniamo con competenza, discrezione e la massima cura in ogni fase della pratica successoria.
         </motion.p>
 
-        {/* CTA principale - Inizia Pratica */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="mb-6"
-        >
-          <Button variant="hero" size="lg" className="md:h-12 md:px-10 md:text-sm h-11 px-8 text-xs shadow-md shadow-primary/15" asChild>
-            <Link to="/inizia-pratica-online">
-              Inizia Pratica Online
-            </Link>
-          </Button>
-        </motion.div>
-
-        {/* CTA contatto */}
+        {/* CTA contatto - via principale */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,6 +81,25 @@ const HeroSection = () => {
               <Mail className="w-3.5 h-3.5" />
               Scrivici per Email
             </a>
+          </Button>
+        </motion.div>
+
+        {/* CTA secondaria - Inizia Pratica Online */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="mt-5 flex justify-center"
+        >
+          <Button
+            variant="heroOutline"
+            size="sm"
+            className="transform scale-95 opacity-90 border border-yellow-500/50 text-xs md:text-[0.7rem] h-9 px-6 md:h-9 md:px-7"
+            asChild
+          >
+            <Link to="/inizia-pratica-online">
+              Inizia Pratica Online
+            </Link>
           </Button>
         </motion.div>
 

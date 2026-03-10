@@ -3,7 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Index from "./pages/Index";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
@@ -29,6 +30,16 @@ const SuccessioneConDebiti = lazy(() => import("./pages/guide/SuccessioneConDebi
 const EredeVsLegatario = lazy(() => import("./pages/guide/EredeVsLegatario"));
 const SuccessioneAzienda = lazy(() => import("./pages/guide/SuccessioneAzienda"));
 const DirittiConiuge = lazy(() => import("./pages/guide/DirittiConiuge"));
+const ImpostaSuccessione = lazy(() => import("./pages/guide/ImpostaSuccessione"));
+const SuccessioneContoCorrente = lazy(() => import("./pages/guide/SuccessioneContoCorrente"));
+const SuccessioneFratelliSorelle = lazy(() => import("./pages/guide/SuccessioneFratelliSorelle"));
+const QuoteLegittima = lazy(() => import("./pages/guide/QuoteLegittima"));
+const SuccessioneAutoVeicoli = lazy(() => import("./pages/guide/SuccessioneAutoVeicoli"));
+const EreditaDebiti = lazy(() => import("./pages/guide/EreditaDebiti"));
+const SuccessioneSeparazioneDivorzio = lazy(() => import("./pages/guide/SuccessioneSeparazioneDivorzio"));
+const SuccessioneNonniNipoti = lazy(() => import("./pages/guide/SuccessioneNonniNipoti"));
+const RinunciaEreditaGuida = lazy(() => import("./pages/guide/RinunciaEreditaGuida"));
+const PolizzeVitaSuccessione = lazy(() => import("./pages/guide/PolizzeVitaSuccessione"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -39,12 +50,21 @@ const PageFallback = () => (
   </div>
 );
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -67,6 +87,16 @@ const App = () => (
             <Route path="/guide/erede-vs-legatario" element={<EredeVsLegatario />} />
             <Route path="/guide/successione-azienda-ditta" element={<SuccessioneAzienda />} />
             <Route path="/guide/diritti-coniuge-superstite" element={<DirittiConiuge />} />
+            <Route path="/guide/imposta-successione" element={<ImpostaSuccessione />} />
+            <Route path="/guide/successione-conto-corrente" element={<SuccessioneContoCorrente />} />
+            <Route path="/guide/successione-fratelli-sorelle" element={<SuccessioneFratelliSorelle />} />
+            <Route path="/guide/quote-legittima" element={<QuoteLegittima />} />
+            <Route path="/guide/successione-auto-veicoli" element={<SuccessioneAutoVeicoli />} />
+            <Route path="/guide/eredita-debiti" element={<EreditaDebiti />} />
+            <Route path="/guide/successione-separazione-divorzio" element={<SuccessioneSeparazioneDivorzio />} />
+            <Route path="/guide/successione-nonni-nipoti" element={<SuccessioneNonniNipoti />} />
+            <Route path="/guide/rinuncia-eredita-guida" element={<RinunciaEreditaGuida />} />
+            <Route path="/guide/polizze-vita-successione" element={<PolizzeVitaSuccessione />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

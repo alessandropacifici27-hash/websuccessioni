@@ -83,6 +83,10 @@ const Footer = () => {
       }
       return;
     }
+    if (location.pathname === href) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     navigate(href);
     window.scrollTo(0, 0);
   };
@@ -93,7 +97,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div>
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
-              <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain rounded-xl" />
+              <span className="inline-flex rounded-full overflow-hidden">
+                <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain rounded-full" />
+              </span>
             </a>
             <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">
               Servizio professionale di presentazione delle dichiarazioni di successione. Competenza, trasparenza e dedizione al cliente.
@@ -101,16 +107,22 @@ const Footer = () => {
             {/* Social icons */}
             <div className="flex gap-3 mt-6">
               {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300"
-                >
-                  <SocialIcon icon={s.icon} />
-                </a>
+                <div key={s.label} className="relative group">
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300"
+                  >
+                    <SocialIcon icon={s.icon} />
+                  </a>
+                  {(s.icon === "instagram" || s.icon === "facebook" || s.icon === "tiktok") && (
+                    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-900 border border-yellow-500/40 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50">
+                      Profilo in allestimento
+                    </span>
+                  )}
+                </div>
               ))}
             </div>
           </div>
