@@ -142,7 +142,7 @@ const Navbar = () => {
         <div
           className="hidden md:flex absolute left-1/2 items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{
-            transform: pastHero
+            transform: (pastHero || isSubpage)
               ? "translate(calc(-50% - 8rem), 0)"
               : "translate(-50%, 0)",
           }}
