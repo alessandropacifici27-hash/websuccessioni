@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Clock, CheckCircle2, Send } from "lucide-react";
+import { Upload, Clock, CheckCircle2, Send, CheckCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 type SuccessionType = "legittima" | "testamentaria" | "";
@@ -64,6 +64,8 @@ const IniziaPratica = () => {
   const [docSpesePassivita, setDocSpesePassivita] = useState(false);
   const [docAltro, setDocAltro] = useState(false);
   const [fileUrls, setFileUrls] = useState<string>("");
+  const [uploadedFiles, setUploadedFiles] = useState<{ name: string; url: string }[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
   const [domandeAggiuntive, setDomandeAggiuntive] = useState("");
 
   useEffect(() => {
@@ -81,10 +83,22 @@ const IniziaPratica = () => {
           const widget = uc.Widget("[role~=uploadcare-uploader]");
           widget.onChange((fileGroup: any) => {
             if (fileGroup) {
+              setIsUploading(true);
               fileGroup.promise().then((group: any) => {
-                const urls = group.files().map((f: any) => f.cdnUrl).join(", ");
-                setFileUrls(urls);
+                const files = group.files();
+                const list = files.map((f: any) => ({
+                  name: f.name ?? "Documento",
+                  url: f.cdnUrl ?? "",
+                }));
+                setUploadedFiles(list);
+                setFileUrls(list.map((f) => f.url).join(", "));
+                setIsUploading(false);
+              }).catch(() => {
+                setIsUploading(false);
               });
+            } else {
+              setUploadedFiles([]);
+              setFileUrls("");
             }
           });
         }
@@ -786,23 +800,58 @@ const IniziaPratica = () => {
         </label>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
           Carica tutti i documenti (PDF, JPG, PNG - max 10 file)
         </label>
-        <input
-          type="hidden"
-          role="uploadcare-uploader"
-          data-public-key="f1ded879783f3f762a86"
-          data-multiple="true"
-          data-locale="it"
-          onChange={(e: any) => {
-            if (e.target.value) setFileUrls(e.target.value);
-          }}
-        />
-        <p className="font-body text-sm text-muted-foreground mt-2">
-          Carica tutti i documenti disponibili (PDF, JPG, PNG). Puoi caricare più file contemporaneamente.
-        </p>
+
+        {/* Area drop/upload con stile dorato */}
+        <div className="border-2 border-dashed border-yellow-500/60 bg-yellow-500/5 rounded-xl p-8 flex flex-col items-center justify-center text-center min-h-[180px] transition-colors hover:bg-yellow-500/10 hover:border-yellow-500/80">
+          <Upload className="w-10 h-10 text-yellow-600/80 mb-3 shrink-0" strokeWidth={1.5} />
+          <p className="font-body text-base text-foreground mb-1">
+            Trascina qui i tuoi documenti o clicca per selezionarli
+          </p>
+          <p className="font-body text-sm text-muted-foreground">
+            Formati accettati: PDF, JPG, PNG — Max 10MB per file
+          </p>
+          <div
+            className="mt-3 [&_.uc-widget-button]:!min-h-[40px] [&_.uc-widget-button]:!rounded-lg [&_.uc-widget-button]:!bg-yellow-500/20 [&_.uc-widget-button]:!border [&_.uc-widget-button]:!border-yellow-500/50 [&_.uc-widget-button]:!text-foreground [&_.uc-widget-button]:!font-body"
+            role="uploadcare-uploader"
+            data-public-key="f1ded879783f3f762a86"
+            data-multiple="true"
+            data-locale="it"
+          />
+        </div>
+
+        {/* Barra di progresso durante il caricamento */}
+        {isUploading && (
+          <div className="space-y-2">
+            <p className="font-body text-sm text-muted-foreground">Caricamento in corso...</p>
+            <div className="h-2 w-full rounded-full bg-secondary overflow-hidden">
+              <div
+                className="h-full bg-green-500 rounded-full"
+                style={{ animation: "uploadcare-progress 1.2s ease-in-out infinite" }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Lista file caricati con icona verde */}
+        {uploadedFiles.length > 0 && (
+          <ul className="space-y-2">
+            {uploadedFiles.map((file, index) => (
+              <li
+                key={`${file.url}-${index}`}
+                className="flex items-center justify-between gap-3 rounded-lg border border-green-500/40 bg-green-500/10 px-4 py-3 font-body text-sm text-foreground"
+              >
+                <span className="truncate flex-1 min-w-0" title={file.name}>
+                  {file.name}
+                </span>
+                <CheckCircle className="w-5 h-5 shrink-0 text-green-500 flex-shrink-0" />
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div>
