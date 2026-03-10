@@ -94,7 +94,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="sm"
-            className="transform scale-95 opacity-80 border-border/60 text-xs md:text-[0.7rem] h-9 px-6 md:h-9 md:px-7"
+            className="transform scale-95 opacity-90 border border-yellow-500/50 text-xs md:text-[0.7rem] h-9 px-6 md:h-9 md:px-7"
             asChild
           >
             <Link to="/inizia-pratica-online">

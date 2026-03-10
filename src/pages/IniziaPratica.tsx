@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Clock, CheckCircle2, Send, CheckCircle } from "lucide-react";
+import { Upload, Clock, CheckCircle2, Send, CheckCircle, Calendar } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
 type SuccessionType = "legittima" | "testamentaria" | "";
@@ -24,6 +24,7 @@ const cardVariants = {
 
 const IniziaPratica = () => {
   const [step, setStep] = useState(1);
+  const [hasStarted, setHasStarted] = useState(false);
   const stepRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
@@ -113,14 +114,20 @@ const IniziaPratica = () => {
   const currentStepIndex = step - 1;
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
     const t = setTimeout(() => {
       stepRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
     return () => clearTimeout(t);
-  }, [step]);
+  }, [step, hasStarted]);
 
   const handleNext = () => {
     if (!validateStep(step)) return;
+    setHasStarted(true);
     setStep((prev) => Math.min(prev + 1, 4));
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -400,23 +407,29 @@ const IniziaPratica = () => {
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data di nascita del defunto *
           </label>
-          <input
-            type="date"
-            value={defuntoDataNascita}
-            onChange={(e) => setDefuntoDataNascita(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
-          />
+          <div className="relative">
+            <input
+              type="date"
+              value={defuntoDataNascita}
+              onChange={(e) => setDefuntoDataNascita(e.target.value)}
+              className="w-full bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+          </div>
         </div>
         <div>
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data del decesso *
           </label>
-          <input
-            type="date"
-            value={defuntoDataDecesso}
-            onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
-          />
+          <div className="relative">
+            <input
+              type="date"
+              value={defuntoDataDecesso}
+              onChange={(e) => setDefuntoDataDecesso(e.target.value)}
+              className="w-full bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+          </div>
         </div>
         <div>
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
@@ -1016,71 +1029,56 @@ const IniziaPratica = () => {
             ))}
           </div>
 
-          {/* Progress bar */}
-          <div className="mb-10">
-            <div className="flex justify-between mb-3">
-              {steps.map((label, index) => {
-                const active = index === currentStepIndex;
-                const completed = index < currentStepIndex;
-                return (
-                  <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
-                        completed
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : active
-                            ? "bg-primary/10 text-primary border-primary"
-                            : "bg-secondary text-muted-foreground border-border"
-                      }`}
-                    >
-                      {index + 1}
+          {/* Blocco 4 step (progress + form) */}
+          <div ref={stepRef}>
+            <div className="mb-10">
+              <div className="flex justify-between mb-3">
+                {steps.map((label, index) => {
+                  const active = index === currentStepIndex;
+                  const completed = index < currentStepIndex;
+                  return (
+                    <div key={label} className="flex-1 flex flex-col items-center text-center px-1">
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-body border ${
+                          completed
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : active
+                              ? "bg-primary/10 text-primary border-primary"
+                              : "bg-secondary text-muted-foreground border-border"
+                        }`}
+                      >
+                        {index + 1}
+                      </div>
+                      <p
+                        className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
+                          active || completed ? "text-primary" : "text-muted-foreground"
+                        }`}
+                      >
+                        {label}
+                      </p>
                     </div>
-                    <p
-                      className={`mt-2.5 text-[10px] sm:text-xs md:text-sm font-body uppercase tracking-[0.12em] leading-tight ${
-                        active || completed ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    >
-                      {label}
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
+                <div
+                  className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
+                />
+              </div>
             </div>
-            <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden mt-1">
-              <div
-                className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/60 rounded-full transition-all duration-300"
-                style={{ width: `${(currentStepIndex / (steps.length - 1)) * 100}%` }}
-              />
-            </div>
-          </div>
 
-          {/* Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
-          >
-            <AnimatePresence mode="wait">
-              {step === 1 && (
-                <div ref={stepRef}>
-                  {renderStep1()}
-                </div>
-              )}
-              {step === 2 && (
-                <div ref={stepRef}>
-                  {renderStep2()}
-                </div>
-              )}
-              {step === 3 && (
-                <div ref={stepRef}>
-                  {renderStep3()}
-                </div>
-              )}
-              {step === 4 && (
-                <div ref={stepRef}>
-                  {renderStep4()}
-                </div>
-              )}
-            </AnimatePresence>
+            {/* Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
+            >
+              <AnimatePresence mode="wait">
+                {step === 1 && renderStep1()}
+                {step === 2 && renderStep2()}
+                {step === 3 && renderStep3()}
+                {step === 4 && renderStep4()}
+              </AnimatePresence>
 
             <div className="flex flex-col md:flex-row gap-3 justify-between items-stretch md:items-center pt-4 border-t border-border/60">
               <div className="flex gap-2">
@@ -1120,6 +1118,7 @@ const IniziaPratica = () => {
               )}
             </div>
           </form>
+          </div>
         </section>
       </main>
 

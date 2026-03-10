@@ -112,7 +112,13 @@ const Navbar = () => {
       <Link
         key={l.href}
         to={l.href}
-        onClick={() => setMobileOpen(false)}
+        onClick={(e) => {
+          setMobileOpen(false);
+          if (location.pathname === l.href) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
         className={linkClass}
       >
         {l.label}
@@ -129,12 +135,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto relative flex items-center h-14 md:h-16 px-4">
-        <a href="/" className="flex items-center mr-6 rounded-xl overflow-hidden">
-          <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain brightness-150" />
+        <a href="/" className="flex items-center mr-6 rounded-full overflow-hidden">
+          <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain brightness-150 rounded-full" />
         </a>
-        {/* Desktop nav links - GPU-accelerated smooth transition */}
+        {/* Desktop nav links - centrati, GPU-accelerated smooth transition */}
         <div
-          className="hidden md:flex items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
+          className="hidden md:flex flex-1 items-center justify-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{
             transform: (pastHero || isSubpage) ? "translateX(0)" : "translateX(calc(50vw - 50% - 2rem))",
           }}
