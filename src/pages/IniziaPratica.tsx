@@ -992,7 +992,7 @@ const IniziaPratica = () => {
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">
-                Avvia la tua pratica
+                Procedura rapida
               </p>
               <span className="line-gold w-8 inline-block" />
             </div>
