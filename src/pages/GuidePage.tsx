@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight, Search } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -98,6 +99,16 @@ const cardVariants = {
 };
 
 const GuidePage = () => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredGuides = searchQuery.trim() === ""
+    ? guides
+    : guides.filter(
+        (g) =>
+          g.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          g.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+
   return (
     <>
       <Helmet>
@@ -147,8 +158,23 @@ const GuidePage = () => {
       {/* Cards Grid */}
       <section className="pb-24 bg-background">
         <div className="container mx-auto px-4">
+          <div className="relative w-full max-w-2xl mx-auto mb-10">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+              placeholder="Cerca tra le guide... (es. imposta di successione, eredi, testamento)"
+              className="w-full max-w-2xl mx-auto pl-12 pr-4 py-3 rounded-xl bg-white/5 border border-yellow-500/30 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 text-base"
+            />
+          </div>
+          {filteredGuides.length === 0 ? (
+            <p className="text-center text-gray-500">
+              Nessuna guida trovata per &quot;{searchQuery}&quot;. Prova con altre parole chiave.
+            </p>
+          ) : (
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {guides.map((guide, i) => (
+            {filteredGuides.map((guide, i) => (
               <motion.div
                 key={guide.link}
                 custom={i}
@@ -182,6 +208,7 @@ const GuidePage = () => {
               </motion.div>
             ))}
           </div>
+          )}
         </div>
       </section>
 
