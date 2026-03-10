@@ -403,30 +403,30 @@ const IniziaPratica = () => {
         </div>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
-        <div>
+        <div className="min-w-0">
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data di nascita del defunto *
           </label>
-          <div className="relative">
+          <div className="relative w-full max-w-full box-border">
             <input
               type="date"
               value={defuntoDataNascita}
               onChange={(e) => setDefuntoDataNascita(e.target.value)}
-              className="w-full bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             />
             <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
           </div>
         </div>
-        <div>
+        <div className="min-w-0">
           <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
             Data del decesso *
           </label>
-          <div className="relative">
+          <div className="relative w-full max-w-full box-border">
             <input
               type="date"
               value={defuntoDataDecesso}
               onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-              className="w-full bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
             />
             <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
           </div>
@@ -1071,7 +1071,7 @@ const IniziaPratica = () => {
             {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7"
+              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7 overflow-hidden w-full"
             >
               <AnimatePresence mode="wait">
                 {step === 1 && renderStep1()}

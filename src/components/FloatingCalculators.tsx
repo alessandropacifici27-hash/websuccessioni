@@ -26,9 +26,9 @@ const FloatingCalculators = () => {
               animate={{ x: 0 }}
               exit={{ x: -320 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-72"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-full max-w-72"
             >
-              <div className="bg-card/80 backdrop-blur-md border border-border rounded-r-lg p-5 shadow-xl">
+              <div className="bg-card/80 backdrop-blur-md border border-border rounded-r-lg p-5 shadow-xl overflow-hidden w-full">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
                     <Calendar className="w-4 h-4 text-primary" />
@@ -42,7 +42,7 @@ const FloatingCalculators = () => {
                   type="date"
                   value={deathDate}
                   onChange={(e) => setDeathDate(e.target.value)}
-                  className="w-full h-9 rounded border border-input bg-secondary px-2.5 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full max-w-full box-border h-9 rounded border border-input bg-secondary px-2.5 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
                 {successionDeadline && (
                   <motion.div
@@ -88,9 +88,9 @@ const FloatingCalculators = () => {
               animate={{ x: 0 }}
               exit={{ x: 320 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-72"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-72"
             >
-              <div className="bg-card/80 backdrop-blur-md border border-border rounded-l-lg p-5 shadow-xl">
+              <div className="bg-card/80 backdrop-blur-md border border-border rounded-l-lg p-5 shadow-xl overflow-hidden w-full">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
                     <Clock className="w-4 h-4 text-primary" />
@@ -104,7 +104,7 @@ const FloatingCalculators = () => {
                   type="date"
                   value={notificationDate}
                   onChange={(e) => setNotificationDate(e.target.value)}
-                  className="w-full h-9 rounded border border-input bg-secondary px-2.5 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-full max-w-full box-border h-9 rounded border border-input bg-secondary px-2.5 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 />
                 {paymentDeadline && (
                   <motion.div
