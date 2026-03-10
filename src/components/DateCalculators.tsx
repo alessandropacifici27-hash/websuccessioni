@@ -128,7 +128,7 @@ const DateCalculators = () => {
               <h3 className="font-display text-xl font-semibold text-foreground">Scadenza Pagamento Imposte</h3>
             </div>
             <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
-              Inserisci la data di notifica dell'avviso di liquidazione per calcolare il termine di pagamento delle imposte (60 giorni).
+              Per le successioni aperte prima del 1° gennaio 2025, inserisci la data di notifica dell'avviso di liquidazione per calcolare il termine di pagamento (60 giorni).
             </p>
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data Notifica Avviso di Liquidazione
@@ -154,6 +154,28 @@ const DateCalculators = () => {
                 </div>
               </motion.div>
             )}
+
+            <div className="mt-8 pt-6 border-t border-border">
+              <h4 className="font-display text-sm font-semibold text-foreground mb-3">Pagamento dell'imposta di successione</h4>
+              <div className="font-body text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>
+                  L'imposta di successione, autoliquidata direttamente dal contribuente nella dichiarazione, deve essere versata entro 90 giorni dal termine di presentazione della dichiarazione stessa <span className="text-sm text-gray-400 italic ml-1">(D.Lgs. 139/2024)</span>, in vigore dal 1° gennaio 2025. È possibile scegliere di pagare contestualmente alla presentazione del modello dichiarativo.
+                </p>
+                <p>
+                  È prevista la rateizzazione se l'importo da versare (al netto dell'acconto) non è inferiore a €1.000. In questo caso è dovuto un acconto minimo del 20%, mentre la parte restante si può rateizzare così:
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>Fino a €20.000: massimo 8 rate trimestrali di pari importo</li>
+                  <li>Oltre €20.000: massimo 12 rate trimestrali di pari importo</li>
+                </ul>
+                <p>
+                  Il pagamento contestuale alla presentazione della dichiarazione telematica avviene tramite addebito su conto corrente bancario o postale intestato al dichiarante, indicando il codice IBAN nella dichiarazione stessa. Se la dichiarazione è presentata fisicamente all'ufficio dell'Agenzia delle Entrate, il pagamento può avvenire tramite modello F24 in banca, all'ufficio postale o presso l'agente della riscossione.
+                </p>
+                <p>
+                  Per le successioni aperte prima del 1° gennaio 2025 il regime è diverso: l'imposta viene liquidata direttamente dall'ufficio competente, che invia all'erede un avviso di liquidazione. Il pagamento deve avvenire tramite F24 entro 60 giorni dalla notifica dell'avviso. Anche in questo caso è possibile la rateizzazione (acconto del 20% entro 60 giorni dalla notifica, resto in 8 o 12 rate trimestrali per importi superiori a €20.000). Non comporta decadenza dalla rateazione il cosiddetto "lieve inadempimento": versamento insufficiente per una frazione non superiore al 3% e comunque non oltre €10.000, oppure ritardo nel versamento dell'acconto del 20% non superiore a 7 giorni <span className="text-sm text-gray-400 italic ml-1">(art. 7, D.Lgs. 346/1990)</span>.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Calculator 3: Inheritance Tax Calculator */}
