@@ -140,7 +140,7 @@ const Navbar = () => {
         </a>
         {/* Desktop nav links - centrati con absolute per bilanciamento indipendente da logo/CTA */}
         <div
-          className="hidden md:flex absolute left-1/2 items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
+          className="hidden md:flex absolute left-1/2 -ml-12 items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{
             transform: (pastHero || isSubpage)
               ? "translate(-50%, 0)"
