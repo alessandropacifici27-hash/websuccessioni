@@ -82,7 +82,7 @@ const DateCalculators = () => {
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Calendar className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground">Scadenza Dichiarazione</h3>
+              <h3 className="font-display text-base font-semibold text-foreground leading-tight">Scadenza presentazione Dichiarazione di Successione</h3>
             </div>
             <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
               Inserisci la data di decesso per calcolare il termine di presentazione della dichiarazione di successione (12 mesi).
@@ -125,10 +125,10 @@ const DateCalculators = () => {
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Clock className="w-5 h-5 text-primary" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground">Scadenza Pagamento Imposte</h3>
+              <h3 className="font-display text-base font-semibold text-foreground leading-tight">Scadenza pagamento Imposte di Successione</h3>
             </div>
             <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
-              Per le successioni aperte prima del 1° gennaio 2025, inserisci la data di notifica dell'avviso di liquidazione per calcolare il termine di pagamento (60 giorni).
+              Per le successioni successive al 1° gennaio 2025 l'imposta deve essere corrisposta entro 90 giorni dal termine di presentazione della dichiarazione di successione. Per le successioni ante 1° gennaio 2025 il termine di pagamento è di 60 giorni dalla notifica dell'avviso di liquidazione.
             </p>
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data Notifica Avviso di Liquidazione
