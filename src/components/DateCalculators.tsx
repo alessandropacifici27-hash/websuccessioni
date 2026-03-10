@@ -80,7 +80,7 @@ const DateCalculators = () => {
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-primary" />
+                <Calendar className="w-10 h-10 text-yellow-500" />
               </div>
               <h3 className="font-display text-xl font-semibold text-foreground">Scadenza Dichiarazione</h3>
             </div>
