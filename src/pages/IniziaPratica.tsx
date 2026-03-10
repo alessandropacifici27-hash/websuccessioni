@@ -210,7 +210,7 @@ const IniziaPratica = () => {
     };
 
     try {
-      await emailjs.send("service_i1pju5e", "yzxkt76", templateParams, { publicKey: "qFsjEtnqQNDnN5WlA" });
+      await emailjs.send("service_i1pju5e", "uaendkg", templateParams, { publicKey: "qFsjEtnqQNDnN5WlA" });
       setSuccessMessage(
         `Pratica inviata con successo! A breve riceverai una email con il numero della tua pratica e le coordinate bancarie per il versamento dell'acconto di €50. Numero pratica: ${praticaNumber}`
       );
