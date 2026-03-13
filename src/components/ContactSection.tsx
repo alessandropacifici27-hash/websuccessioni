@@ -117,32 +117,44 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.12, delay: 0.02 }}
-            className="bg-card border border-border rounded-lg p-10 space-y-6 order-1 lg:order-2"
+            className="relative bg-gradient-to-b from-card to-background border border-yellow-500/20 rounded-2xl p-10 space-y-7 shadow-[0_0_60px_-15px_rgba(184,142,67,0.15)] order-1 lg:order-2"
             onSubmit={handleSubmit}
           >
+            <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-yellow-500/30 rounded-tl-2xl pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-yellow-500/30 rounded-br-2xl pointer-events-none" />
+
             <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">Nome e Cognome *</label>
-                <Input placeholder="Mario Rossi" className="font-body bg-secondary border-border" value={nome} onChange={(e) => setNome(e.target.value)} required />
+              <div className="space-y-2">
+                <label className="font-body text-[10px] font-semibold text-yellow-500/70 block uppercase tracking-[0.25em]">Nome e Cognome <span className="text-yellow-500">*</span></label>
+                <Input placeholder="Mario Rossi" className="font-body bg-background/60 border-border/60 focus:border-yellow-500/50 focus:ring-yellow-500/20 rounded-lg h-11 transition-all duration-300" value={nome} onChange={(e) => setNome(e.target.value)} required />
               </div>
-              <div>
-                <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">Telefono</label>
-                <Input placeholder="+39 333 000 0000" className="font-body bg-secondary border-border" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+              <div className="space-y-2">
+                <label className="font-body text-[10px] font-semibold text-yellow-500/70 block uppercase tracking-[0.25em]">Telefono</label>
+                <Input placeholder="+39 333 000 0000" className="font-body bg-background/60 border-border/60 focus:border-yellow-500/50 focus:ring-yellow-500/20 rounded-lg h-11 transition-all duration-300" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
               </div>
             </div>
-            <div>
-              <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">Email *</label>
-              <Input type="email" placeholder="mario@email.com" className="font-body bg-secondary border-border" value={email} onChange={(e) => setEmail(e.target.value)} required />
+
+            <div className="space-y-2">
+              <label className="font-body text-[10px] font-semibold text-yellow-500/70 block uppercase tracking-[0.25em]">Email <span className="text-yellow-500">*</span></label>
+              <Input type="email" placeholder="mario@email.com" className="font-body bg-background/60 border-border/60 focus:border-yellow-500/50 focus:ring-yellow-500/20 rounded-lg h-11 transition-all duration-300" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
-            <div>
-              <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">Descrivi la tua situazione *</label>
-              <Textarea placeholder="Raccontaci brevemente la tua esigenza..." rows={4} className="font-body resize-none bg-secondary border-border" value={messaggio} onChange={(e) => setMessaggio(e.target.value)} required />
+
+            <div className="space-y-2">
+              <label className="font-body text-[10px] font-semibold text-yellow-500/70 block uppercase tracking-[0.25em]">Descrivi la tua situazione <span className="text-yellow-500">*</span></label>
+              <Textarea placeholder="Raccontaci brevemente la tua esigenza: tipo di successione, beni coinvolti, numero di eredi..." rows={5} className="font-body resize-none bg-background/60 border-border/60 focus:border-yellow-500/50 focus:ring-yellow-500/20 rounded-lg transition-all duration-300" value={messaggio} onChange={(e) => setMessaggio(e.target.value)} required />
             </div>
-            <Button variant="gold" size="lg" className="w-full" type="submit" disabled={sending}>
-              <Send className="w-4 h-4" />
-              {sending ? "Invio in corso..." : "Invia messaggio"}
-            </Button>
-            <p className="font-body text-xs text-muted-foreground text-center">Le tue informazioni sono trattate con la massima riservatezza.</p>
+
+            <div className="pt-2 space-y-4">
+              <Button variant="gold" size="lg" className="w-full h-12 text-sm tracking-[0.15em] uppercase font-semibold shadow-[0_0_30px_-8px_rgba(184,142,67,0.4)] hover:shadow-[0_0_40px_-8px_rgba(184,142,67,0.6)] transition-all duration-300" type="submit" disabled={sending}>
+                <Send className="w-4 h-4 mr-2" />
+                {sending ? "Invio in corso..." : "Invia messaggio"}
+              </Button>
+              <div className="flex items-center justify-center gap-2">
+                <span className="h-px w-8 bg-yellow-500/20" />
+                <p className="font-body text-[10px] text-muted-foreground/60 text-center tracking-wider uppercase">Le tue informazioni sono trattate con la massima riservatezza</p>
+                <span className="h-px w-8 bg-yellow-500/20" />
+              </div>
+            </div>
           </motion.form>
         </div>
       </div>
