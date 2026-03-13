@@ -103,14 +103,44 @@ const HeroSection = () => {
           </Button>
         </motion.div>
 
+        {/* Link Calcola scadenze - solo desktop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+          className="hidden md:flex justify-center mt-6"
+        >
+          <Link
+            to="/strumenti-utili"
+            className="text-sm text-yellow-400/80 hover:text-yellow-300 underline decoration-yellow-500/40 hover:decoration-yellow-400 tracking-wide font-body transition-colors"
+          >
+            📅 Calcola le tue scadenze di successione →
+          </Link>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="font-body text-muted-foreground/60 text-xs tracking-wider mt-10"
+          className="font-body text-white/90 text-xs tracking-wider mt-10"
         >
           Preventivo gratuito · Risposta entro 24h · Nessun vincolo
         </motion.p>
+
+        {/* Link Calcola scadenze - solo mobile */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
+          className="md:hidden mt-3"
+        >
+          <Link
+            to="/strumenti-utili"
+            className="inline-block text-base font-medium text-yellow-400 border border-yellow-500/40 rounded-lg px-4 py-2"
+          >
+            Calcola le tue scadenze →
+          </Link>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />

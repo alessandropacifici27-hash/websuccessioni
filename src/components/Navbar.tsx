@@ -11,8 +11,8 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
+  { label: "Calcola le tue scadenze", href: "/strumenti-utili" },
   { label: "Guide", href: "/guide" },
-  { label: "Strumenti Utili", href: "/strumenti-utili" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },
 ];
