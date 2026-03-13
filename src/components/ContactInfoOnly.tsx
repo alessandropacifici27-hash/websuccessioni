@@ -43,10 +43,10 @@ const ContactInfoOnly = () => {
         <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contattaci</p>
       </div>
       <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-        Consulenza <span className="text-gradient-gold italic">Gratuita</span>
+        Parliamo della tua <span className="text-gradient-gold italic">situazione</span>
       </h2>
       <p className="font-body text-muted-foreground leading-relaxed mb-10 text-base">
-        Raccontaci la tua situazione. Un nostro esperto ti ricontatterà entro 24 ore per offrirti un orientamento gratuito e senza impegno.
+        Hai domande sulla dichiarazione di successione o vuoi sapere quanto costa e quanto tempo richiede la tua pratica? Contattaci direttamente: ti risponderemo con chiarezza, senza tecnicismi e senza impegno.
       </p>
 
       <div className="space-y-6">

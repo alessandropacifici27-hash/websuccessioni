@@ -50,35 +50,59 @@ const Index = () => {
         <div className="hidden md:block">
           <PracticeAreas />
         </div>
+        <div className="hidden md:block">
+          <HowItWorks />
+        </div>
         {/* Desktop: Contattaci (sinistra) + Perché affidarti (destra) */}
         <section id="contatti" className="hidden md:block py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20">
               <ContactInfoOnly />
-              <div className="bg-zinc-900/95 border border-yellow-500/20 rounded-2xl p-8">
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary mb-6">Perché affidarti a noi?</h3>
-                <ul className="space-y-4 mb-6">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                    <span className="font-body text-zinc-300">Esperienza certificata in diritto successorio italiano</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                    <span className="font-body text-zinc-300">Pratica completamente gestita da remoto, senza spostamenti</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                    <span className="font-body text-zinc-300">Assistenza dedicata dalla prima consulenza alla conclusione</span>
-                  </li>
-                </ul>
-                <Link to="/chi-siamo" className="font-body text-primary hover:underline transition-colors">Scopri come lavoriamo →</Link>
+              <div className="space-y-8">
+                <div>
+                  <div className="inline-flex items-center gap-3 mb-4">
+                    <span className="line-gold w-8 inline-block" />
+                    <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">I Nostri Punti di Forza</p>
+                  </div>
+                  <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    Perché scegliere <span className="text-gradient-gold italic">WebSuccessioni</span>
+                  </h3>
+                  <p className="font-body text-muted-foreground text-sm leading-relaxed mb-8">
+                    Ogni pratica è seguita con la stessa attenzione e dedizione, dal primo contatto fino alla consegna definitiva.
+                  </p>
+                </div>
+                <div className="space-y-5">
+                  {[
+                    { title: "Esperienza certificata", desc: "Competenza specializzata nel diritto successorio italiano con anni di esperienza sul campo." },
+                    { title: "100% da remoto", desc: "Gestiamo l'intera pratica online: nessuno spostamento, nessuna perdita di tempo." },
+                    { title: "Assistenza dedicata", desc: "Un professionista ti segue personalmente dalla prima consulenza alla conclusione della pratica." },
+                    { title: "Risposta garantita in 24h", desc: "Ti ricontattiamo entro 24 ore lavorative con un orientamento chiaro e senza impegno." },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300">
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <CheckCircle className="w-4 h-4 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-body text-sm font-semibold text-foreground mb-1">{item.title}</p>
+                        <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  to="/chi-siamo"
+                  className="inline-flex items-center gap-2 group"
+                >
+                  <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
+                  <span className="font-body text-sm text-yellow-500/70 group-hover:text-yellow-400 tracking-[0.15em] uppercase transition-colors duration-300">
+                    Scopri come lavoriamo
+                  </span>
+                  <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
+                </Link>
               </div>
             </div>
           </div>
         </section>
-        <div className="hidden md:block">
-          <HowItWorks />
-        </div>
         <Footer />
       </main>
     </>
