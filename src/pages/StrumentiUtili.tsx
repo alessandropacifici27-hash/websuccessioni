@@ -14,7 +14,7 @@ const StrumentiUtili = () => (
     </Helmet>
     <main className="min-h-screen">
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-20 w-full overflow-hidden">
         <DateCalculators />
       </div>
       <Footer />

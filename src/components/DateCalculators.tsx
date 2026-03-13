@@ -76,7 +76,7 @@ const DateCalculators = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.12 }}
-            className={`w-full min-w-0 max-w-full overflow-hidden ${cardClass}`}
+            className={`w-full overflow-hidden ${cardClass}`}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -90,12 +90,12 @@ const DateCalculators = () => {
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data di Decesso
             </label>
-            <div className="relative w-full overflow-hidden">
+            <div className="w-full overflow-hidden relative min-w-0">
               <input
                 type="date"
                 value={deathDate}
                 onChange={(e) => setDeathDate(e.target.value)}
-                className="w-full max-w-full box-border overflow-hidden h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute"
+                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute"
               />
               <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
             </div>
@@ -119,7 +119,7 @@ const DateCalculators = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.12, delay: 0.02 }}
-            className={`w-full min-w-0 max-w-full overflow-hidden ${cardClass}`}
+            className={`w-full overflow-hidden ${cardClass}`}
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -133,12 +133,12 @@ const DateCalculators = () => {
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data Notifica Avviso di Liquidazione
             </label>
-            <div className="relative w-full overflow-hidden">
+            <div className="w-full overflow-hidden relative min-w-0">
               <input
                 type="date"
                 value={submissionDate}
                 onChange={(e) => setSubmissionDate(e.target.value)}
-                className="w-full max-w-full box-border overflow-hidden h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute"
+                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute"
               />
               <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
             </div>
