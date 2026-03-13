@@ -114,7 +114,7 @@ const HeroSection = () => {
             to="/strumenti-utili"
             className="hidden md:inline-flex items-center gap-2 mt-6 group"
           >
-            <span className="h-px w-8 bg-yellow-500/40 shrink-0" />
+            <span className="h-px w-8 bg-yellow-500/40 group-hover:w-14 group-hover:bg-yellow-400 transition-all duration-500 shrink-0" />
             <span className="text-sm uppercase tracking-[0.2em] text-yellow-500/60 group-hover:text-yellow-400 transition-colors duration-300 font-body">
               Calcola ora le tue scadenze
             </span>
