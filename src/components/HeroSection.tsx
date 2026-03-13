@@ -108,13 +108,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="hidden md:flex justify-center mt-6"
+          className="flex justify-center"
         >
           <Link
             to="/strumenti-utili"
-            className="text-sm text-yellow-400/80 hover:text-yellow-300 underline decoration-yellow-500/40 hover:decoration-yellow-400 tracking-wide font-body transition-colors"
+            className="hidden md:inline-flex items-center gap-2 mt-6 group"
           >
-            📅 Calcola le tue scadenze di successione →
+            <span className="text-xs uppercase tracking-[0.2em] text-yellow-500/60 group-hover:text-yellow-400 transition-colors duration-300 font-body">
+              Calcola ora le tue scadenze
+            </span>
+            <span className="h-px w-8 bg-yellow-500/40 group-hover:w-14 group-hover:bg-yellow-400 transition-all duration-500" />
           </Link>
         </motion.div>
 
@@ -132,13 +135,15 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="md:hidden mt-3"
+          className="md:hidden mt-4"
         >
           <Link
             to="/strumenti-utili"
-            className="inline-block text-base font-medium text-yellow-400 border border-yellow-500/40 rounded-lg px-4 py-2"
+            className="md:hidden inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/5 backdrop-blur-sm text-yellow-400 text-sm font-medium tracking-wide hover:border-yellow-500/60 hover:bg-yellow-500/10 transition-all duration-300"
           >
-            Calcola le tue scadenze →
+            <span>📅</span>
+            <span>Calcola ora le tue scadenze</span>
+            <span className="text-yellow-500/60">→</span>
           </Link>
         </motion.div>
       </div>

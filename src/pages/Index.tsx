@@ -25,10 +25,15 @@ const Index = () => {
         <HeroSection />
         <WhyChooseUs />
         <StatsBar />
+        <div className="md:hidden">
+          <ContactSection />
+        </div>
         <div className="hidden md:block">
           <PracticeAreas />
         </div>
-        <ContactSection />
+        <div className="hidden md:block">
+          <ContactSection />
+        </div>
         <div className="hidden md:block">
           <section className="container mx-auto px-4 py-8">
             <div className="bg-zinc-900/95 border border-yellow-500/20 rounded-2xl p-8">
