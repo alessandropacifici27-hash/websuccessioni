@@ -415,9 +415,9 @@ const IniziaPratica = () => {
               type="date"
               value={defuntoDataNascita}
               onChange={(e) => setDefuntoDataNascita(e.target.value)}
-              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-8 [&::-webkit-calendar-picker-indicator]:h-8 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-2 [&::-webkit-calendar-picker-indicator]:top-1/2 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => dataNascitaRef.current?.showPicker()} />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
           </div>
         </div>
         <div className="min-w-0 overflow-hidden">
@@ -430,9 +430,9 @@ const IniziaPratica = () => {
               type="date"
               value={defuntoDataDecesso}
               onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-8 [&::-webkit-calendar-picker-indicator]:h-8 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:right-2 [&::-webkit-calendar-picker-indicator]:top-1/2 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => dataDecessoRef.current?.showPicker()} />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
           </div>
         </div>
         <div>

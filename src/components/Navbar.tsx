@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
-  { label: "Calcola le tue scadenze", href: "/strumenti-utili" },
+  { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti-info" },
@@ -22,7 +22,7 @@ const Navbar = () => {
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/strumenti-utili', '/inizia-pratica-online', '/guide'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-le-tue-scadenze', '/inizia-pratica-online', '/guide'];
   const isSubpage = SUBPAGES.includes(location.pathname) || location.pathname.startsWith('/guide/');
   const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -75,8 +75,10 @@ const Navbar = () => {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href.startsWith("/#")) {
-      const hash = href.slice(1); // e.g. "#contatti-info"
-      const selector = hash === "#contatti" ? "#contatti-info" : hash;
+      const hash = href.slice(1); // e.g. "#contatti" or "#contatti-info"
+      const selector = (hash === "#contatti-info" || hash === "#contatti")
+        ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-info")
+        : hash;
       if (location.pathname === "/") {
         const el = document.querySelector(selector);
         if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -113,11 +115,10 @@ const Navbar = () => {
       <Link
         key={l.href}
         to={l.href}
-        onClick={(e) => {
+        onClick={() => {
           setMobileOpen(false);
           if (location.pathname === l.href) {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.location.reload();
           }
         }}
         className={linkClass}

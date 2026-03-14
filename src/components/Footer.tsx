@@ -58,7 +58,7 @@ const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
-  { label: "Calcola le tue scadenze", href: "/strumenti-utili" },
+  { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti-info" },
@@ -71,7 +71,9 @@ const Footer = () => {
   const handleFooterNavClick = (href: string) => {
     if (href.startsWith("/#")) {
       const hash = href.slice(1);
-      const selector = hash === "#contatti" ? "#contatti-info" : hash;
+      const selector = (hash === "#contatti-info" || hash === "#contatti")
+        ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-info")
+        : hash;
       if (location.pathname === "/") {
         const el = document.querySelector(selector);
         if (el) el.scrollIntoView({ behavior: "smooth" });

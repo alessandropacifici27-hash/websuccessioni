@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
@@ -71,7 +71,8 @@ const App = () => (
             <Route path="/successione" element={<Successione />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/faq" element={<FaqPage />} />
-            <Route path="/strumenti-utili" element={<StrumentiUtili />} />
+            <Route path="/calcola-le-tue-scadenze" element={<StrumentiUtili />} />
+            <Route path="/strumenti-utili" element={<Navigate to="/calcola-le-tue-scadenze" replace />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-servizio" element={<TerminiServizio />} />

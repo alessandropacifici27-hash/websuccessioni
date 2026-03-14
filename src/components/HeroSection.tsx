@@ -111,7 +111,7 @@ const HeroSection = () => {
           className="flex justify-center"
         >
           <Link
-            to="/strumenti-utili"
+            to="/calcola-le-tue-scadenze"
             className="hidden md:inline-flex items-center gap-2 mt-6 group"
           >
             <span className="h-px w-8 bg-yellow-500/40 group-hover:w-14 group-hover:bg-yellow-400 transition-all duration-500 shrink-0" />
@@ -139,7 +139,7 @@ const HeroSection = () => {
           className="md:hidden mt-4"
         >
           <Link
-            to="/strumenti-utili"
+            to="/calcola-le-tue-scadenze"
             className="md:hidden inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/5 backdrop-blur-sm text-yellow-400 text-sm font-medium tracking-wide hover:border-yellow-500/60 hover:bg-yellow-500/10 transition-all duration-300"
           >
             <span>📅</span>
