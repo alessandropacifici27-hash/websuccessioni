@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Calcola le tue scadenze", href: "/strumenti-utili" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contatti", href: "/#contatti" },
+  { label: "Contatti", href: "/#contatti-info" },
 ];
 
 const Navbar = () => {
@@ -75,14 +75,15 @@ const Navbar = () => {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href.startsWith("/#")) {
-      const hash = href.slice(1); // e.g. "#contatti"
+      const hash = href.slice(1); // e.g. "#contatti-info"
+      const selector = hash === "#contatti" ? "#contatti-info" : hash;
       if (location.pathname === "/") {
-        const el = document.querySelector(hash);
+        const el = document.querySelector(selector);
         if (el) el.scrollIntoView({ behavior: "smooth" });
       } else {
         navigate("/");
         setTimeout(() => {
-          const el = document.querySelector(hash);
+          const el = document.querySelector(selector);
           if (el) el.scrollIntoView({ behavior: "smooth" });
         }, 300);
       }

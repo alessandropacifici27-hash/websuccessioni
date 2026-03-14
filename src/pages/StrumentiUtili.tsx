@@ -6,10 +6,10 @@ import { Helmet } from "react-helmet-async";
 const StrumentiUtili = () => (
   <>
     <Helmet>
-      <title>Strumenti Utili | WebSuccessioni</title>
+      <title>Calcola le tue Scadenze di Successione | WebSuccessioni</title>
       <meta
         name="description"
-        content="Calcola scadenze e imposte di successione gratuitamente. Strumenti online per calcolare la dichiarazione di successione, le imposte e i gradi di parentela."
+        content="Calcola gratuitamente le scadenze per la dichiarazione di successione, le imposte dovute e i gradi di parentela. Strumenti online gratuiti per gestire la tua successione."
       />
     </Helmet>
     <main className="min-h-screen">

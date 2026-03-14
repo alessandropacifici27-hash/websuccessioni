@@ -54,7 +54,7 @@ const Index = () => {
           <HowItWorks />
         </div>
         {/* Desktop: Contattaci (sinistra) + Perché affidarti (destra) */}
-        <section id="contatti" className="hidden md:block py-32 bg-background">
+        <section id="contatti-info" className="hidden md:block py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20">
               <ContactInfoOnly />

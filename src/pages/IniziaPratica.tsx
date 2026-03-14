@@ -23,9 +23,11 @@ const cardVariants = {
 };
 
 const IniziaPratica = () => {
+  const stepRef = useRef<HTMLDivElement>(null);
+  const dataNascitaRef = useRef<HTMLInputElement>(null);
+  const dataDecessoRef = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState(1);
   const [hasStarted, setHasStarted] = useState(false);
-  const stepRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -271,77 +273,77 @@ const IniziaPratica = () => {
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Nome *
           </label>
           <input
             type="text"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="Mario"
           />
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Cognome *
           </label>
           <input
             type="text"
             value={cognome}
             onChange={(e) => setCognome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="Rossi"
           />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Email *
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="mario.rossi@example.com"
           />
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Telefono *
           </label>
           <input
             type="tel"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="+39 333 000 0000"
           />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Codice Fiscale *
           </label>
           <input
             type="text"
             value={codiceFiscale}
             onChange={(e) => setCodiceFiscale(e.target.value.toUpperCase())}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 uppercase tracking-[0.15em]"
             placeholder="RSSMRA80A01H501U"
           />
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Ruolo nell'eredità
           </label>
           <select
             value={ruolo}
             onChange={(e) => setRuolo(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
           >
             <option value="">Seleziona</option>
             <option value="Erede">Erede</option>
@@ -353,14 +355,14 @@ const IniziaPratica = () => {
         </div>
       </div>
       <div>
-        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+        <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
           Indirizzo di residenza *
         </label>
         <input
           type="text"
           value={indirizzoResidenza}
           onChange={(e) => setIndirizzoResidenza(e.target.value)}
-          className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+          className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
           placeholder="Via Roma 1, 20100 Milano (MI)"
         />
       </div>
@@ -378,68 +380,70 @@ const IniziaPratica = () => {
     >
       <div className="grid md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Nome e Cognome del defunto *
           </label>
           <input
             type="text"
             value={defuntoNomeCognome}
             onChange={(e) => setDefuntoNomeCognome(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="Nome Cognome"
           />
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Codice fiscale del defunto *
           </label>
           <input
             type="text"
             value={defuntoCodiceFiscale}
             onChange={(e) => setDefuntoCodiceFiscale(e.target.value.toUpperCase())}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground uppercase tracking-[0.15em] focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 uppercase tracking-[0.15em]"
             placeholder="RSSMRA80A01H501U"
           />
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="min-w-0">
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+      <div className="grid md:grid-cols-3 gap-6 overflow-hidden">
+        <div className="min-w-0 overflow-hidden">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Data di nascita del defunto *
           </label>
-          <div className="relative w-full max-w-full box-border">
+          <div className="relative w-full max-w-full box-border overflow-hidden">
             <input
+              ref={dataNascitaRef}
               type="date"
               value={defuntoDataNascita}
               onChange={(e) => setDefuntoDataNascita(e.target.value)}
-              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => dataNascitaRef.current?.showPicker()} />
           </div>
         </div>
-        <div className="min-w-0">
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+        <div className="min-w-0 overflow-hidden">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Data del decesso *
           </label>
-          <div className="relative w-full max-w-full box-border">
+          <div className="relative w-full max-w-full box-border overflow-hidden">
             <input
+              ref={dataDecessoRef}
               type="date"
               value={defuntoDataDecesso}
               onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-              className="w-full max-w-full box-border bg-secondary border border-border rounded-md px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => dataDecessoRef.current?.showPicker()} />
           </div>
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Comune di residenza al decesso *
           </label>
           <input
             type="text"
             value={defuntoComuneResidenza}
             onChange={(e) => setDefuntoComuneResidenza(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="Comune (Provincia)"
           />
         </div>
@@ -476,13 +480,13 @@ const IniziaPratica = () => {
 
         {tipoSuccessione === "testamentaria" && (
           <div className="mt-4">
-            <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+            <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
               Tipo di testamento *
             </label>
             <select
               value={tipoTestamento}
               onChange={(e) => setTipoTestamento(e.target.value)}
-              className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+              className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             >
               <option value="">Seleziona</option>
               <option value="Testamento olografo">Testamento olografo</option>
@@ -523,14 +527,14 @@ const IniziaPratica = () => {
           </div>
           {presenzaImmobili === "si" && (
             <div>
-              <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2 mt-2">
+              <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2 mt-2">
                 Descrizione immobili *
               </label>
               <textarea
                 value={descrizioneImmobili}
                 onChange={(e) => setDescrizioneImmobili(e.target.value)}
                 rows={3}
-                className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+                className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
                 placeholder="Es. appartamento a Milano, box auto, terreno agricolo..."
               />
             </div>
@@ -630,13 +634,13 @@ const IniziaPratica = () => {
 
       <div className="grid md:grid-cols-2 gap-6 items-start">
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Numero di eredi *
           </label>
           <select
             value={numeroEredi}
             onChange={(e) => setNumeroEredi(e.target.value)}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
           >
             <option value="">Seleziona</option>
             <option value="1">1</option>
@@ -648,14 +652,14 @@ const IniziaPratica = () => {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+          <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Note aggiuntive (facoltativo)
           </label>
           <textarea
             value={noteAggiuntive}
             onChange={(e) => setNoteAggiuntive(e.target.value)}
             rows={3}
-            className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+            className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
             placeholder="Eventuali precisazioni o informazioni utili sulla situazione ereditaria."
           />
         </div>
@@ -814,7 +818,7 @@ const IniziaPratica = () => {
       </div>
 
       <div className="space-y-4">
-        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em]">
+        <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
           Carica tutti i documenti (PDF, JPG, PNG - max 10 file)
         </label>
 
@@ -868,14 +872,14 @@ const IniziaPratica = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-body font-medium text-foreground/70 uppercase tracking-[0.2em] mb-2">
+        <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
           Domande o informazioni aggiuntive (facoltativo)
         </label>
         <textarea
           value={domandeAggiuntive}
           onChange={(e) => setDomandeAggiuntive(e.target.value)}
           rows={4}
-          className="w-full bg-secondary border border-border rounded-md px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:border-primary/60"
+          className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground resize-none focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
           placeholder="Indica eventuali dubbi, richieste particolari o informazioni che ritieni utili."
         />
       </div>
@@ -1071,8 +1075,10 @@ const IniziaPratica = () => {
             {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="bg-card border border-border rounded-xl p-5 md:p-8 shadow-lg shadow-black/20 space-y-7 overflow-hidden w-full"
+              className="relative bg-gradient-to-b from-card to-background border border-yellow-500/20 rounded-2xl p-5 md:p-10 shadow-[0_0_60px_-15px_rgba(184,142,67,0.15)] space-y-7 overflow-hidden w-full"
             >
+              <div className="absolute top-0 left-0 w-16 h-16 border-t border-l border-yellow-500/30 rounded-tl-2xl pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-16 h-16 border-b border-r border-yellow-500/30 rounded-br-2xl pointer-events-none" />
               <AnimatePresence mode="wait">
                 {step === 1 && renderStep1()}
                 {step === 2 && renderStep2()}

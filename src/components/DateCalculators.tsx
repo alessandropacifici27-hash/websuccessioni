@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Calendar, AlertTriangle, Clock, Users, Calculator, TreePine } from "lucide-react";
 import { motion } from "framer-motion";
 import { format, addYears, addDays } from "date-fns";
@@ -27,8 +27,11 @@ const TAX_BRACKETS = [
 ];
 
 const DateCalculators = () => {
+  const deathDateRef = useRef<HTMLInputElement>(null);
+  const submissionDateRef = useRef<HTMLInputElement>(null);
   const [deathDate, setDeathDate] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
+  const [anteRiforma, setAnteRiforma] = useState(false);
 
   // Tax calculator
   const [inheritanceValue, setInheritanceValue] = useState("");
@@ -36,7 +39,7 @@ const DateCalculators = () => {
   const [disabilityExemption, setDisabilityExemption] = useState(false);
 
   const successionDeadline = deathDate ? addYears(new Date(deathDate), 1) : null;
-  const paymentDeadline = submissionDate ? addDays(new Date(submissionDate), 60) : null;
+  const paymentDeadline = submissionDate ? addDays(new Date(submissionDate), anteRiforma ? 60 : 90) : null;
 
   const formatDate = (d: Date) => format(d, "dd MMMM yyyy", { locale: it });
 
@@ -92,12 +95,13 @@ const DateCalculators = () => {
             </label>
             <div className="w-full overflow-hidden relative min-w-0 block">
               <input
+                ref={deathDateRef}
                 type="date"
                 value={deathDate}
                 onChange={(e) => setDeathDate(e.target.value)}
-                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0"
               />
-              <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+              <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => deathDateRef.current?.showPicker()} />
             </div>
             {successionDeadline && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 p-5 rounded-lg border border-primary/20 bg-primary/5">
@@ -135,13 +139,28 @@ const DateCalculators = () => {
             </label>
             <div className="w-full overflow-hidden relative min-w-0 block">
               <input
+                ref={submissionDateRef}
                 type="date"
                 value={submissionDate}
                 onChange={(e) => setSubmissionDate(e.target.value)}
-                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                className="w-full max-w-full box-border h-11 rounded-md border border-input bg-secondary px-3 py-2 pr-10 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0"
               />
-              <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+              <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 cursor-pointer" onClick={() => submissionDateRef.current?.showPicker()} />
             </div>
+            <label className="flex items-center gap-3 mt-3 cursor-pointer group">
+              <div
+                onClick={() => setAnteRiforma(!anteRiforma)}
+                className={`w-5 h-5 rounded border flex items-center justify-center transition-colors shrink-0 cursor-pointer ${
+                  anteRiforma ? "bg-yellow-500 border-yellow-500" : "bg-secondary border-border group-hover:border-yellow-500/50"
+                }`}
+              >
+                {anteRiforma && <span className="text-black text-[10px] font-bold leading-none">✓</span>}
+              </div>
+              <span className="font-body text-sm text-foreground/80 leading-snug">
+                Successione ante 1° gennaio 2025
+                <span className="block text-xs text-muted-foreground mt-0.5">Il termine è di 60 giorni dalla notifica dell'avviso di liquidazione</span>
+              </span>
+            </label>
             {paymentDeadline && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6 p-5 rounded-lg border border-primary/20 bg-primary/5">
                 <p className="font-body text-xs text-primary uppercase tracking-wider mb-1">Termine Pagamento</p>
@@ -149,7 +168,9 @@ const DateCalculators = () => {
                 <div className="flex items-start gap-2 mt-3">
                   <AlertTriangle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                   <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                    Il pagamento deve essere effettuato entro 60 giorni dalla notifica dell'avviso di liquidazione. Scaduto tale termine, sono applicabili sanzioni e interessi di mora.
+                    {anteRiforma
+                      ? "Il pagamento deve essere effettuato entro 60 giorni dalla notifica dell'avviso di liquidazione (successione ante 1° gennaio 2025)."
+                      : "Il pagamento deve essere effettuato entro 90 giorni dal termine di presentazione della dichiarazione di successione (D.Lgs. 139/2024)."}
                   </p>
                 </div>
               </motion.div>
