@@ -118,7 +118,8 @@ const Navbar = () => {
         onClick={() => {
           setMobileOpen(false);
           if (location.pathname === l.href) {
-            window.location.reload();
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            setTimeout(() => window.location.reload(), 50);
           }
         }}
         className={linkClass}
