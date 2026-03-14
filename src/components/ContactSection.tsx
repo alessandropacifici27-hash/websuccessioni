@@ -79,7 +79,7 @@ const ContactSection = () => {
     <section id="contatti" className="py-32 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-20">
-          <motion.div initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-120px" }} transition={{ duration: 0.12 }} className="order-2 lg:order-1">
+          <motion.div id="contatti-recapiti" initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-120px" }} transition={{ duration: 0.12 }} className="order-2 lg:order-1">
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
               <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contattaci</p>

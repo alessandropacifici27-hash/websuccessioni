@@ -93,7 +93,7 @@ const DateCalculators = () => {
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data di Decesso
             </label>
-            <div className="w-full overflow-hidden relative min-w-0 block">
+            <div className="w-full overflow-hidden relative min-w-0 block rounded-lg">
               <input
                 ref={deathDateRef}
                 type="date"
@@ -137,7 +137,7 @@ const DateCalculators = () => {
             <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
               Data Notifica Avviso di Liquidazione
             </label>
-            <div className="w-full overflow-hidden relative min-w-0 block">
+            <div className="w-full overflow-hidden relative min-w-0 block rounded-lg">
               <input
                 ref={submissionDateRef}
                 type="date"

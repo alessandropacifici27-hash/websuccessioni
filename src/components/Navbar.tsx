@@ -14,7 +14,7 @@ const navLinks = [
   { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contatti", href: "/#contatti-info" },
+  { label: "Contatti", href: "/#contatti-recapiti" },
 ];
 
 const Navbar = () => {
@@ -75,8 +75,8 @@ const Navbar = () => {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     if (href.startsWith("/#")) {
-      const hash = href.slice(1); // e.g. "#contatti" or "#contatti-info"
-      const selector = (hash === "#contatti-info" || hash === "#contatti")
+      const hash = href.slice(1); // e.g. "#contatti-recapiti"
+      const selector = hash === "#contatti-recapiti" ? hash : (hash === "#contatti-info" || hash === "#contatti")
         ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-info")
         : hash;
       if (location.pathname === "/") {
