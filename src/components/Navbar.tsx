@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Menu, X } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 
@@ -24,7 +24,6 @@ const Navbar = () => {
   const location = useLocation();
   const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-le-tue-scadenze', '/inizia-pratica-online', '/guide'];
   const isSubpage = SUBPAGES.includes(location.pathname) || location.pathname.startsWith('/guide/');
-  const navigate = useNavigate();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -72,27 +71,6 @@ const Navbar = () => {
     return location.pathname === href;
   };
 
-  const handleNavClick = (href: string) => {
-    setMobileOpen(false);
-    if (href.startsWith("/#")) {
-      const hash = href.slice(1); // e.g. "#contatti-recapiti"
-      const selector = hash === "#contatti-recapiti" ? hash : (hash === "#contatti-info" || hash === "#contatti")
-        ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-info")
-        : hash;
-      if (location.pathname === "/") {
-        const el = document.querySelector(selector);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      } else {
-        navigate("/");
-        setTimeout(() => {
-          const el = document.querySelector(selector);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      }
-      return;
-    }
-  };
-
   const renderLink = (l: typeof navLinks[0]) => {
     const active = isActive(l.href);
     const linkClass = `text-sm font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${
@@ -101,13 +79,30 @@ const Navbar = () => {
 
     if (l.href.startsWith("/#")) {
       return (
-        <button
+        <a
           key={l.href}
-          onClick={() => handleNavClick(l.href)}
+          href="/#contatti-recapiti"
           className={linkClass}
+          onClick={(e) => {
+            setMobileOpen(false);
+            const isHomepage = window.location.pathname === '/';
+            if (!isHomepage) return;
+            e.preventDefault();
+            setTimeout(() => {
+              const isMobile = window.innerWidth < 768;
+              const id = isMobile ? 'contatti-recapiti-mobile' : 'contatti-recapiti';
+              const el = document.getElementById(id);
+              if (el) {
+                const top = isMobile
+                  ? el.getBoundingClientRect().top + window.pageYOffset + 80
+                  : el.getBoundingClientRect().top + window.pageYOffset - 40;
+                window.scrollTo({ top, behavior: 'smooth' });
+              }
+            }, 300);
+          }}
         >
-          {l.label}
-        </button>
+          Contatti
+        </a>
       );
     }
 

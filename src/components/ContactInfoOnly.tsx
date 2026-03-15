@@ -1,5 +1,4 @@
 import { Phone, Mail, Clock } from "lucide-react";
-import { motion } from "framer-motion";
 import LandlineIcon from "@/components/LandlineIcon";
 
 const WhatsAppIcon = () => (
@@ -37,10 +36,10 @@ const ContactInfoOnly = () => {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-120px" }} transition={{ duration: 0.12 }}>
+    <div>
       <div className="inline-flex items-center gap-3 mb-4">
         <span className="line-gold w-8 inline-block" />
-        <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contattaci</p>
+        <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contatti</p>
       </div>
       <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
         Parliamo della tua <span className="text-gradient-gold italic">situazione</span>
@@ -68,7 +67,7 @@ const ContactInfoOnly = () => {
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

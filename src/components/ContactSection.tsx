@@ -84,11 +84,25 @@ const ContactSection = () => {
   return (
     <section id="contatti" className="py-32 bg-background">
       <div className="container mx-auto px-4">
+        {/* Intestazione form mobile: visibile solo su mobile, centrata come le altre sezioni */}
+        <div className="md:hidden pb-10 text-center">
+          <div className="inline-flex items-center justify-center gap-3 mb-4">
+            <span className="line-gold w-8 inline-block" />
+            <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contattaci</p>
+            <span className="line-gold w-8 inline-block" />
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Consulenza <span className="text-gradient-gold italic">Gratuita</span>
+          </h2>
+          <p className="font-body text-muted-foreground leading-relaxed text-base">
+            Raccontaci la tua situazione. Un nostro esperto ti ricontatterà entro 24 ore.
+          </p>
+        </div>
         <div className="grid lg:grid-cols-2 gap-20">
-          <motion.div id="contatti-recapiti" initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-120px" }} transition={{ duration: 0.12 }} className="order-2 lg:order-1">
+          <motion.div id="contatti-recapiti-mobile" initial={{ opacity: 0, x: -6 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-120px" }} transition={{ duration: 0.12 }} className="order-2 lg:order-1">
             <div className="inline-flex items-center gap-3 mb-4">
               <span className="line-gold w-8 inline-block" />
-              <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contattaci</p>
+              <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">Contatti</p>
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Consulenza <span className="text-gradient-gold italic">Gratuita</span>

@@ -72,7 +72,7 @@ const Footer = () => {
     if (href.startsWith("/#")) {
       const hash = href.slice(1);
       const selector = hash === "#contatti-recapiti" ? hash : (hash === "#contatti-info" || hash === "#contatti")
-        ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-info")
+        ? (typeof window !== "undefined" && window.innerWidth < 768 ? "#contatti" : "#contatti-recapiti")
         : hash;
       if (location.pathname === "/") {
         const el = document.querySelector(selector);

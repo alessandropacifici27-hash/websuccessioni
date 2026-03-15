@@ -11,8 +11,24 @@ import Footer from "@/components/Footer";
 import { Helmet } from "react-helmet-async";
 import { CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Index = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const t = setTimeout(() => {
+      const isMobile = window.innerWidth < 768;
+      const id = isMobile ? 'contatti-recapiti-mobile' : hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY + 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 1200);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -54,7 +70,7 @@ const Index = () => {
           <HowItWorks />
         </div>
         {/* Desktop: Contattaci (sinistra) + Perché affidarti (destra) */}
-        <section id="contatti-info" className="hidden md:block py-32 bg-background">
+        <section id="contatti-recapiti" className="hidden md:block py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-20">
               <ContactInfoOnly />
