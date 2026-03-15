@@ -30,6 +30,12 @@ const ContactFormOnly = () => {
         "qFsjEtnqQNDnN5WlA"
       );
       toast({ title: "Messaggio inviato!", description: "Ti risponderemo entro 24 ore." });
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead', {
+          content_name: 'Form Contatti Home',
+          content_category: 'Dichiarazione di Successione',
+        });
+      }
       setNome("");
       setTelefono("");
       setEmail("");

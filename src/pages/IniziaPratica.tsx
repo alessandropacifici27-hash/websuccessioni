@@ -249,6 +249,14 @@ const IniziaPratica = () => {
         title: "Pratica inviata con successo",
         description: `Numero pratica: ${praticaNumber}`,
       });
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'CompleteRegistration', {
+          content_name: 'Pratica Successione Completata',
+          content_category: 'Dichiarazione di Successione',
+          value: 50,
+          currency: 'EUR',
+        });
+      }
       setStep(4);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
