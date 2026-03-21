@@ -1,6 +1,8 @@
 import { useEffect, useState, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
-import { Phone, Check } from "lucide-react";
+import { Phone, MessageCircle, Check } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import Footer from "@/components/Footer";
 import logo from "@/assets/logo.png";
 
 const EMAILJS_SERVICE = "service_i1pju5e";
@@ -64,13 +66,37 @@ const LandingGoogle = () => {
               WebSuccessioni
             </span>
           </div>
-          <a
-            href="tel:+390292892296"
-            className="flex items-center gap-2 text-[hsl(40_55%_55%)] hover:text-yellow-400/90 transition-colors shrink-0"
-          >
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden />
-            <span className="text-sm sm:text-base font-medium whitespace-nowrap">02 92892296</span>
-          </a>
+          <div className="flex flex-row flex-wrap items-center justify-end gap-x-2 gap-y-1 sm:gap-x-4 md:gap-x-5 shrink-0">
+            <a
+              href="tel:+390292892296"
+              className="inline-flex items-center gap-1.5 sm:gap-2 rounded-md p-1.5 sm:p-0 -m-1.5 sm:m-0 text-[hsl(40_55%_55%)] hover:text-yellow-400/90 transition-colors"
+              aria-label="Chiama 02 92892296"
+            >
+              <Phone className="w-4 h-4 shrink-0" aria-hidden />
+              <span className="hidden sm:inline text-xs sm:text-sm font-medium whitespace-nowrap">
+                02 92892296
+              </span>
+            </a>
+            <Tooltip delayDuration={200}>
+              <TooltipTrigger asChild>
+                <a
+                  href="https://wa.me/393793511586"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 rounded-md p-1.5 sm:p-0 -m-1.5 sm:m-0 text-[hsl(40_55%_55%)] hover:text-yellow-400/90 transition-colors"
+                  aria-label="WhatsApp +39 379 3511586"
+                >
+                  <MessageCircle className="w-4 h-4 shrink-0" aria-hidden />
+                  <span className="hidden sm:inline text-xs sm:text-sm font-medium whitespace-nowrap">
+                    +39 379 3511586
+                  </span>
+                </a>
+              </TooltipTrigger>
+              <TooltipContent side="bottom" className="text-xs border-yellow-500/20 bg-card text-foreground">
+                WhatsApp
+              </TooltipContent>
+            </Tooltip>
+          </div>
         </div>
       </header>
 
@@ -220,17 +246,13 @@ const LandingGoogle = () => {
             </li>
             <li className="flex items-center gap-2 text-sm text-white/60 max-w-xs sm:max-w-none">
               <Check className="w-4 h-4 text-[hsl(40_55%_55%)] shrink-0" aria-hidden />
-              <span>Acconto di soli €50</span>
+              <span>Nessun vincolo — nessun impegno</span>
             </li>
           </ul>
         </section>
       </main>
 
-      <footer className="shrink-0 py-8 px-4">
-        <p className="text-center text-xs text-white/30 max-w-2xl mx-auto">
-          © 2026 WebSuccessioni · info@websuccessioni.it · P.IVA in fase di registrazione
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };
