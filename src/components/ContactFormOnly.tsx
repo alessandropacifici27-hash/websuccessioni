@@ -98,7 +98,7 @@ const ContactFormOnly = () => {
       <div className="space-y-2">
         <label className="font-body text-[10px] font-semibold text-yellow-500/70 block uppercase tracking-[0.25em]">Descrivi la tua situazione <span className="text-yellow-500">*</span></label>
         <Textarea
-          placeholder="Raccontaci brevemente la tua esigenza: tipo di successione, beni coinvolti, numero di eredi..."
+          placeholder="Descrivi brevemente la tua situazione"
           rows={5}
           className="font-body resize-none bg-background/60 border-border/60 focus:border-yellow-500/50 focus:ring-yellow-500/20 rounded-lg transition-all duration-300"
           value={messaggio}

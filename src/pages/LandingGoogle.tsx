@@ -211,7 +211,7 @@ const LandingGoogle = () => {
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Descrivi brevemente la tua situazione (opzionale)"
+                  placeholder="Descrivi brevemente la tua situazione"
                   className="bg-background/60 border border-border/60 focus:border-yellow-500/50 focus:outline-none focus:ring-1 focus:ring-yellow-500/20 rounded-lg transition-all duration-300 w-full px-3 py-3 text-sm text-foreground placeholder:text-muted-foreground resize-none"
                 />
               </div>
