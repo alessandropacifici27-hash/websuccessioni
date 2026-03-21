@@ -1,4 +1,5 @@
 import { useEffect, useState, FormEvent } from "react";
+import { Helmet } from "react-helmet-async";
 import emailjs from "@emailjs/browser";
 import { Phone, MessageCircle, Check } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -60,7 +61,16 @@ const LandingGoogle = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0C] font-body text-foreground flex flex-col">
+    <>
+      <Helmet>
+        <title>Richiedi Consulenza Gratuita | WebSuccessioni</title>
+        <meta
+          name="description"
+          content="Compila il modulo e ricevi una consulenza gratuita sulla dichiarazione di successione. Ti ricontattiamo entro 24 ore. Nessun impegno, 100% online."
+        />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      <div className="min-h-screen bg-[#0A0A0C] font-body text-foreground flex flex-col">
       {/* Header minimal */}
       <header className="shrink-0 border-b border-yellow-500/20 px-4 sm:px-6 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-4">
@@ -262,6 +272,7 @@ const LandingGoogle = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
