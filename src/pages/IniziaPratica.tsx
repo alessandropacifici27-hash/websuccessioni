@@ -191,6 +191,7 @@ const IniziaPratica = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (step !== 4) return;
     if (!validateStep(1) || !validateStep(2)) {
       setStep(1);
       return;
@@ -255,6 +256,14 @@ const IniziaPratica = () => {
           content_category: 'Dichiarazione di Successione',
           value: 50,
           currency: 'EUR',
+        });
+      }
+      // Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-18018460148/S1ScCOf3kI0cEPTD749D',
+          'value': 50.0,
+          'currency': 'EUR'
         });
       }
       setStep(4);

@@ -58,6 +58,14 @@ const ContactSection = () => {
           content_category: 'Dichiarazione di Successione',
         });
       }
+      // Google Ads conversion tracking
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-18018460148/S1ScCOf3kI0cEPTD749D',
+          'value': 50.0,
+          'currency': 'EUR'
+        });
+      }
       setNome("");
       setTelefono("");
       setEmail("");
