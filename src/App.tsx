@@ -20,6 +20,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const TerminiServizio = lazy(() => import("./pages/TerminiServizio"));
 const IniziaPratica = lazy(() => import("./pages/IniziaPratica"));
+const ConsulenzaGiuridica = lazy(() => import("./pages/ConsulenzaGiuridica"));
 const GuidePage = lazy(() => import("./pages/GuidePage"));
 const CostoDichiarazione = lazy(() => import("./pages/guide/CostoDichiarazione"));
 const DocumentiDichiarazione = lazy(() => import("./pages/guide/DocumentiDichiarazione"));
@@ -79,6 +80,7 @@ const App = () => (
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-servizio" element={<TerminiServizio />} />
             <Route path="/inizia-pratica-online" element={<IniziaPratica />} />
+            <Route path="/consulenza-giuridica" element={<ConsulenzaGiuridica />} />
             <Route path="/guide" element={<GuidePage />} />
             <Route path="/guide/costo-dichiarazione-successione" element={<CostoDichiarazione />} />
             <Route path="/guide/documenti-dichiarazione-successione" element={<DocumentiDichiarazione />} />
