@@ -111,7 +111,7 @@ const handler: Handler = async (event) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      automatic_payment_methods: { enabled: true },
+      payment_method_types: ["card", "paypal", "klarna"],
       line_items: [
         {
           price_data: {
