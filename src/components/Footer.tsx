@@ -1,4 +1,4 @@
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, CreditCard } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import LandlineIcon from "@/components/LandlineIcon";
@@ -63,6 +63,16 @@ const footerNavLinks = [
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti-recapiti" },
+];
+
+const paymentMethods = [
+  { label: "Visa", src: "https://cdn.simpleicons.org/visa/1A1A1A" },
+  { label: "Mastercard", src: "https://cdn.simpleicons.org/mastercard/1A1A1A" },
+  { label: "American Express", src: "https://cdn.simpleicons.org/americanexpress/1A1A1A" },
+  { label: "PayPal", src: "https://cdn.simpleicons.org/paypal/1A1A1A" },
+  { label: "Klarna", src: "https://cdn.simpleicons.org/klarna/1A1A1A" },
+  { label: "Apple Pay", src: "https://cdn.simpleicons.org/applepay/1A1A1A" },
+  { label: "Google Pay", src: "https://cdn.simpleicons.org/googlepay/1A1A1A" },
 ];
 
 const Footer = () => {
@@ -187,12 +197,39 @@ const Footer = () => {
 
         <div className="line-gold w-full mb-8" />
 
+        <section className="mb-8">
+          <h4 className="font-display text-base font-semibold text-foreground text-center mb-4">Metodi di pagamento accettati</h4>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {paymentMethods.map((method) => (
+              <div
+                key={method.label}
+                className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+                title={method.label}
+                aria-label={method.label}
+              >
+                <img src={method.src} alt={method.label} className="w-[38px] h-[24px] object-contain" loading="lazy" />
+              </div>
+            ))}
+            <div
+              className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+              title="Carta di credito"
+              aria-label="Carta di credito"
+            >
+              <CreditCard className="w-[24px] h-[16px] text-[#1A1A1A]" />
+            </div>
+          </div>
+          <p className="font-body text-xs text-muted-foreground text-center mt-3">
+            Pagamenti sicuri gestiti da Stripe · Klarna disponibile per rateizzare in 3 rate senza interessi
+          </p>
+        </section>
+
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/cookie-policy" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Cookie Policy</Link>
             <Link to="/termini-servizio" className="font-body text-xs text-muted-foreground/60 hover:text-primary transition-colors">Termini di Servizio</Link>
           </div>
+          <p className="font-body text-xs text-muted-foreground/60">© {new Date().getFullYear()} WebSuccessioni. Tutti i diritti riservati.</p>
         </div>
       </div>
     </footer>

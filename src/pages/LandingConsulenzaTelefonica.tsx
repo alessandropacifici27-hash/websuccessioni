@@ -11,7 +11,7 @@ import logo from "@/assets/logo.png";
 type SuccessType = "telefonica" | null;
 type CheckoutType = "telefonica_acconto";
 
-const CALENDLY_LINK = "[INSERIRE_LINK_CALENDLY]";
+const CALENDLY_LINK = "https://calendly.com/alessandro-pacifici27/30min";
 const IBAN = "IT24B0366901600592970601798";
 
 const LandingConsulenzaTelefonica = () => {

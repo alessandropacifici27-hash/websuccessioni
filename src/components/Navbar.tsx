@@ -157,16 +157,16 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="hidden md:flex items-center gap-2 ml-auto"
+              className="hidden md:flex items-center gap-1.5 ml-auto z-40"
             >
-              <Button variant="gold" size="sm" asChild>
-                <a href="tel:+393793511586">
-                  <Phone className="w-3.5 h-3.5" /> Chiamaci Ora
+              <Button variant="gold" size="sm" className="h-8 px-2.5 text-[11px]" asChild>
+                <a href="tel:+393793511586" className="inline-flex items-center gap-1">
+                  <Phone className="w-3 h-3" /> Chiamaci Ora
                 </a>
               </Button>
-              <Button variant="heroOutline" size="sm" asChild>
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-3.5 h-3.5" /> Scrivici su WhatsApp
+              <Button variant="heroOutline" size="sm" className="h-8 px-2.5 text-[11px]" asChild>
+                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
+                  <MessageCircle className="w-3 h-3" /> Scrivici su WhatsApp
                 </a>
               </Button>
             </motion.div>

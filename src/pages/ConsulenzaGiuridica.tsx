@@ -18,12 +18,12 @@ type UploadFile = { name: string; url: string };
 
 const EMAILJS_SERVICE_ID = "service_i1pju5e";
 const EMAILJS_PUBLIC_KEY = "qFsjEtnqQNDnN5WlA";
-const EMAILJS_TEMPLATE_ID = "[INSERIRE_TEMPLATE_ID]";
+const EMAILJS_TEMPLATE_ID = "template_uaendkg";
 
 const UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
 
-const CALENDLY_LINK = "[INSERIRE_LINK_CALENDLY]";
-const IBAN = "[INSERIRE_IBAN]";
+const CALENDLY_LINK = "https://calendly.com/alessandro-pacifici27/30min";
+const IBAN = "IT24B0366901600592970601798";
 
 type CheckoutType = "telefonica_acconto" | "scritta_acconto" | "scritta_saldo" | "telefonica_saldo";
 
@@ -265,7 +265,7 @@ const ConsulenzaGiuridica = () => {
     },
     {
       q: "Come funziona il pagamento in due rate?",
-      a: "Per la consulenza scritta: paghi €25 di acconto all'invio del form, poi €45 di saldo quando la consulenza è pronta — prima della consegna del PDF. Per la consulenza telefonica: paghi €15 di acconto per prenotare la chiamata, poi €34 di saldo al termine della stessa tramite carta o bonifico.",
+      a: "Per la consulenza scritta: paghi €25 di acconto all'invio del form, poi €44 di saldo quando la consulenza è pronta — prima della consegna del PDF. Per la consulenza telefonica: paghi €15 di acconto per prenotare la chiamata, poi €34 di saldo al termine della stessa tramite carta o bonifico.",
     },
     {
       q: "Quali metodi di pagamento accettate?",
@@ -327,7 +327,7 @@ const ConsulenzaGiuridica = () => {
                     Acconto ricevuto.
                   </h2>
                   <p className="font-body text-muted-foreground text-sm leading-relaxed">
-                    Puoi ora inviare il tuo caso compilando il form qui sotto. Riceverai la consulenza in PDF entro 24 ore. Il saldo di €45 sarà
+                    Puoi ora inviare il tuo caso compilando il form qui sotto. Riceverai la consulenza in PDF entro 24 ore. Il saldo di €44 sarà
                     richiesto prima della consegna del documento.
                   </p>
                 </div>
@@ -400,7 +400,7 @@ const ConsulenzaGiuridica = () => {
                   className="h-12 md:h-12 w-full md:w-auto font-body border border-primary/40"
                   onClick={() => scrollToSection("form-consulenza")}
                 >
-                  Consulenza Scritta — €70
+                  Consulenza Scritta — €69
                 </Button>
               </motion.div>
             </div>
@@ -540,9 +540,9 @@ const ConsulenzaGiuridica = () => {
               <div className="mt-5">
                 <p className="text-muted-foreground text-sm font-body">Prezzo</p>
                 <div className="flex items-baseline gap-3 mt-1">
-                  <p className="font-display text-4xl font-bold text-foreground">€70</p>
+                  <p className="font-display text-4xl font-bold text-foreground">€69</p>
                 </div>
-                <p className="font-body text-muted-foreground text-sm mt-2">€25 acconto ora + €45 saldo prima della consegna</p>
+                <p className="font-body text-muted-foreground text-sm mt-2">€25 acconto ora + €44 saldo prima della consegna</p>
               </div>
 
               <ul className="mt-7 space-y-3">
@@ -740,7 +740,7 @@ const ConsulenzaGiuridica = () => {
               <div>
                 <h2 className="font-display text-3xl font-bold text-foreground mb-2">Hai già pagato l&apos;acconto? Paga il saldo</h2>
                 <p className="font-body text-muted-foreground text-sm leading-relaxed">
-                  Quando ti comunichiamo che la consulenza è pronta, procedi con il saldo di €45 per ricevere il documento PDF.
+                  Quando ti comunichiamo che la consulenza è pronta, procedi con il saldo di €44 per ricevere il documento PDF.
                 </p>
               </div>
 
@@ -752,7 +752,7 @@ const ConsulenzaGiuridica = () => {
                   onClick={() => callStripeCheckout("scritta_saldo")}
                   disabled={stripeLoading || formSending}
                 >
-                  Paga Saldo Consulenza Scritta — €45
+                  Paga Saldo Consulenza Scritta — €44
                 </Button>
 
                 <p className="font-body text-xs text-muted-foreground leading-relaxed">
