@@ -849,7 +849,7 @@ const IniziaPratica = () => {
             Formati accettati: PDF, JPG, PNG — Max 10MB per file
           </p>
           <div
-            className="mt-3 [&_.uc-widget-button]:!min-h-[40px] [&_.uc-widget-button]:!rounded-lg [&_.uc-widget-button]:!bg-yellow-500/20 [&_.uc-widget-button]:!border [&_.uc-widget-button]:!border-yellow-500/50 [&_.uc-widget-button]:!text-foreground [&_.uc-widget-button]:!font-body"
+            className="mt-3 [&_.uploadcare-widget-button]:!hidden [&_.uploadcare--widget__button]:!hidden [&_button]:!hidden [&_.uploadcare-widget-button-open]:!hidden"
             role="uploadcare-uploader"
             data-public-key="f1ded879783f3f762a86"
             data-multiple="true"
@@ -1018,10 +1018,10 @@ const IniziaPratica = () => {
               <span className="line-gold w-8 inline-block" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Inizia la tua <span className="text-gradient-gold italic">Pratica</span>
+              Inizia la tua <span className="text-gradient-gold italic">Pratica Successoria</span>
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione.
+              Compila il form guidato in pochi minuti. Un professionista ti accompagnerà fino al deposito della dichiarazione di successione.
             </p>
           </div>
 

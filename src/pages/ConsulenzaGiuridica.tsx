@@ -677,7 +677,7 @@ const ConsulenzaGiuridica = () => {
                 <div className="relative">
                   <div
                     id="uc-trigger"
-                    className="[&_.uploadcare-widget-button]:hidden [&_.uploadcare--widget__button]:hidden"
+                    className="mt-3 [&_.uploadcare-widget-button]:!hidden [&_.uploadcare--widget__button]:!hidden [&_button]:!hidden [&_.uploadcare-widget-button-open]:!hidden"
                     role="uploadcare-uploader"
                     data-public-key={UPLOADCARE_PUBLIC_KEY}
                     data-multiple="true"
