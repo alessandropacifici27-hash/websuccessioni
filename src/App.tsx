@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import LandingGoogle from "./pages/LandingGoogle";
+import LandingConsulenzaScritta from "./pages/LandingConsulenzaScritta";
+import LandingConsulenzaTelefonica from "./pages/LandingConsulenzaTelefonica";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
 import ChatbotWidget from "./components/ChatbotWidget";
@@ -71,6 +73,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/richiedi-consulenza" element={<LandingGoogle />} />
+            <Route path="/consulenza-scritta" element={<LandingConsulenzaScritta />} />
+            <Route path="/prenota-consulenza-telefonica" element={<LandingConsulenzaTelefonica />} />
             <Route path="/successione" element={<Successione />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/faq" element={<FaqPage />} />

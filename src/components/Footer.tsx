@@ -58,6 +58,7 @@ const footerNavLinks = [
   { label: "Home", href: "/" },
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
+  { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
   { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
@@ -133,13 +134,24 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground mb-5">Navigazione</h4>
             <div className="space-y-3">
               {footerNavLinks.map((l) => (
-                <button
-                  key={l.label}
-                  onClick={() => handleFooterNavClick(l.href)}
-                  className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors text-left"
-                >
-                  {l.label}
-                </button>
+                l.href.startsWith("/#") ? (
+                  <button
+                    key={l.label}
+                    onClick={() => handleFooterNavClick(l.href)}
+                    className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors text-left"
+                  >
+                    {l.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={l.label}
+                    to={l.href}
+                    onClick={() => handleFooterNavClick(l.href)}
+                    className="block font-body text-sm text-muted-foreground hover:text-primary transition-colors text-left"
+                  >
+                    {l.label}
+                  </Link>
+                )
               ))}
             </div>
           </div>
