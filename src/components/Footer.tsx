@@ -66,13 +66,13 @@ const footerNavLinks = [
 ];
 
 const paymentMethods = [
-  { label: "Visa", src: "https://cdn.simpleicons.org/visa/1A1A1A" },
-  { label: "Mastercard", src: "https://cdn.simpleicons.org/mastercard/1A1A1A" },
-  { label: "American Express", src: "https://cdn.simpleicons.org/americanexpress/1A1A1A" },
-  { label: "PayPal", src: "https://cdn.simpleicons.org/paypal/1A1A1A" },
-  { label: "Klarna", src: "https://cdn.simpleicons.org/klarna/1A1A1A" },
-  { label: "Apple Pay", src: "https://cdn.simpleicons.org/applepay/1A1A1A" },
-  { label: "Google Pay", src: "https://cdn.simpleicons.org/googlepay/1A1A1A" },
+  { label: "Visa", src: "https://cdn.simpleicons.org/visa" },
+  { label: "Mastercard", src: "https://cdn.simpleicons.org/mastercard" },
+  { label: "American Express", src: "https://cdn.simpleicons.org/americanexpress" },
+  { label: "PayPal", src: "https://cdn.simpleicons.org/paypal" },
+  { label: "Klarna", src: "https://cdn.simpleicons.org/klarna" },
+  { label: "Apple Pay", src: "https://cdn.simpleicons.org/applepay" },
+  { label: "Google Pay", src: "https://cdn.simpleicons.org/googlepay" },
 ];
 
 const Footer = () => {
@@ -192,36 +192,33 @@ const Footer = () => {
               <p>Sabato: 9:00 – 13:00</p>
               <p>Domenica: Chiuso</p>
             </div>
+
+            <div className="mt-6">
+              <h4 className="font-display text-base font-semibold text-foreground text-left mb-4">Pagamenti accettati</h4>
+              <div className="flex flex-wrap justify-start gap-2.5">
+                {paymentMethods.map((method) => (
+                  <div
+                    key={method.label}
+                    className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+                    title={method.label}
+                    aria-label={method.label}
+                  >
+                    <img src={method.src} alt={method.label} className="w-[38px] h-[24px] object-contain" loading="lazy" />
+                  </div>
+                ))}
+                <div
+                  className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+                  title="Carta di credito"
+                  aria-label="Carta di credito"
+                >
+                  <CreditCard className="w-[24px] h-[16px] text-[#1A1A1A]" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="line-gold w-full mb-8" />
-
-        <section className="mb-8">
-          <h4 className="font-display text-base font-semibold text-foreground text-center mb-4">Metodi di pagamento accettati</h4>
-          <div className="flex flex-wrap justify-center gap-2.5">
-            {paymentMethods.map((method) => (
-              <div
-                key={method.label}
-                className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
-                title={method.label}
-                aria-label={method.label}
-              >
-                <img src={method.src} alt={method.label} className="w-[38px] h-[24px] object-contain" loading="lazy" />
-              </div>
-            ))}
-            <div
-              className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
-              title="Carta di credito"
-              aria-label="Carta di credito"
-            >
-              <CreditCard className="w-[24px] h-[16px] text-[#1A1A1A]" />
-            </div>
-          </div>
-          <p className="font-body text-xs text-muted-foreground text-center mt-3">
-            Pagamenti sicuri gestiti da Stripe · Klarna disponibile per rateizzare in 3 rate senza interessi
-          </p>
-        </section>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex gap-6">
