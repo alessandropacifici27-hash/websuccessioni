@@ -404,11 +404,6 @@ const ConsulenzaGiuridica = () => {
                 </Button>
               </motion.div>
             </div>
-
-            <p className="mt-5 text-xs md:text-sm text-muted-foreground max-w-3xl mx-auto font-body">
-              Il servizio costituisce consulenza informativa e documentale ai sensi della normativa vigente. Non sostituisce il parere di un
-              avvocato iscritto all&apos;albo per atti legali formali o rappresentanza in giudizio.
-            </p>
           </div>
         </section>
 
@@ -444,7 +439,7 @@ const ConsulenzaGiuridica = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.2 }}
-                className="bg-card border border-primary/20 rounded-xl p-8 hover:border-primary/30 hover:glow-gold transition-all duration-300"
+                className="bg-card border border-primary/20 rounded-xl p-8 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
                   <a.icon className="w-6 h-6 text-primary" />
@@ -707,7 +702,14 @@ const ConsulenzaGiuridica = () => {
                     type="checkbox"
                     checked={accettoDisclaimer}
                     onChange={(e) => setAccettoDisclaimer(e.target.checked)}
-                    className="mt-1 accent-primary"
+                    className="mt-1 w-4 h-4 rounded border border-primary/40 bg-background/60 checked:bg-primary checked:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none cursor-pointer appearance-none [&:checked]:bg-primary relative"
+                    style={{
+                      backgroundImage: accettoDisclaimer
+                        ? `url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e")`
+                        : "none",
+                      backgroundColor: accettoDisclaimer ? "hsl(40 55% 55%)" : "transparent",
+                      borderColor: "hsl(40 55% 55% / 0.4)",
+                    }}
                   />
                   <span className="font-body text-xs text-muted-foreground leading-relaxed">
                     Ho letto e accetto il disclaimer: questa consulenza è informativa e documentale e non costituisce parere legale ai sensi della L.
@@ -780,9 +782,7 @@ const ConsulenzaGiuridica = () => {
                   Dottore in legge + avvocati specializzati
                 </p>
                 <p className="font-body text-muted-foreground text-base md:text-lg leading-relaxed">
-                  Le consulenze sono elaborate personalmente da Alessandro Pacifici, dottore in legge, con la collaborazione di un team di avvocati
-                  specializzati nelle rispettive materie. Ogni consulenza è personalizzata sul caso specifico del cliente e prodotta in formato PDF
-                  professionale.
+                  Le consulenze sono elaborate personalmente dal Dott. Alessandro Pacifici, collaboratore notarile, laureato in legge ed aspirante notaio, con la collaborazione di un team di avvocati specializzati nelle rispettive materie. Ogni consulenza è personalizzata sul caso specifico del cliente e prodotta in formato PDF professionale.
                 </p>
               </div>
 

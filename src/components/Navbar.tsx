@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle, Menu, X } from "lucide-react";
+import { Phone, MessageCircle, Mail, Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.png";
@@ -157,18 +157,33 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="hidden md:flex items-center gap-1.5 ml-auto z-40"
+              className="hidden md:flex items-center gap-2 ml-auto z-40"
             >
-              <Button variant="gold" size="sm" className="h-8 px-2.5 text-[11px]" asChild>
-                <a href="tel:+393793511586" className="inline-flex items-center gap-1">
-                  <Phone className="w-3 h-3" /> Chiamaci Ora
-                </a>
-              </Button>
-              <Button variant="heroOutline" size="sm" className="h-8 px-2.5 text-[11px]" asChild>
-                <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1">
-                  <MessageCircle className="w-3 h-3" /> Scrivici su WhatsApp
-                </a>
-              </Button>
+              <a
+                href="tel:+390292892296"
+                aria-label="Chiamaci"
+                className="w-8 h-8 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors duration-200"
+              >
+                <Phone className="w-4 h-4" />
+              </a>
+
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="w-8 h-8 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors duration-200"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
+
+              <a
+                href="mailto:info@websuccessioni.it"
+                aria-label="Email"
+                className="w-8 h-8 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </motion.div>
           )}
         </AnimatePresence>
