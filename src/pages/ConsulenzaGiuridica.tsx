@@ -411,7 +411,7 @@ const ConsulenzaGiuridica = () => {
         <section className="container mx-auto px-4 max-w-5xl mb-16">
           <div className="text-center mb-10">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-              Di cosa mi occupo
+              Di cosa ci occupiamo
             </h2>
           </div>
 
@@ -674,13 +674,34 @@ const ConsulenzaGiuridica = () => {
                   Carica documenti pertinenti (opzionale) — contratti, visure, atti notarili, etc.
                 </label>
 
-                <div
-                  className="mt-3 [&_.uc-widget-button]:!min-h-[40px] [&_.uc-widget-button]:!rounded-lg [&_.uc-widget-button]:!bg-primary/10 [&_.uc-widget-button]:!border [&_.uc-widget-button]:!border-primary/30 [&_.uc-widget-button]:!text-foreground [&_.uc-widget-button]:!font-body"
-                  role="uploadcare-uploader"
-                  data-public-key={UPLOADCARE_PUBLIC_KEY}
-                  data-multiple="true"
-                  data-locale="it"
-                />
+                <div className="relative">
+                  <div
+                    id="uc-trigger"
+                    className="[&_.uploadcare-widget-button]:hidden [&_.uploadcare--widget__button]:hidden"
+                    role="uploadcare-uploader"
+                    data-public-key={UPLOADCARE_PUBLIC_KEY}
+                    data-multiple="true"
+                    data-locale="it"
+                  />
+                  <label
+                    htmlFor="uc-trigger"
+                    className="flex items-center gap-3 w-full cursor-pointer border border-primary/30 border-dashed rounded-lg px-4 py-4 bg-background/40 hover:bg-primary/5 hover:border-primary/50 transition-all duration-200 group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-body text-sm text-foreground font-medium">
+                        Carica i tuoi documenti
+                      </p>
+                      <p className="font-body text-xs text-muted-foreground mt-0.5">
+                        Contratti, visure, atti notarili — opzionale
+                      </p>
+                    </div>
+                  </label>
+                </div>
               </div>
 
               {uploadedFiles.length > 0 && (
