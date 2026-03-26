@@ -66,7 +66,7 @@ const handler: Handler = async (event) => {
       telefonica_acconto: 1500, // €15.00
       telefonica_saldo: 3400, // €34.00
       scritta_acconto: 2500, // €25.00
-      scritta_saldo: 4500, // €45.00
+      scritta_saldo: 4400, // €44.00
     };
 
     const labels: Record<CheckoutType, string> = {
@@ -111,7 +111,7 @@ const handler: Handler = async (event) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card", "klarna", "paypal"],
+      automatic_payment_methods: { enabled: true },
       line_items: [
         {
           price_data: {
@@ -136,9 +136,11 @@ const handler: Handler = async (event) => {
       body: JSON.stringify({ url: session.url }),
     };
   } catch (err) {
+    const errorMessage = err instanceof Error ? err.message : "Errore interno del server";
+    console.error("Stripe error:", errorMessage);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Errore interno del server" }),
+      body: JSON.stringify({ error: errorMessage }),
     };
   }
 };

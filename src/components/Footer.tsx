@@ -194,24 +194,24 @@ const Footer = () => {
             </div>
 
             <div className="mt-6">
-              <h4 className="font-display text-base font-semibold text-foreground text-left mb-4">Pagamenti accettati</h4>
-              <div className="flex flex-wrap justify-start gap-2.5">
+              <h4 className="font-display text-lg font-semibold text-foreground mb-4">Pagamenti accettati</h4>
+              <div className="flex flex-wrap gap-2">
                 {paymentMethods.map((method) => (
                   <div
                     key={method.label}
-                    className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+                    className="w-[48px] h-[30px] rounded-md bg-white p-1 flex items-center justify-center"
                     title={method.label}
                     aria-label={method.label}
                   >
-                    <img src={method.src} alt={method.label} className="w-[38px] h-[24px] object-contain" loading="lazy" />
+                    <img src={method.src} alt={method.label} className="w-full h-full object-contain" loading="lazy" />
                   </div>
                 ))}
                 <div
-                  className="w-[56px] h-[34px] rounded-md bg-white/95 border border-white/70 p-1.5 flex items-center justify-center"
+                  className="w-[48px] h-[30px] rounded-md bg-white p-1 flex items-center justify-center"
                   title="Carta di credito"
                   aria-label="Carta di credito"
                 >
-                  <CreditCard className="w-[24px] h-[16px] text-[#1A1A1A]" />
+                  <CreditCard className="w-5 h-4 text-[#1A1F71]" />
                 </div>
               </div>
             </div>
