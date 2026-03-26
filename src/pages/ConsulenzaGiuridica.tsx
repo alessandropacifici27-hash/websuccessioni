@@ -142,10 +142,23 @@ const ConsulenzaGiuridica = () => {
   const callStripeCheckout = async (type: CheckoutType) => {
     setStripeLoading(true);
     try {
+      const documenti = uploadedFiles.map((f) => f.url).join(", ");
       const response = await fetch("/.netlify/functions/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type }),
+        body: JSON.stringify({
+          type,
+          ...(type === "scritta_acconto"
+            ? {
+                nome: `${nome} ${cognome}`.trim(),
+                email,
+                telefono,
+                area: areaDiritto,
+                messaggio: descrizione,
+                documenti: documenti || "",
+              }
+            : {}),
+        }),
       });
 
       const data = await response.json();
