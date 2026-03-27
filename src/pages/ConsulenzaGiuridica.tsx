@@ -600,9 +600,9 @@ const ConsulenzaGiuridica = () => {
                   variant="heroOutline"
                   size="lg"
                   className="w-full font-body border border-primary/40"
-                  onClick={() => window.open(CALENDLY_LINK, "_blank", "noopener,noreferrer")}
+                  onClick={() => callStripeCheckout("telefonica_acconto")}
                 >
-                  Prenota Chiamata
+                  Prenota e Paga Acconto €14
                 </Button>
               </div>
             </motion.div>
