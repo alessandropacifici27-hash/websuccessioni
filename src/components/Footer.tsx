@@ -1,4 +1,4 @@
-import { Phone, Mail, CreditCard } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import LandlineIcon from "@/components/LandlineIcon";
@@ -66,13 +66,13 @@ const footerNavLinks = [
 ];
 
 const paymentMethods = [
-  { label: "Visa", src: "https://cdn.simpleicons.org/visa" },
-  { label: "Mastercard", src: "https://cdn.simpleicons.org/mastercard" },
-  { label: "American Express", src: "https://cdn.simpleicons.org/americanexpress" },
-  { label: "PayPal", src: "https://cdn.simpleicons.org/paypal" },
-  { label: "Klarna", src: "https://cdn.simpleicons.org/klarna" },
-  { label: "Apple Pay", src: "https://cdn.simpleicons.org/applepay" },
-  { label: "Google Pay", src: "https://cdn.simpleicons.org/googlepay" },
+  { label: "Visa" },
+  { label: "Mastercard" },
+  { label: "American Express" },
+  { label: "PayPal" },
+  { label: "Klarna" },
+  { label: "Apple Pay" },
+  { label: "Google Pay" },
 ];
 
 const Footer = () => {
@@ -195,24 +195,53 @@ const Footer = () => {
 
             <div className="mt-6">
               <h4 className="font-display text-lg font-semibold text-foreground mb-4">Pagamenti accettati</h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 items-center">
                 {paymentMethods.map((method) => (
                   <div
                     key={method.label}
-                    className="w-[48px] h-[30px] rounded-md bg-white p-1 flex items-center justify-center"
+                    className={`flex items-center justify-center rounded-lg border border-white/15 px-3 py-2 ${
+                      method.label === "Visa" || method.label === "PayPal" ? "bg-white/90" : "bg-white/5"
+                    }`}
                     title={method.label}
                     aria-label={method.label}
                   >
-                    <img src={method.src} alt={method.label} className="w-full h-full object-contain" loading="lazy" />
+                    {method.label === "Visa" && (
+                      <span className="font-bold italic text-[#1A1F71] bg-white rounded px-1 text-xs tracking-wider">VISA</span>
+                    )}
+                    {method.label === "Mastercard" && (
+                      <span className="flex items-center gap-0.5">
+                        <span className="w-5 h-5 rounded-full bg-[#EB001B] opacity-90 inline-block"></span>
+                        <span className="w-5 h-5 rounded-full bg-[#F79E1B] opacity-90 inline-block -ml-2.5"></span>
+                      </span>
+                    )}
+                    {method.label === "PayPal" && (
+                      <span className="font-bold text-xs bg-white rounded px-1">
+                        <span className="text-[#003087]">Pay</span>
+                        <span className="text-[#009cde]">Pal</span>
+                      </span>
+                    )}
+                    {method.label === "Klarna" && (
+                      <span className="font-bold text-xs bg-[#FFB3C7] text-black rounded px-1.5 py-0.5">klarna</span>
+                    )}
+                    {method.label === "Apple Pay" && (
+                      <span className="font-semibold text-xs text-white tracking-tight opacity-75">Apple Pay</span>
+                    )}
+                    {method.label === "Google Pay" && (
+                      <span className="font-semibold text-xs tracking-tight opacity-75">
+                        <span className="text-[#4285F4]">G</span>
+                        <span className="text-[#EA4335]">o</span>
+                        <span className="text-[#FBBC05]">o</span>
+                        <span className="text-[#4285F4]">g</span>
+                        <span className="text-[#34A853]">l</span>
+                        <span className="text-[#EA4335]">e</span>
+                        <span className="text-white ml-1">Pay</span>
+                      </span>
+                    )}
+                    {method.label === "American Express" && (
+                      <span className="font-bold text-[10px] bg-[#007BC1] text-white rounded px-1 py-0.5 tracking-wider">AMEX</span>
+                    )}
                   </div>
                 ))}
-                <div
-                  className="w-[48px] h-[30px] rounded-md bg-white p-1 flex items-center justify-center"
-                  title="Carta di credito"
-                  aria-label="Carta di credito"
-                >
-                  <CreditCard className="w-5 h-4 text-[#1A1F71]" />
-                </div>
               </div>
             </div>
           </div>

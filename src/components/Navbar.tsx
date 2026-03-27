@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.png";
 
@@ -14,16 +14,17 @@ const navLinks = [
   { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contatti", href: "/#contatti-recapiti" },
+  { label: "Contatti", href: "/#contatti" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
+  const pathname = window.location.pathname;
+  const hash = window.location.hash;
   const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-le-tue-scadenze', '/inizia-pratica-online', '/guide'];
-  const isSubpage = SUBPAGES.includes(location.pathname) || location.pathname.startsWith('/guide/');
+  const isSubpage = SUBPAGES.includes(pathname) || pathname.startsWith('/guide/');
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -45,10 +46,10 @@ const Navbar = () => {
 
   // Scroll to top on route change (skip hash links)
   useEffect(() => {
-    if (!location.hash) {
+    if (!hash) {
       window.scrollTo(0, 0);
     }
-  }, [location.pathname, location.hash]);
+  }, [pathname, hash]);
 
   // Close mobile menu on outside click
   useEffect(() => {
@@ -66,9 +67,9 @@ const Navbar = () => {
   }, [mobileOpen]);
 
   const isActive = (href: string) => {
-    if (href === "/") return location.pathname === "/" && !location.hash;
-    if (href.startsWith("/#")) return location.pathname === "/" && location.hash === href.slice(1);
-    return location.pathname === href;
+    if (href === "/") return pathname === "/" && !hash;
+    if (href.startsWith("/#")) return pathname === "/" && hash === href.slice(1);
+    return pathname === href;
   };
 
   const renderLink = (l: typeof navLinks[0]) => {
@@ -78,28 +79,33 @@ const Navbar = () => {
     }`;
 
     if (l.href.startsWith("/#")) {
+      const handleContattiClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+      
+        const doScroll = () => {
+          const el = document.getElementById('contatti');
+          if (!el) return;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        };
+      
+        if (window.location.pathname === '/') {
+          // Già sulla home: chiudi menu e aspetta che il menu 
+          // si chiuda prima di calcolare la posizione
+          setMobileOpen(false);
+          setTimeout(doScroll, 350);
+        } else {
+          // Su altra pagina: naviga alla home con hash
+          setMobileOpen(false);
+          window.location.href = '/#contatti';
+        }
+      };
       return (
         <a
           key={l.href}
-          href="/#contatti-recapiti"
+          href="/#contatti"
           className={linkClass}
-          onClick={(e) => {
-            setMobileOpen(false);
-            const isHomepage = window.location.pathname === '/';
-            if (!isHomepage) return;
-            e.preventDefault();
-            setTimeout(() => {
-              const isMobile = window.innerWidth < 768;
-              const id = isMobile ? 'contatti-recapiti-mobile' : 'contatti-recapiti';
-              const el = document.getElementById(id);
-              if (el) {
-                const top = isMobile
-                  ? el.getBoundingClientRect().top + window.pageYOffset + 80
-                  : el.getBoundingClientRect().top + window.pageYOffset - 40;
-                window.scrollTo({ top, behavior: 'smooth' });
-              }
-            }, 300);
-          }}
+          onClick={handleContattiClick}
         >
           Contatti
         </a>
@@ -112,7 +118,7 @@ const Navbar = () => {
         to={l.href}
         onClick={() => {
           setMobileOpen(false);
-          if (location.pathname === l.href) {
+          if (pathname === l.href) {
             window.scrollTo({ top: 0, behavior: 'instant' });
             setTimeout(() => window.location.reload(), 50);
           }

@@ -15,18 +15,15 @@ import { useEffect } from "react";
 
 const Index = () => {
   useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-    const t = setTimeout(() => {
-      const isMobile = window.innerWidth < 768;
-      const id = isMobile ? 'contatti-recapiti-mobile' : hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY + 80;
+    if (window.location.hash === '#contatti') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById('contatti');
+        if (!el) return;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
         window.scrollTo({ top, behavior: 'smooth' });
-      }
-    }, 1200);
-    return () => clearTimeout(t);
+      }, 300);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
@@ -43,9 +40,6 @@ const Index = () => {
         <HeroSection />
         <WhyChooseUs />
         <StatsBar />
-        <div className="md:hidden">
-          <ContactSection />
-        </div>
         {/* Desktop: form standalone (solo desktop) */}
         <section className="hidden md:block py-20 bg-background">
           <div className="max-w-2xl mx-auto px-4">
@@ -69,56 +63,61 @@ const Index = () => {
         <div className="hidden md:block">
           <HowItWorks />
         </div>
-        {/* Desktop: Contattaci (sinistra) + Perché affidarti (destra) */}
-        <section id="contatti-recapiti" className="hidden md:block py-32 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-20">
-              <ContactInfoOnly />
-              <div className="space-y-8">
-                <div>
-                  <div className="inline-flex items-center gap-3 mb-4">
-                    <span className="line-gold w-8 inline-block" />
-                    <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">I Nostri Punti di Forza</p>
-                  </div>
-                  <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                    Perché scegliere <span className="text-gradient-gold italic">WebSuccessioni</span>
-                  </h3>
-                  <p className="font-body text-muted-foreground text-sm leading-relaxed mb-8">
-                    Ogni pratica è seguita con la stessa attenzione e dedizione, dal primo contatto fino alla consegna definitiva.
-                  </p>
-                </div>
-                <div className="space-y-5">
-                  {[
-                    { title: "Esperienza certificata", desc: "Competenza specializzata nel diritto successorio italiano con anni di esperienza sul campo." },
-                    { title: "100% da remoto", desc: "Gestiamo l'intera pratica online: nessuno spostamento, nessuna perdita di tempo." },
-                    { title: "Assistenza dedicata", desc: "Un professionista ti segue personalmente dalla prima consulenza alla conclusione della pratica." },
-                    { title: "Risposta garantita in 24h", desc: "Ti ricontattiamo entro 24 ore lavorative con un orientamento chiaro e senza impegno." },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300">
-                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <CheckCircle className="w-4 h-4 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-body text-sm font-semibold text-foreground mb-1">{item.title}</p>
-                        <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                      </div>
+        <div id="contatti" className="scroll-mt-20">
+          <div className="md:hidden">
+            <ContactSection />
+          </div>
+          {/* Desktop: Contattaci (sinistra) + Perché affidarti (destra) */}
+          <section className="hidden md:block py-32 bg-background">
+            <div className="container mx-auto px-4">
+              <div className="grid lg:grid-cols-2 gap-20">
+                <ContactInfoOnly />
+                <div className="space-y-8">
+                  <div>
+                    <div className="inline-flex items-center gap-3 mb-4">
+                      <span className="line-gold w-8 inline-block" />
+                      <p className="text-primary font-body font-medium text-xs tracking-[0.3em] uppercase">I Nostri Punti di Forza</p>
                     </div>
-                  ))}
+                    <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                      Perché scegliere <span className="text-gradient-gold italic">WebSuccessioni</span>
+                    </h3>
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed mb-8">
+                      Ogni pratica è seguita con la stessa attenzione e dedizione, dal primo contatto fino alla consegna definitiva.
+                    </p>
+                  </div>
+                  <div className="space-y-5">
+                    {[
+                      { title: "Esperienza certificata", desc: "Competenza specializzata nel diritto successorio italiano con anni di esperienza sul campo." },
+                      { title: "100% da remoto", desc: "Gestiamo l'intera pratica online: nessuno spostamento, nessuna perdita di tempo." },
+                      { title: "Assistenza dedicata", desc: "Un professionista ti segue personalmente dalla prima consulenza alla conclusione della pratica." },
+                      { title: "Risposta garantita in 24h", desc: "Ti ricontattiamo entro 24 ore lavorative con un orientamento chiaro e senza impegno." },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-4 p-4 rounded-xl border border-border/50 bg-card/50 hover:border-primary/30 hover:bg-card transition-all duration-300">
+                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <CheckCircle className="w-4 h-4 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-body text-sm font-semibold text-foreground mb-1">{item.title}</p>
+                          <p className="font-body text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    to="/chi-siamo"
+                    className="inline-flex items-center gap-2 group"
+                  >
+                    <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
+                    <span className="font-body text-sm text-yellow-500/70 group-hover:text-yellow-400 tracking-[0.15em] uppercase transition-colors duration-300">
+                      Scopri come lavoriamo
+                    </span>
+                    <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
+                  </Link>
                 </div>
-                <Link
-                  to="/chi-siamo"
-                  className="inline-flex items-center gap-2 group"
-                >
-                  <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
-                  <span className="font-body text-sm text-yellow-500/70 group-hover:text-yellow-400 tracking-[0.15em] uppercase transition-colors duration-300">
-                    Scopri come lavoriamo
-                  </span>
-                  <span className="h-px w-8 bg-yellow-500/40 group-hover:w-12 group-hover:bg-yellow-400 transition-all duration-500" />
-                </Link>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
         <Footer />
       </main>
     </>

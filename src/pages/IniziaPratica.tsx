@@ -426,30 +426,44 @@ const IniziaPratica = () => {
           <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Data di nascita del defunto *
           </label>
-          <div className="relative w-full max-w-full box-border overflow-hidden rounded-lg">
+          <div
+            className="relative w-full max-w-full box-border overflow-hidden rounded-lg cursor-pointer"
+            onClick={() => dataNascitaRef.current?.showPicker?.()}
+          >
             <input
               ref={dataNascitaRef}
               type="date"
+              id="data-nascita"
               value={defuntoDataNascita}
               onChange={(e) => setDefuntoDataNascita(e.target.value)}
-              className="block w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0"
+              className="block w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full"
+              style={{ colorScheme: "dark" }}
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+              <Calendar className="w-5 h-5 text-yellow-500" />
+            </div>
           </div>
         </div>
         <div className="min-w-0 overflow-hidden rounded-lg">
           <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
             Data del decesso *
           </label>
-          <div className="relative w-full max-w-full box-border overflow-hidden rounded-lg">
+          <div
+            className="relative w-full max-w-full box-border overflow-hidden rounded-lg cursor-pointer"
+            onClick={() => dataDecessoRef.current?.showPicker?.()}
+          >
             <input
               ref={dataDecessoRef}
               type="date"
+              id="data-decesso"
               value={defuntoDataDecesso}
               onChange={(e) => setDefuntoDataDecesso(e.target.value)}
-              className="block w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0"
+              className="block w-full max-w-full box-border bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 pr-10 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300 cursor-pointer [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:inset-0 [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full"
+              style={{ colorScheme: "dark" }}
             />
-            <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+              <Calendar className="w-5 h-5 text-yellow-500" />
+            </div>
           </div>
         </div>
         <div>
@@ -697,13 +711,27 @@ const IniziaPratica = () => {
         Seleziona le categorie di documenti che stai caricando e allega i file in un unico caricamento.
       </p>
       <div className="grid md:grid-cols-2 gap-4">
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docDefunto}
             onChange={(e) => setDocDefunto(e.target.checked)}
           />
+          <div
+            onClick={() => setDocDefunto(!docDefunto)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docDefunto
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docDefunto && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Documenti del defunto
@@ -714,13 +742,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docEredi}
             onChange={(e) => setDocEredi(e.target.checked)}
           />
+          <div
+            onClick={() => setDocEredi(!docEredi)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docEredi
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docEredi && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Documenti degli eredi
@@ -731,13 +773,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docImmobili}
             onChange={(e) => setDocImmobili(e.target.checked)}
           />
+          <div
+            onClick={() => setDocImmobili(!docImmobili)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docImmobili
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docImmobili && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Documenti immobili
@@ -748,13 +804,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docRapportiBancari}
             onChange={(e) => setDocRapportiBancari(e.target.checked)}
           />
+          <div
+            onClick={() => setDocRapportiBancari(!docRapportiBancari)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docRapportiBancari
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docRapportiBancari && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Rapporti bancari
@@ -765,13 +835,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docSocietari}
             onChange={(e) => setDocSocietari(e.target.checked)}
           />
+          <div
+            onClick={() => setDocSocietari(!docSocietari)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docSocietari
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docSocietari && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Documenti societari/aziendali
@@ -782,13 +866,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docTestamento}
             onChange={(e) => setDocTestamento(e.target.checked)}
           />
+          <div
+            onClick={() => setDocTestamento(!docTestamento)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docTestamento
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docTestamento && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Documenti testamento
@@ -799,13 +897,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docSpesePassivita}
             onChange={(e) => setDocSpesePassivita(e.target.checked)}
           />
+          <div
+            onClick={() => setDocSpesePassivita(!docSpesePassivita)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docSpesePassivita
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docSpesePassivita && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Spese funerarie e passività
@@ -816,13 +928,27 @@ const IniziaPratica = () => {
           </div>
         </label>
 
-        <label className="flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
+        <label className="group flex items-start gap-3 bg-secondary/40 border border-border rounded-lg px-4 py-3 cursor-pointer hover:border-primary/40 transition-colors">
           <input
             type="checkbox"
-            className="mt-1 accent-primary"
+            className="hidden"
             checked={docAltro}
             onChange={(e) => setDocAltro(e.target.checked)}
           />
+          <div
+            onClick={() => setDocAltro(!docAltro)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all duration-200 mt-0.5 ${
+              docAltro
+                ? "bg-[hsl(40,55%,55%)] border-[hsl(40,55%,55%)]"
+                : "bg-transparent border-[hsl(40,55%,55%)]/60 group-hover:border-[hsl(40,55%,55%)]"
+            }`}
+          >
+            {docAltro && (
+              <svg className="w-3 h-3 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
           <div>
             <p className="font-body text-sm text-foreground font-medium">
               Altro

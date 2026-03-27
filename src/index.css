@@ -122,6 +122,13 @@
   }
 }
 
+@media (max-width: 768px) {
+  .glow-gold {
+    animation: none !important;
+    box-shadow: 0 0 10px hsla(40, 55%, 55%, 0.15) !important;
+  }
+}
+
 /* Nasconde tutti i bottoni nativi di Uploadcare */
 .uploadcare--widget__button,
 .uploadcare--widget__button--open,
