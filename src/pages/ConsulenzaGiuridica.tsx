@@ -76,8 +76,7 @@ const ConsulenzaGiuridica = () => {
   const [formSending, setFormSending] = useState(false);
 
   // FORM (Consulenza Scritta)
-  const [nome, setNome] = useState("");
-  const [cognome, setCognome] = useState("");
+  const [nomeCompleto, setNomeCompleto] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
   const [areaDiritto, setAreaDiritto] = useState("");
@@ -161,7 +160,7 @@ const ConsulenzaGiuridica = () => {
           type,
           ...(type === "scritta_acconto"
             ? {
-                nome: `${nome} ${cognome}`.trim(),
+                nome: nomeCompleto.trim(),
                 email,
                 telefono,
                 area: areaDiritto,
@@ -205,8 +204,9 @@ const ConsulenzaGiuridica = () => {
   };
 
   const validateForm = () => {
-    if (!nome.trim() || !cognome.trim()) {
-      toast({ title: "Nome e cognome richiesti", description: "Compila tutti i campi obbligatori.", variant: "destructive" });
+    const trimmedNome = nomeCompleto.trim();
+    if (!/\s/.test(trimmedNome)) {
+      toast({ title: "Inserisci nome e cognome completi", variant: "destructive" });
       return false;
     }
     if (!email.trim() || !telefono.trim() || !areaDiritto || !descrizione.trim()) {
@@ -233,8 +233,7 @@ const ConsulenzaGiuridica = () => {
     const fileUrls = uploadedFiles.map((f) => f.url).join(", ");
 
     const templateParams = {
-      nome: nome.trim(),
-      cognome: cognome.trim(),
+      nome: nomeCompleto.trim(),
       email: email.trim(),
       telefono: telefono.trim(),
       area_diritto: formatAreaLabel(areaDiritto),
@@ -643,12 +642,8 @@ const ConsulenzaGiuridica = () => {
                   </label>
                   <input
                     type="text"
-                    value={`${nome} ${cognome}`.trim()}
-                    onChange={(e) => {
-                      const parts = e.target.value.trim().split(/\s+/);
-                      setNome(parts[0] ?? "");
-                      setCognome(parts.slice(1).join(" "));
-                    }}
+                    value={nomeCompleto}
+                    onChange={(e) => setNomeCompleto(e.target.value)}
                     className="w-full bg-background/60 border border-border/60 focus:border-yellow-500/50 rounded-lg px-3 py-3 text-base font-body text-foreground focus:outline-none focus:ring-1 focus:ring-yellow-500/20 transition-all duration-300"
                     placeholder="Mario Rossi"
                   />
