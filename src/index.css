@@ -121,3 +121,19 @@
     overflow-x: hidden;
   }
 }
+
+/* Nasconde tutti i bottoni nativi di Uploadcare */
+.uploadcare--widget__button,
+.uploadcare--widget__button--open,
+.uploadcare-widget-button,
+[class*="uploadcare--widget__button"],
+[class*="uploadcare-widget-button"] {
+  display: none !important;
+}
+
+/* Nasconde anche l'eventuale testo o status line del widget nativo */
+.uploadcare--widget__dragndrop-area,
+.uploadcare--widget__file-name,
+.uploadcare--widget__status {
+  display: none !important;
+}
