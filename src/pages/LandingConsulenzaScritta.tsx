@@ -13,7 +13,7 @@ type UploadFile = { name: string; url: string };
 
 const EMAILJS_SERVICE_ID = "service_i1pju5e";
 const EMAILJS_PUBLIC_KEY = "qFsjEtnqQNDnN5WlA";
-const EMAILJS_TEMPLATE_ID = "[INSERIRE_TEMPLATE_ID]";
+const EMAILJS_TEMPLATE_ID = "template_uaendkg";
 
 const UPLOADCARE_PUBLIC_KEY = "f1ded879783f3f762a86";
 
