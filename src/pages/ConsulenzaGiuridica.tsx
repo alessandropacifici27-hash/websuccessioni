@@ -392,6 +392,25 @@ const ConsulenzaGiuridica = () => {
           </div>
         </section>
 
+        <section className="container mx-auto px-4 max-w-5xl mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {[
+              { emoji: "⚖️", testo: "Elaborata da un collaboratore notarile" },
+              { emoji: "⏱", testo: "Risposta scritta entro 24 ore" },
+              { emoji: "🔒", testo: "Pagamento sicuro con Stripe" },
+              { emoji: "📩", testo: "Follow-up via email incluso" },
+            ].map((item) => (
+              <div
+                key={item.testo}
+                className="flex items-center gap-3 px-5 py-3 rounded-full border border-yellow-500/20 bg-gradient-to-r from-yellow-500/5 to-transparent backdrop-blur-sm shadow-[0_0_20px_-8px_rgba(184,142,67,0.12)]"
+              >
+                <span className="text-lg leading-none flex-shrink-0">{item.emoji}</span>
+                <span className="font-body text-sm text-white/90 font-medium whitespace-nowrap">{item.testo}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* AREE DI COMPETENZA */}
         <section className="container mx-auto px-4 max-w-6xl mb-16">
           <div className="text-center mb-12">
@@ -542,29 +561,23 @@ const ConsulenzaGiuridica = () => {
 
               <ul className="mt-7 space-y-3">
                 {[
-                  "Analisi dettagliata del tuo caso specifico",
-                  "Documento PDF professionale da conservare",
-                  "Riferimenti normativi e giurisprudenziali",
-                  "Follow-up via email incluso",
-                  "Rimborso garantito se non consegniamo in tempo",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{t}</span>
+                  { emoji: "📄", testo: "Analisi dettagliata del tuo caso specifico" },
+                  { emoji: "📋", testo: "Documento PDF professionale da conservare" },
+                  { emoji: "📚", testo: "Riferimenti normativi e giurisprudenziali" },
+                  { emoji: "📩", testo: "Follow-up via email incluso" },
+                  { emoji: "✅", testo: "Rimborso garantito se non consegniamo in tempo" },
+                ].map((item) => (
+                  <li key={item.testo} className="flex items-start gap-3">
+                    <span className="text-lg leading-none mt-0.5 flex-shrink-0">{item.emoji}</span>
+                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{item.testo}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-6 space-y-1.5 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3">
-                <p className="font-body text-xs text-muted-foreground">
-                  Consulenza completa: <span className="text-primary font-semibold">€69</span>
-                </p>
-                <p className="font-body text-xs text-muted-foreground">
-                  Inizia oggi con soli <span className="text-primary font-semibold">€24</span>
-                </p>
-                <p className="font-body text-xs text-muted-foreground">
-                  Saldo di <span className="text-primary font-semibold">€45</span> solo dopo aver ricevuto la consulenza
-                </p>
+              <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €69</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €24</p>
+                <p className="font-body text-xs text-white/50">Saldo di €45 solo dopo aver ricevuto la consulenza</p>
               </div>
 
               <div className="mt-6">
@@ -590,29 +603,23 @@ const ConsulenzaGiuridica = () => {
 
               <ul className="mt-7 space-y-3">
                 {[
-                  "Dialogo diretto per chiarire ogni dubbio",
-                  "Prenotazione immediata su Calendly",
-                  "Flessibilita' di orario lun-ven 9:00-18:00",
-                  "Risposta immediata e interattiva",
-                  "Possibilita' di porre domande di approfondimento",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary mt-0.5" />
-                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{t}</span>
+                  { emoji: "🎙️", testo: "Dialogo diretto per chiarire ogni dubbio" },
+                  { emoji: "📅", testo: "Prenotazione immediata su Calendly" },
+                  { emoji: "🕐", testo: "Flessibilità di orario lun-ven 9:00-18:00" },
+                  { emoji: "⚡", testo: "Risposta immediata e interattiva" },
+                  { emoji: "💬", testo: "Possibilità di porre domande di approfondimento" },
+                ].map((item) => (
+                  <li key={item.testo} className="flex items-start gap-3">
+                    <span className="text-lg leading-none mt-0.5 flex-shrink-0">{item.emoji}</span>
+                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{item.testo}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-6 space-y-1.5 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3">
-                <p className="font-body text-xs text-muted-foreground">
-                  Consulenza completa: <span className="text-primary font-semibold">€49</span>
-                </p>
-                <p className="font-body text-xs text-muted-foreground">
-                  Inizia oggi con soli <span className="text-primary font-semibold">€14</span>
-                </p>
-                <p className="font-body text-xs text-muted-foreground">
-                  Saldo di <span className="text-primary font-semibold">€35</span> solo al termine della chiamata
-                </p>
+              <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €49</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €14</p>
+                <p className="font-body text-xs text-white/50">Saldo di €35 solo al termine della chiamata</p>
               </div>
 
               <div className="mt-6">
@@ -622,10 +629,54 @@ const ConsulenzaGiuridica = () => {
                   className="w-full font-body border border-primary/40"
                   onClick={() => callStripeCheckout("telefonica_acconto")}
                 >
-                  Prenota e Paga Acconto €14
+                  Prenota ora la chiamata
                 </Button>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 max-w-6xl mb-16">
+          <div className="rounded-2xl border border-yellow-500/25 bg-gradient-to-b from-card to-background p-7 md:p-10 shadow-[0_0_40px_-15px_rgba(184,142,67,0.15)]">
+            <p className="text-[hsl(40,55%,55%)] uppercase tracking-[0.2em] text-sm font-medium mb-8 flex items-center justify-center gap-3">
+              <span className="block w-8 h-px bg-[hsl(40,55%,55%)]"></span>
+              PERCHÉ SCEGLIERCI
+              <span className="block w-8 h-px bg-[hsl(40,55%,55%)]"></span>
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                {
+                  emoji: "🔒",
+                  titolo: "Pagamento sicuro",
+                  desc: "Stripe con carta, PayPal e Klarna. Nessun dato finanziario transita sui nostri server.",
+                },
+                {
+                  emoji: "⏱",
+                  titolo: "Risposta in 24 ore",
+                  desc: "Consegna del PDF garantita entro 24 ore dalla ricezione dell'acconto e dei documenti.",
+                },
+                {
+                  emoji: "📩",
+                  titolo: "Follow-up incluso",
+                  desc: "Hai diritto a chiedere chiarimenti via email sulla consulenza ricevuta, senza costi aggiuntivi.",
+                },
+                {
+                  emoji: "⚖️",
+                  titolo: "Professionisti del settore",
+                  desc: "Team di collaboratori notarili e avvocati specializzati.",
+                },
+              ].map((item) => (
+                <div key={item.titolo} className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xl leading-none">{item.emoji}</span>
+                  </div>
+                  <div>
+                    <p className="font-body text-sm font-semibold text-white/90 mb-1">{item.titolo}</p>
+                    <p className="font-body text-xs text-white/55 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
