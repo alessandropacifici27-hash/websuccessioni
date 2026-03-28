@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import emailjs from "@emailjs/browser";
-import { Phone, MessageCircle, Check } from "lucide-react";
+import { Phone, MessageCircle, Check, Send } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
@@ -24,6 +24,11 @@ type UploadcareFileGroupResolved = { files: () => UploadcareFile[] };
 type UploadcareFileGroup = { promise: () => Promise<UploadcareFileGroupResolved> };
 type UploadcareWidget = {
   onChange: (callback: (fileGroup: UploadcareFileGroup | null) => void) => void;
+};
+type UploadcareWidgetController = UploadcareWidget & {
+  openDialog?: () => void;
+  openPanel?: () => void;
+  open?: () => void;
 };
 
 declare global {
@@ -76,6 +81,7 @@ const LandingConsulenzaScritta = () => {
   const [accettoDisclaimer, setAccettoDisclaimer] = useState(false);
 
   const formRef = useRef<HTMLFormElement>(null);
+  const uploaderRef = useRef<UploadcareWidgetController | null>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -95,7 +101,8 @@ const LandingConsulenzaScritta = () => {
         const uc = window.uploadcare;
         if (!uc) return;
 
-        const widget = uc.Widget("[role~=uploadcare-uploader]");
+        const widget = uc.Widget("[role~=uploadcare-uploader]") as UploadcareWidgetController;
+        uploaderRef.current = widget;
         widget.onChange((fileGroup) => {
           if (!fileGroup) {
             setUploadedFiles([]);
@@ -121,6 +128,7 @@ const LandingConsulenzaScritta = () => {
 
     document.body.appendChild(script);
     return () => {
+      uploaderRef.current = null;
       document.body.removeChild(script);
     };
   }, []);
@@ -225,7 +233,7 @@ const LandingConsulenzaScritta = () => {
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag("event", "conversion", {
           send_to: "AW-18018460148/S1ScCOf3kI0cEPTD749D",
-          value: 70.0,
+          value: 69.0,
           currency: "EUR",
         });
       }
@@ -291,20 +299,24 @@ const LandingConsulenzaScritta = () => {
               Consulenza Giuridica Scritta Online
             </h1>
             <p className="text-base sm:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Ricevi un parere personalizzato in PDF entro 24 ore. Elaborato da un dottore in legge con la collaborazione di avvocati specializzati.
+              Ricevi un parere personalizzato in PDF entro 24 ore. Elaborato da un collaboratore notarile e la partecipazione di avvocati specializzati.
             </p>
           </section>
 
           {/* Trust bar */}
           <section className="max-w-5xl mx-auto mb-10">
-            <div className="grid sm:grid-cols-3 gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
               {[
-                "📄 Documento PDF personalizzato",
-                "⏱ Risposta entro 24 ore",
-                "✓ Rimborso garantito se non consegniamo",
-              ].map((t) => (
-                <div key={t} className="rounded-xl border border-yellow-500/20 bg-card/40 px-4 py-3 text-sm text-white/80">
-                  {t}
+                { emoji: "📄", testo: "Documento PDF personalizzato" },
+                { emoji: "⏱", testo: "Risposta entro 24 ore" },
+                { emoji: "✓", testo: "Rimborso garantito se non consegniamo" },
+              ].map((item) => (
+                <div
+                  key={item.testo}
+                  className="flex items-center gap-3 px-5 py-3 rounded-full border border-yellow-500/40 bg-gradient-to-r from-yellow-500/10 to-yellow-500/5 backdrop-blur-sm shadow-[0_0_20px_-8px_rgba(184,142,67,0.3)]"
+                >
+                  <span className="text-lg leading-none flex-shrink-0">{item.emoji}</span>
+                  <span className="font-body text-sm text-white/90 font-medium">{item.testo}</span>
                 </div>
               ))}
             </div>
@@ -314,14 +326,21 @@ const LandingConsulenzaScritta = () => {
           <section className="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-6 mb-10">
             <div className="rounded-2xl border border-yellow-500/20 bg-gradient-to-b from-card to-background p-6 sm:p-8 shadow-[0_0_60px_-15px_rgba(184,142,67,0.12)]">
               <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold">Prezzo</p>
-              <div className="mt-2 flex items-baseline gap-3 justify-center lg:justify-start">
-                <p className="font-display text-4xl sm:text-5xl font-bold text-[hsl(40_55%_55%)]">€70</p>
-                <p className="text-sm text-white/70">(€25 acconto + €45 saldo)</p>
+              <div className="mt-4 space-y-2">
+                <p className="font-body text-sm text-white/90 font-medium">
+                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€69</span>
+                </p>
+                <p className="font-body text-sm text-white/80">
+                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€24</span>
+                </p>
+                <p className="font-body text-sm text-white/80">
+                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€45</span> solo dopo aver ricevuto la consulenza
+                </p>
               </div>
               <div className="mt-6 grid gap-3">
                 {[
                   "1. Compila il form con i dettagli del tuo caso",
-                  "2. Paga l'acconto di €25 in modo sicuro",
+                  "2. Paga l'acconto di €24 in modo sicuro",
                   "3. Ricevi il PDF entro 24 ore. Saldi i restanti €45",
                 ].map((s) => (
                   <div key={s} className="flex items-start gap-3">
@@ -334,11 +353,26 @@ const LandingConsulenzaScritta = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-yellow-500/20 bg-card/40 p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold mb-3">Note</p>
-              <p className="text-sm text-white/80 leading-relaxed">
-                Questa pagina può essere raggiunta con parametri UTM dalle campagne ads. Se presenti, li includiamo nei parametri inviati via EmailJS.
-              </p>
+            <div className="rounded-2xl border border-yellow-500/25 bg-gradient-to-b from-card to-background p-6 sm:p-8 shadow-[0_0_40px_-15px_rgba(184,142,67,0.15)] flex flex-col gap-6">
+              <div>
+                <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold mb-4">Perché sceglierci</p>
+                <ul className="space-y-4">
+                  {[
+                    { icon: "🔒", titolo: "Pagamento sicuro", desc: "Stripe con carta, PayPal e Klarna. I tuoi dati sono protetti." },
+                    { icon: "⏱", titolo: "Risposta in 24 ore", desc: "Garantiamo la consegna del PDF entro 24 ore o rimborso completo." },
+                    { icon: "📩", titolo: "Follow-up incluso", desc: "Puoi chiedere chiarimenti via email sulla consulenza ricevuta." },
+                    { icon: "⚖️", titolo: "Professionisti del settore", desc: "Elaborata da un collaboratore notarile con avvocati specializzati." },
+                  ].map((item) => (
+                    <li key={item.titolo} className="flex items-start gap-3">
+                      <span className="text-xl leading-none mt-0.5 flex-shrink-0">{item.icon}</span>
+                      <div>
+                        <p className="font-body text-sm font-semibold text-white/90">{item.titolo}</p>
+                        <p className="font-body text-xs text-white/55 leading-relaxed mt-0.5">{item.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </section>
 
@@ -417,35 +451,71 @@ const LandingConsulenzaScritta = () => {
                 <label className="block text-[10px] font-semibold text-yellow-500/70 uppercase tracking-[0.25em] mb-2">
                   Carica documenti pertinenti (opzionale) — contratti, visure, atti notarili, etc.
                 </label>
-                <div
-                  className="mt-3 [&_.uc-widget-button]:!min-h-[40px] [&_.uc-widget-button]:!rounded-lg [&_.uc-widget-button]:!bg-primary/10 [&_.uc-widget-button]:!border [&_.uc-widget-button]:!border-primary/30 [&_.uc-widget-button]:!text-foreground [&_.uc-widget-button]:!font-body"
-                  role="uploadcare-uploader"
-                  data-public-key={UPLOADCARE_PUBLIC_KEY}
-                  data-multiple="true"
-                  data-locale="it"
-                />
+
+                <div className="relative">
+                  <div
+                    id="uc-trigger"
+                    className="hidden"
+                    role="uploadcare-uploader"
+                    data-public-key={UPLOADCARE_PUBLIC_KEY}
+                    data-multiple="true"
+                    data-locale="it"
+                  />
+                  <div
+                    onClick={() => uploaderRef.current?.openDialog?.() ?? uploaderRef.current?.openPanel?.() ?? uploaderRef.current?.open?.()}
+                    className="flex items-center gap-3 w-full cursor-pointer border border-primary/30 border-dashed rounded-lg px-4 py-4 bg-background/40 hover:bg-primary/5 hover:border-primary/50 transition-all duration-200 group"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-body text-sm text-foreground font-medium">Carica i tuoi documenti</p>
+                      <p className="font-body text-xs text-muted-foreground mt-0.5">Contratti, visure, atti notarili — opzionale</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {uploadedFiles.length > 0 && (
+                <ul className="space-y-2">
+                  {uploadedFiles.map((f, i) => (
+                    <li key={`${f.url}-${i}`} className="flex items-center justify-between gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 font-body text-sm text-foreground">
+                      <span className="truncate flex-1 min-w-0" title={f.name}>
+                        {f.name}
+                      </span>
+                      <span className="text-primary text-xs font-medium">Caricato</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
               <div className="rounded-xl border border-border/50 bg-secondary/40 p-5">
-                <label className="flex items-start gap-3 cursor-pointer">
+                <label className="flex items-start gap-3 cursor-pointer group">
                   <input
                     type="checkbox"
                     checked={accettoDisclaimer}
                     onChange={(e) => setAccettoDisclaimer(e.target.checked)}
-                    className="mt-1 accent-primary"
+                    className="sr-only"
                   />
+                  <div
+                    className={`w-5 h-5 rounded border flex items-center justify-center transition-colors shrink-0 cursor-pointer ${
+                      accettoDisclaimer ? "bg-yellow-500 border-yellow-500" : "bg-secondary border-border group-hover:border-yellow-500/50"
+                    }`}
+                  >
+                    {accettoDisclaimer && <span className="text-black text-[10px] font-bold leading-none">✓</span>}
+                  </div>
                   <span className="font-body text-xs text-muted-foreground leading-relaxed">
-                    Ho letto e accetto il disclaimer: consulenza informativa e documentale. Non sostituisce il parere di un avvocato iscritto all&apos;albo.
+                    Ho letto e accetto il disclaimer: questa consulenza è informativa e documentale e non costituisce parere legale ai sensi della L. 247/2012.
                   </span>
                 </label>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between pt-2 border-t border-border/60">
-                <p className="font-body text-sm text-muted-foreground">
-                  Pagamento acconto: <span className="text-primary font-semibold">€25</span>
-                </p>
+              <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between pt-2 border-t border-border/60">
                 <Button type="submit" variant="gold" size="lg" disabled={formSending || stripeLoading} className="font-body flex items-center gap-2 justify-center">
-                  {formSending ? "Invio in corso..." : "Invia e Paga Acconto €25"}
+                  <Send className="w-4 h-4" />
+                  {formSending ? "Invio in corso..." : "Invia Richiesta"}
                 </Button>
               </div>
 

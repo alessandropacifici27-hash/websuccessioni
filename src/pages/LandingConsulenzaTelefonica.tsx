@@ -121,7 +121,7 @@ const LandingConsulenzaTelefonica = () => {
                     Prenota la chiamata
                   </Button>
                   <p className="font-body text-xs text-white/70 leading-relaxed">
-                    Il saldo di €34 verrà richiesto al termine della chiamata tramite carta o bonifico (IBAN:{" "}
+                    Il saldo di €35 verrà richiesto al termine della chiamata tramite carta o bonifico (IBAN:{" "}
                     <span className="text-[hsl(40_55%_55%)]">{IBAN}</span>).
                   </p>
                 </div>
@@ -141,14 +141,18 @@ const LandingConsulenzaTelefonica = () => {
 
           {/* Trust bar */}
           <section className="max-w-5xl mx-auto mb-10">
-            <div className="grid sm:grid-cols-3 gap-3">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
               {[
-                "📞 Risposta immediata al telefono",
-                "⏱ Durata 20-30 minuti",
-                "✓ Scegli tu giorno e orario",
-              ].map((t) => (
-                <div key={t} className="rounded-xl border border-yellow-500/20 bg-card/40 px-4 py-3 text-sm text-white/80">
-                  {t}
+                { emoji: "📞", testo: "Risposta immediata al telefono" },
+                { emoji: "⏱", testo: "Durata 20-30 minuti" },
+                { emoji: "✓", testo: "Scegli tu giorno e orario" },
+              ].map((item) => (
+                <div
+                  key={item.testo}
+                  className="flex items-center gap-3 px-5 py-3 rounded-full border border-yellow-500/40 bg-gradient-to-r from-yellow-500/10 to-yellow-500/5 backdrop-blur-sm shadow-[0_0_20px_-8px_rgba(184,142,67,0.3)]"
+                >
+                  <span className="text-lg leading-none flex-shrink-0">{item.emoji}</span>
+                  <span className="font-body text-sm text-white/90 font-medium">{item.testo}</span>
                 </div>
               ))}
             </div>
@@ -158,16 +162,23 @@ const LandingConsulenzaTelefonica = () => {
           <section className="max-w-5xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-6">
             <div className="rounded-2xl border border-yellow-500/20 bg-gradient-to-b from-card to-background p-6 sm:p-8 shadow-[0_0_60px_-15px_rgba(184,142,67,0.12)]">
               <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold">Prezzo</p>
-              <div className="mt-2 flex items-baseline gap-3 justify-center lg:justify-start">
-                <p className="font-display text-4xl sm:text-5xl font-bold text-[hsl(40_55%_55%)]">€49</p>
-                <p className="text-sm text-white/70">(€15 acconto ora + €34 saldo dopo chiamata)</p>
+              <div className="mt-4 space-y-2">
+                <p className="font-body text-sm text-white/90 font-medium">
+                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€49</span>
+                </p>
+                <p className="font-body text-sm text-white/80">
+                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€14</span>
+                </p>
+                <p className="font-body text-sm text-white/80">
+                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€35</span> solo al termine della chiamata
+                </p>
               </div>
 
               <div className="mt-6 grid gap-3">
                 {[
-                  "1. Paga l'acconto di €15 in modo sicuro",
+                  "1. Paga l'acconto di €14 in modo sicuro",
                   "2. Scegli giorno e orario tramite calendario online",
-                  "3. Ricevi la chiamata. Paga €34 a fine consulenza",
+                  "3. Ricevi la chiamata. Paga €35 a fine consulenza",
                 ].map((s) => (
                   <div key={s} className="flex items-start gap-3">
                     <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/15 text-primary">
@@ -179,12 +190,24 @@ const LandingConsulenzaTelefonica = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-yellow-500/20 bg-card/40 p-6 sm:p-8 flex flex-col justify-between gap-6">
+            <div className="rounded-2xl border border-yellow-500/20 bg-card/40 p-6 sm:p-8 flex flex-col gap-6">
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold mb-2">Prenotazione</p>
                 <p className="text-sm text-white/80 leading-relaxed">
                   Premi il pulsante per avviare il pagamento dell&apos;acconto e prenotare la consulenza telefonica.
                 </p>
+              </div>
+              <div className="space-y-2">
+                {[
+                  "Scegli tu giorno e orario su Calendly",
+                  "Pagamento sicuro con Stripe — carta, PayPal, Klarna",
+                  "Saldo di €35 solo al termine della chiamata",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" aria-hidden />
+                    <p className="font-body text-sm text-white/70 leading-relaxed">{t}</p>
+                  </div>
+                ))}
               </div>
               <Button
                 variant="gold"
@@ -193,7 +216,7 @@ const LandingConsulenzaTelefonica = () => {
                 onClick={() => callStripeCheckout("telefonica_acconto")}
                 disabled={stripeLoading}
               >
-                Prenota Ora — Paga Acconto €15
+                Prenota ora la chiamata
               </Button>
             </div>
           </section>
