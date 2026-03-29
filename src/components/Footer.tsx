@@ -112,7 +112,7 @@ const Footer = () => {
           <div>
             <a href="#home" className="font-display text-2xl font-bold text-foreground tracking-wide">
               <span className="inline-flex rounded-full overflow-hidden">
-                <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain rounded-full" />
+                <img src={logo} alt="WebSuccessioni" width="56" height="56" className="h-14 w-auto object-contain rounded-full" />
               </span>
             </a>
             <p className="font-body text-muted-foreground text-sm mt-5 leading-relaxed hidden md:block">

@@ -140,7 +140,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto relative flex items-center justify-between h-14 md:h-16 px-4">
         <a href="/" className="flex items-center mr-6 rounded-full overflow-hidden shrink-0">
-          <img src={logo} alt="WebSuccessioni" className="h-14 w-auto object-contain brightness-150 rounded-full" />
+          <img src={logo} alt="WebSuccessioni" width="56" height="56" className="h-14 w-auto object-contain brightness-150 rounded-full" />
         </a>
         {/* Desktop nav links - centrati con absolute per bilanciamento indipendente da logo/CTA */}
         <div
