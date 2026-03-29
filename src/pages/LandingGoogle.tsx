@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 import { Phone, MessageCircle, Check } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Footer from "@/components/Footer";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const EMAILJS_SERVICE = "service_i1pju5e";
 const EMAILJS_TEMPLATE = "template_cffzon9";

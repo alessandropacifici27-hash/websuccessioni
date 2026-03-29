@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Phone, Mail, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const WHATSAPP_NUMBER = "393793511586";
 

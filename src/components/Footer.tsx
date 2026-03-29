@@ -1,6 +1,6 @@
 import { Phone, Mail } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import LandlineIcon from "@/components/LandlineIcon";
 
 const WHATSAPP_NUMBER = "393793511586";

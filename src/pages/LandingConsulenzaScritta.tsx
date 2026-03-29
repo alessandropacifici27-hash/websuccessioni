@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 type UploadFile = { name: string; url: string };
 
