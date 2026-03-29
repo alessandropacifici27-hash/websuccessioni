@@ -18,11 +18,14 @@ const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Parallax background */}
-      <div
-        className="absolute inset-0 w-full h-full bg-center bg-no-repeat bg-cover md:bg-fixed"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-        }}
+      <img
+        src={heroBg}
+        alt=""
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        aria-hidden="true"
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
