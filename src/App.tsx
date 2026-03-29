@@ -6,14 +6,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
-import LandingGoogle from "./pages/LandingGoogle";
-import LandingConsulenzaScritta from "./pages/LandingConsulenzaScritta";
-import LandingConsulenzaTelefonica from "./pages/LandingConsulenzaTelefonica";
 import CookieBanner from "./components/CookieBanner";
 import WhatsAppFab from "./components/WhatsAppFab";
 import ChatbotWidget from "./components/ChatbotWidget";
 
 // Lazy-loaded pages (code splitting)
+const LandingGoogle = lazy(() => import("./pages/LandingGoogle"));
+const LandingConsulenzaScritta = lazy(() => import("./pages/LandingConsulenzaScritta"));
+const LandingConsulenzaTelefonica = lazy(() => import("./pages/LandingConsulenzaTelefonica"));
 const Successione = lazy(() => import("./pages/Successione"));
 const ChiSiamo = lazy(() => import("./pages/ChiSiamo"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
