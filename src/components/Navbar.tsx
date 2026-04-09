@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
-  { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
+  { label: "Calcola scadenze e imposte", href: "/calcola-scadenze-e-imposte" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },
@@ -23,7 +23,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = window.location.pathname;
   const hash = window.location.hash;
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-le-tue-scadenze', '/inizia-pratica-online', '/guide'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-scadenze-e-imposte', '/inizia-pratica-online', '/guide'];
   const isSubpage = SUBPAGES.includes(pathname) || pathname.startsWith('/guide/');
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);

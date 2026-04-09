@@ -59,7 +59,7 @@ const footerNavLinks = [
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
-  { label: "Calcola le tue scadenze", href: "/calcola-le-tue-scadenze" },
+  { label: "Calcola scadenze e imposte", href: "/calcola-scadenze-e-imposte" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti-recapiti" },

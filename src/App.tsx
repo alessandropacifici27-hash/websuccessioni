@@ -78,8 +78,9 @@ const App = () => (
             <Route path="/successione" element={<Successione />} />
             <Route path="/chi-siamo" element={<ChiSiamo />} />
             <Route path="/faq" element={<FaqPage />} />
-            <Route path="/calcola-le-tue-scadenze" element={<StrumentiUtili />} />
-            <Route path="/strumenti-utili" element={<Navigate to="/calcola-le-tue-scadenze" replace />} />
+            <Route path="/calcola-scadenze-e-imposte" element={<StrumentiUtili />} />
+            <Route path="/calcola-le-tue-scadenze" element={<Navigate to="/calcola-scadenze-e-imposte" replace />} />
+            <Route path="/strumenti-utili" element={<Navigate to="/calcola-scadenze-e-imposte" replace />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/termini-servizio" element={<TerminiServizio />} />

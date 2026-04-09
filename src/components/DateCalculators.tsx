@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { Calendar, AlertTriangle, Clock, Users, Calculator, TreePine } from "lucide-react";
+import { useState, useRef, type ReactNode } from "react";
+import { Calendar, AlertTriangle, Clock, Users, TreePine } from "lucide-react";
 import { motion } from "framer-motion";
 import { format, addYears, addDays } from "date-fns";
 import { it } from "date-fns/locale";
@@ -18,40 +18,22 @@ const KINSHIP_DEGREES = [
   { relation: "Estraneo / Non parente", degree: "—", line: "—", taxRate: "8%", franchise: "Nessuna" },
 ];
 
-/* ─── Tax Calculator Logic ─── */
-const TAX_BRACKETS = [
-  { label: "Coniuge / Figlio", rate: 0.04, franchise: 1000000 },
-  { label: "Fratello / Sorella", rate: 0.06, franchise: 100000 },
-  { label: "Altro parente (entro 4° grado)", rate: 0.06, franchise: 0 },
-  { label: "Estraneo / Non parente", rate: 0.08, franchise: 0 },
-];
+type DateCalculatorsProps = {
+  suppressIntroHeading?: boolean;
+  insertAfterDeadlines?: ReactNode;
+};
 
-const DateCalculators = () => {
+const DateCalculators = ({ suppressIntroHeading, insertAfterDeadlines }: DateCalculatorsProps = {}) => {
   const deathDateRef = useRef<HTMLInputElement>(null);
   const submissionDateRef = useRef<HTMLInputElement>(null);
   const [deathDate, setDeathDate] = useState("");
   const [submissionDate, setSubmissionDate] = useState("");
   const [anteRiforma, setAnteRiforma] = useState(false);
 
-  // Tax calculator
-  const [inheritanceValue, setInheritanceValue] = useState("");
-  const [selectedBracket, setSelectedBracket] = useState(0);
-  const [disabilityExemption, setDisabilityExemption] = useState(false);
-
   const successionDeadline = deathDate ? addYears(new Date(deathDate), 1) : null;
   const paymentDeadline = submissionDate ? addDays(new Date(submissionDate), anteRiforma ? 60 : 90) : null;
 
   const formatDate = (d: Date) => format(d, "dd MMMM yyyy", { locale: it });
-
-  // Tax calculation
-  const bracket = TAX_BRACKETS[selectedBracket];
-  const valueNum = parseFloat(inheritanceValue) || 0;
-  const effectiveFranchise = disabilityExemption ? 1500000 : bracket.franchise;
-  const taxableAmount = Math.max(0, valueNum - effectiveFranchise);
-  const taxAmount = taxableAmount * bracket.rate;
-
-  const formatCurrency = (n: number) =>
-    new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
   const cardClass = "bg-background border border-border rounded-lg p-6 md:p-8 hover:border-primary/20 transition-colors duration-300";
 
@@ -177,94 +159,9 @@ const DateCalculators = () => {
             )}
           </motion.div>
 
-          {/* Calculator 3: Inheritance Tax Calculator */}
-          <motion.div
-            initial={{ opacity: 0, y: 6 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-120px" }}
-            transition={{ duration: 0.12, delay: 0.04 }}
-            className={cardClass}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Calculator className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground">Calcolo Imposte di Successione</h3>
-            </div>
-            <p className="font-body text-muted-foreground text-sm mb-6 leading-relaxed">
-              Stima le imposte di successione in base al valore dei beni ereditati e al grado di parentela con il defunto.
-            </p>
-
-            <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
-              Grado di Parentela
-            </label>
-            <select
-              value={selectedBracket}
-              onChange={(e) => setSelectedBracket(Number(e.target.value))}
-              className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring mb-4"
-            >
-              {TAX_BRACKETS.map((b, i) => (
-                <option key={i} value={i}>{b.label} — aliquota {(b.rate * 100)}%</option>
-              ))}
-            </select>
-
-            <label className="font-body text-xs font-medium text-foreground/70 mb-2 block uppercase tracking-wider">
-              Valore Beni Ereditati (€)
-            </label>
-            <input
-              type="number"
-              min="0"
-              step="1000"
-              value={inheritanceValue}
-              onChange={(e) => setInheritanceValue(e.target.value)}
-              placeholder="Es. 500000"
-              className="w-full h-11 rounded-md border border-input bg-secondary px-3 py-2 text-sm font-body text-foreground focus:outline-none focus:ring-2 focus:ring-ring mb-4"
-            />
-
-            <label className="flex items-center gap-3 cursor-pointer mb-2">
-              <input
-                type="checkbox"
-                checked={disabilityExemption}
-                onChange={(e) => setDisabilityExemption(e.target.checked)}
-                className="sr-only"
-              />
-              <span
-                className={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${
-                  disabilityExemption ? "bg-primary border-primary" : "bg-secondary border-border"
-                }`}
-              >
-                {disabilityExemption && <span className="font-body text-[10px] leading-none text-primary-foreground">✓</span>}
-              </span>
-              <span className="font-body text-sm text-foreground/80">Erede con disabilità grave (franchigia 1.500.000 €)</span>
-            </label>
-
-            {valueNum > 0 && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-4 p-5 rounded-lg border border-primary/20 bg-primary/5 space-y-2">
-                <div className="flex justify-between font-body text-sm">
-                  <span className="text-muted-foreground">Valore beni:</span>
-                  <span className="text-foreground font-medium">{formatCurrency(valueNum)}</span>
-                </div>
-                <div className="flex justify-between font-body text-sm">
-                  <span className="text-muted-foreground">Franchigia:</span>
-                  <span className="text-foreground font-medium">{formatCurrency(effectiveFranchise)}</span>
-                </div>
-                <div className="flex justify-between font-body text-sm">
-                  <span className="text-muted-foreground">Imponibile:</span>
-                  <span className="text-foreground font-medium">{formatCurrency(taxableAmount)}</span>
-                </div>
-                <div className="border-t border-border pt-2 flex justify-between">
-                  <span className="font-body text-sm text-primary font-medium">Imposta stimata:</span>
-                  <span className="font-display text-xl font-bold text-foreground">{formatCurrency(taxAmount)}</span>
-                </div>
-                <div className="flex items-start gap-2 mt-2">
-                  <AlertTriangle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                  <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                    Calcolo indicativo. Le imposte ipotecarie e catastali (2% + 1% sul valore degli immobili) sono escluse da questa stima.
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
+          {insertAfterDeadlines && (
+            <div className="md:col-span-2 w-full max-w-full min-w-0">{insertAfterDeadlines}</div>
+          )}
 
           {/* Tool 4: Kinship Degrees Table */}
           <motion.div
