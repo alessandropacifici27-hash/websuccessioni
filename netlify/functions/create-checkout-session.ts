@@ -63,10 +63,10 @@ const handler: Handler = async (event) => {
     const type = requestBody?.type as CheckoutType | undefined;
 
     const prices: Record<CheckoutType, number> = {
-      telefonica_acconto: 1400, // €14.00
-      telefonica_saldo: 3500, // €35.00
-      scritta_acconto: 2400, // €24.00
-      scritta_saldo: 4500, // €45.00
+      telefonica_acconto: 3900, // €39.00
+      telefonica_saldo: 8000, // €80.00
+      scritta_acconto: 4900, // €49.00
+      scritta_saldo: 10000, // €100.00
     };
 
     const labels: Record<CheckoutType, string> = {

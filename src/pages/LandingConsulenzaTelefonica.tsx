@@ -121,7 +121,7 @@ const LandingConsulenzaTelefonica = () => {
                     Prenota la chiamata
                   </Button>
                   <p className="font-body text-xs text-white/70 leading-relaxed">
-                    Il saldo di €35 verrà richiesto al termine della chiamata tramite carta o bonifico (IBAN:{" "}
+                    Il saldo di €80 verrà richiesto al termine della chiamata tramite carta o bonifico (IBAN:{" "}
                     <span className="text-[hsl(40_55%_55%)]">{IBAN}</span>).
                   </p>
                 </div>
@@ -164,21 +164,21 @@ const LandingConsulenzaTelefonica = () => {
               <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold">Prezzo</p>
               <div className="mt-4 space-y-2">
                 <p className="font-body text-sm text-white/90 font-medium">
-                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€49</span>
+                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€119</span>
                 </p>
                 <p className="font-body text-sm text-white/80">
-                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€14</span>
+                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€39</span>
                 </p>
                 <p className="font-body text-sm text-white/80">
-                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€35</span> solo al termine della chiamata
+                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€80</span> solo al termine della chiamata
                 </p>
               </div>
 
               <div className="mt-6 grid gap-3">
                 {[
-                  "1. Paga l'acconto di €14 in modo sicuro",
+                  "1. Paga l'acconto di €39 in modo sicuro",
                   "2. Scegli giorno e orario tramite calendario online",
-                  "3. Ricevi la chiamata. Paga €35 a fine consulenza",
+                  "3. Ricevi la chiamata. Paga €80 a fine consulenza",
                 ].map((s) => (
                   <div key={s} className="flex items-start gap-3">
                     <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/15 text-primary">
@@ -201,7 +201,7 @@ const LandingConsulenzaTelefonica = () => {
                 {[
                   "Scegli tu giorno e orario su Calendly",
                   "Pagamento sicuro con Stripe — carta, PayPal, Klarna",
-                  "Saldo di €35 solo al termine della chiamata",
+                  "Saldo di €80 solo al termine della chiamata",
                 ].map((t) => (
                   <div key={t} className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" aria-hidden />

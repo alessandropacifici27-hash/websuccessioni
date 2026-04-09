@@ -233,7 +233,7 @@ const LandingConsulenzaScritta = () => {
       if (typeof window !== "undefined" && window.gtag) {
         window.gtag("event", "conversion", {
           send_to: "AW-18018460148/S1ScCOf3kI0cEPTD749D",
-          value: 69.0,
+          value: 149.0,
           currency: "EUR",
         });
       }
@@ -328,20 +328,20 @@ const LandingConsulenzaScritta = () => {
               <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold">Prezzo</p>
               <div className="mt-4 space-y-2">
                 <p className="font-body text-sm text-white/90 font-medium">
-                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€69</span>
+                  Consulenza completa: <span className="text-[hsl(40_55%_55%)] font-semibold">€149</span>
                 </p>
                 <p className="font-body text-sm text-white/80">
-                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€24</span>
+                  Inizia oggi con soli <span className="text-[hsl(40_55%_55%)] font-semibold">€49</span>
                 </p>
                 <p className="font-body text-sm text-white/80">
-                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€45</span> solo dopo aver ricevuto la consulenza
+                  Saldo di <span className="text-[hsl(40_55%_55%)] font-semibold">€100</span> solo dopo aver ricevuto la consulenza
                 </p>
               </div>
               <div className="mt-6 grid gap-3">
                 {[
                   "1. Compila il form con i dettagli del tuo caso",
-                  "2. Paga l'acconto di €24 in modo sicuro",
-                  "3. Ricevi il PDF entro 24 ore. Saldi i restanti €45",
+                  "2. Paga l'acconto di €49 in modo sicuro",
+                  "3. Ricevi il PDF entro 24 ore. Saldi i restanti €100",
                 ].map((s) => (
                   <div key={s} className="flex items-start gap-3">
                     <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/15 text-primary">

@@ -275,7 +275,7 @@ const ConsulenzaGiuridica = () => {
     },
     {
       q: "Come funziona il pagamento in due rate?",
-      a: "Per la consulenza scritta: Consulenza completa €69; inizi con €24; saldo di €45 solo dopo aver ricevuto la consulenza (prima della consegna del PDF). Per la consulenza telefonica: Consulenza completa €49; inizi con €14; saldo di €35 solo al termine della chiamata (carta o bonifico).",
+      a: "Per la consulenza scritta: Consulenza completa €149; inizi con €49; saldo di €100 solo dopo aver ricevuto la consulenza (prima della consegna del PDF). Per la consulenza telefonica: Consulenza completa €119; inizi con €39; saldo di €80 solo al termine della chiamata (carta o bonifico).",
     },
     {
       q: "Quali metodi di pagamento accettate?",
@@ -324,7 +324,7 @@ const ConsulenzaGiuridica = () => {
                       Prenota la chiamata
                     </Button>
                     <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                      Saldo di €35 solo al termine della chiamata — tramite carta o bonifico bancario (IBAN:{" "}
+                      Saldo di €80 solo al termine della chiamata — tramite carta o bonifico bancario (IBAN:{" "}
                       <span className="text-primary">{IBAN}</span>).
                     </p>
                   </div>
@@ -337,7 +337,7 @@ const ConsulenzaGiuridica = () => {
                     Acconto ricevuto.
                   </h2>
                   <p className="font-body text-muted-foreground text-sm leading-relaxed">
-                    Puoi ora inviare il tuo caso compilando il form qui sotto. Riceverai la consulenza in PDF entro 24 ore. Saldo di €45 solo dopo aver
+                    Puoi ora inviare il tuo caso compilando il form qui sotto. Riceverai la consulenza in PDF entro 24 ore. Saldo di €100 solo dopo aver
                     ricevuto la consulenza, prima della consegna del documento.
                   </p>
                 </div>
@@ -575,9 +575,9 @@ const ConsulenzaGiuridica = () => {
               </ul>
 
               <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
-                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €69</p>
-                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €24</p>
-                <p className="font-body text-xs text-white/50">Saldo di €45 solo dopo aver ricevuto la consulenza</p>
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €149</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €49</p>
+                <p className="font-body text-xs text-white/50">Saldo di €100 solo dopo aver ricevuto la consulenza</p>
               </div>
 
               <div className="mt-6">
@@ -617,9 +617,9 @@ const ConsulenzaGiuridica = () => {
               </ul>
 
               <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
-                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €49</p>
-                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €14</p>
-                <p className="font-body text-xs text-white/50">Saldo di €35 solo al termine della chiamata</p>
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €119</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €39</p>
+                <p className="font-body text-xs text-white/50">Saldo di €80 solo al termine della chiamata</p>
               </div>
 
               <div className="mt-6">
@@ -857,7 +857,7 @@ const ConsulenzaGiuridica = () => {
               </div>
 
               <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                Consulenza completa €69. Dopo l&apos;invio verrai reindirizzato al pagamento dell&apos;acconto di €24 tramite Stripe per confermare la richiesta.
+                Consulenza completa €149. Dopo l&apos;invio verrai reindirizzato al pagamento dell&apos;acconto di €49 tramite Stripe per confermare la richiesta.
               </p>
             </div>
           </form>
@@ -870,7 +870,7 @@ const ConsulenzaGiuridica = () => {
               <div>
                 <h2 className="font-display text-2xl font-semibold text-foreground mb-2">Saldo consulenza scritta</h2>
                 <p className="font-body text-muted-foreground text-xs md:text-sm leading-relaxed">
-                  Saldo di €45 solo dopo aver ricevuto la consulenza: quando ti comunichiamo che il PDF è pronto, procedi con il pagamento per ricevere il documento.
+                  Saldo di €100 solo dopo aver ricevuto la consulenza: quando ti comunichiamo che il PDF è pronto, procedi con il pagamento per ricevere il documento.
                 </p>
               </div>
 
@@ -882,7 +882,7 @@ const ConsulenzaGiuridica = () => {
                   onClick={() => callStripeCheckout("scritta_saldo")}
                   disabled={stripeLoading || formSending}
                 >
-                  Paga saldo €45
+                  Paga saldo €100
                 </Button>
 
                 <p className="font-body text-[11px] text-muted-foreground leading-relaxed">
