@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.webp";
 
@@ -513,7 +514,13 @@ const LandingConsulenzaScritta = () => {
               </div>
 
               <div className="flex flex-col md:flex-row gap-3 md:items-center md:justify-between pt-2 border-t border-border/60">
-                <Button type="submit" variant="gold" size="lg" disabled={formSending || stripeLoading} className="font-body flex items-center gap-2 justify-center">
+                <Button
+                  type="submit"
+                  variant="gold"
+                  size="lg"
+                  disabled={formSending || stripeLoading}
+                  className="rounded-full py-4 px-10 font-body flex items-center gap-2 justify-center"
+                >
                   <Send className="w-4 h-4" />
                   {formSending ? "Invio in corso..." : "Invia Richiesta"}
                 </Button>
@@ -523,6 +530,72 @@ const LandingConsulenzaScritta = () => {
                 Consulenza informativa e documentale. Non sostituisce il parere di un avvocato iscritto all&apos;albo.
               </p>
             </form>
+          </section>
+
+          {/* FAQ */}
+          <section className="max-w-5xl mx-auto mt-14 sm:mt-16">
+            <div className="text-center mb-8">
+              <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold flex items-center justify-center gap-3">
+                <span className="block w-8 h-px bg-yellow-500/40" />
+                — DOMANDE FREQUENTI —
+                <span className="block w-8 h-px bg-yellow-500/40" />
+              </p>
+              <h2 className="font-display text-2xl sm:text-3xl text-white">
+                Tutto quello che devi sapere sulla consulenza scritta
+              </h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "Quanto tempo ci vuole per ricevere la risposta scritta?",
+                  a: "Riceverai la tua consulenza scritta entro 48-72 ore lavorative dalla ricezione di tutti i documenti necessari. In caso di situazioni particolarmente complesse ti avviseremo tempestivamente se dovesse essere necessario più tempo.",
+                },
+                {
+                  q: "La consulenza scritta vale come parere legale?",
+                  a: "La consulenza scritta di WebSuccessioni è un servizio di consulenza informativa e documentale, non un parere legale ai sensi della L. 247/2012. È fornita da un dottore in legge e collaboratore notarile e ti fornisce tutte le informazioni pratiche e operative per gestire correttamente la tua dichiarazione di successione.",
+                },
+                {
+                  q: "Cosa ricevo esattamente con la consulenza scritta?",
+                  a: "Ricevi una risposta scritta dettagliata e personalizzata alla tua situazione specifica, inviata via email. La risposta include l'analisi della tua situazione, i passi operativi da seguire, i documenti necessari e le scadenze da rispettare.",
+                },
+                {
+                  q: "Posso fare domande di approfondimento dopo aver ricevuto la risposta?",
+                  a: "Sì. Entro 7 giorni dal ricevimento della consulenza puoi inviare fino a 2 domande di chiarimento strettamente legate alla risposta ricevuta, senza costi aggiuntivi.",
+                },
+                {
+                  q: "Come avviene il pagamento?",
+                  a: "Il pagamento avviene in due fasi: un acconto di €49 per avviare il servizio, e il saldo di €100 solo dopo aver ricevuto la tua consulenza e verificato che risponda alla tua domanda. Pagamento sicuro tramite Stripe (carta, PayPal, Klarna, Apple Pay, Google Pay).",
+                },
+                {
+                  q: "I miei dati sono al sicuro?",
+                  a: "Sì. Trattiamo tutti i dati personali in conformità al GDPR (Regolamento Europeo sulla Protezione dei Dati). I documenti che ci invii sono utilizzati esclusivamente per erogare il servizio e non vengono condivisi con terzi.",
+                },
+                {
+                  q: "È possibile richiedere un rimborso?",
+                  a: "Se la consulenza non risponde alla domanda che hai posto, ti rimborsamo l'acconto versato. Contattaci entro 48 ore dal ricevimento della risposta.",
+                },
+              ].map((faq, idx) => (
+                <AccordionItem
+                  key={faq.q}
+                  value={`faq-${idx}`}
+                  className="group border border-yellow-500/20 rounded-xl bg-card/40 px-5 sm:px-7"
+                >
+                  <AccordionTrigger className="font-display text-left text-base sm:text-lg text-white hover:no-underline py-5">
+                    <span className="flex items-center gap-4 w-full">
+                      <span className="flex-1">{faq.q}</span>
+                      <span className="text-[hsl(40_55%_55%)] text-xl leading-none">
+                        <span className="group-data-[state=open]:hidden">+</span>
+                        <span className="hidden group-data-[state=open]:inline">−</span>
+                      </span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="font-body text-white/70 text-sm sm:text-[0.95rem] leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </section>
         </main>
 

@@ -67,19 +67,34 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-2.5 md:gap-3 justify-center"
         >
-          <Button variant="heroOutline" size="default" className="md:h-10 md:px-6 md:text-[0.7rem] h-9 px-5 text-[0.65rem]" asChild>
+          <Button
+            variant="heroOutline"
+            size="default"
+            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            asChild
+          >
             <a href={`tel:${PHONE_NUMBER}`}>
               <Phone className="w-3.5 h-3.5" />
               Chiamaci Ora
             </a>
           </Button>
-          <Button variant="heroOutline" size="default" className="md:h-10 md:px-6 md:text-[0.7rem] h-9 px-5 text-[0.65rem]" asChild>
+          <Button
+            variant="heroOutline"
+            size="default"
+            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            asChild
+          >
             <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Salve,%20vorrei%20richiedere%20un%20preventivo%20gratuito%20per%20una%20dichiarazione%20di%20successione.`} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon />
               Scrivici su WhatsApp
             </a>
           </Button>
-          <Button variant="heroOutline" size="default" className="md:h-10 md:px-6 md:text-[0.7rem] h-9 px-5 text-[0.65rem]" asChild>
+          <Button
+            variant="heroOutline"
+            size="default"
+            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            asChild
+          >
             <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>
               <Mail className="w-3.5 h-3.5" />
               Scrivici per Email
@@ -97,7 +112,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="sm"
-            className="transform scale-95 opacity-90 border border-yellow-500/50 text-xs md:text-[0.7rem] h-9 px-6 md:h-9 md:px-7"
+            className="transform scale-95 opacity-90 border border-yellow-500/50 rounded-full py-3 px-10 text-xs md:text-[0.7rem] transition-all duration-200"
             asChild
           >
             <Link to="/inizia-pratica-online">

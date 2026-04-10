@@ -20,7 +20,7 @@ const TelegramSvg = () => (
 const socialLinks = [
   { label: "WhatsApp", href: `https://wa.me/${WHATSAPP_NUMBER}`, icon: "whatsapp" },
   { label: "Instagram", href: "https://instagram.com/websuccessioni", icon: "instagram" },
-  { label: "Facebook", href: "https://facebook.com/websuccessioni", icon: "facebook" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61575865420400", icon: "facebook" },
   { label: "TikTok", href: "https://tiktok.com/@websuccessioni", icon: "tiktok" },
   { label: "Telegram", href: "https://t.me/websuccessioni", icon: "telegram" },
 ];

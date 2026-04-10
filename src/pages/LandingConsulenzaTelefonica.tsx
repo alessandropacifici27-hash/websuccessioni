@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import logo from "@/assets/logo.webp";
 
@@ -212,13 +213,79 @@ const LandingConsulenzaTelefonica = () => {
               <Button
                 variant="gold"
                 size="lg"
-                className="w-full font-body h-12"
+                className="w-full font-body rounded-full py-4 px-10"
                 onClick={() => callStripeCheckout("telefonica_acconto")}
                 disabled={stripeLoading}
               >
                 Prenota ora la chiamata
               </Button>
             </div>
+          </section>
+
+          {/* FAQ */}
+          <section className="max-w-5xl mx-auto mt-14 sm:mt-16">
+            <div className="text-center mb-8">
+              <p className="text-xs uppercase tracking-[0.25em] text-yellow-500/70 font-semibold flex items-center justify-center gap-3">
+                <span className="block w-8 h-px bg-yellow-500/40" />
+                — DOMANDE FREQUENTI —
+                <span className="block w-8 h-px bg-yellow-500/40" />
+              </p>
+              <h2 className="font-display text-2xl sm:text-3xl text-white">
+                Tutto quello che devi sapere sulla consulenza telefonica
+              </h2>
+            </div>
+
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "Come funziona la consulenza telefonica?",
+                  a: "Dopo il pagamento dell'acconto, ti contatteremo entro 24 ore lavorative per concordare giorno e orario della chiamata, dal lunedì al sabato dalle 9:00 alle 18:00. La chiamata avviene tramite telefono o videochiamate (WhatsApp, Google Meet — a tua scelta).",
+                },
+                {
+                  q: "Quanto dura la chiamata?",
+                  a: "La chiamata non ha una durata prestabilita — dura il tempo necessario per rispondere alla tua situazione specifica. Mediamente le sessioni si concludono in 30-45 minuti.",
+                },
+                {
+                  q: "Chi mi risponde durante la chiamata?",
+                  a: "Alessandro Pacifici, dottore in legge e collaboratore notarile con esperienza specifica in diritto successorio. Non un call center, non un assistente — direttamente l'esperto.",
+                },
+                {
+                  q: "La consulenza telefonica vale come parere legale?",
+                  a: "La consulenza telefonica di WebSuccessioni è un servizio di consulenza informativa e documentale, non un parere legale ai sensi della L. 247/2012. Ti fornisce tutte le informazioni pratiche e operative per gestire la tua situazione.",
+                },
+                {
+                  q: "Cosa succede se non riesco a rispondere alla chiamata?",
+                  a: "Nessun problema. Concordiamo sempre in anticipo giorno e orario via email o WhatsApp. Se per qualsiasi motivo non riesci a rispondere, riprogrammiamo senza costi aggiuntivi.",
+                },
+                {
+                  q: "Come avviene il pagamento?",
+                  a: "Paghi un acconto di €39 per prenotare la tua chiamata. Il saldo di €80 viene richiesto solo dopo la chiamata, quando hai ricevuto la consulenza completa. Pagamento sicuro tramite Stripe.",
+                },
+                {
+                  q: "Posso ricevere un riepilogo scritto dopo la chiamata?",
+                  a: "Su richiesta, a fine chiamata inviamo un breve riepilogo via email con i punti principali discussi e i passi operativi da seguire. Incluso nel prezzo.",
+                },
+              ].map((faq, idx) => (
+                <AccordionItem
+                  key={faq.q}
+                  value={`faq-${idx}`}
+                  className="group border border-yellow-500/20 rounded-xl bg-card/40 px-5 sm:px-7"
+                >
+                  <AccordionTrigger className="font-display text-left text-base sm:text-lg text-white hover:no-underline py-5">
+                    <span className="flex items-center gap-4 w-full">
+                      <span className="flex-1">{faq.q}</span>
+                      <span className="text-[hsl(40_55%_55%)] text-xl leading-none">
+                        <span className="group-data-[state=open]:hidden">+</span>
+                        <span className="hidden group-data-[state=open]:inline">−</span>
+                      </span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="font-body text-white/70 text-sm sm:text-[0.95rem] leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </section>
         </main>
 
