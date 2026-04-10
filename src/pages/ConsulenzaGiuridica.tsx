@@ -398,7 +398,7 @@ const ConsulenzaGiuridica = () => {
         </section>
 
         <section className="container mx-auto px-4 max-w-5xl mb-16">
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 items-center">
             {[
               { emoji: "⚖️", testo: "Elaborata da un collaboratore notarile" },
               { emoji: "⏱", testo: "Risposta scritta entro 24 ore" },
