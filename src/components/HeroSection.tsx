@@ -70,7 +70,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-4 sm:px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`tel:${PHONE_NUMBER}`}>
@@ -81,7 +81,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-4 sm:px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Salve,%20vorrei%20richiedere%20un%20preventivo%20gratuito%20per%20una%20dichiarazione%20di%20successione.`} target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-4 sm:px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>

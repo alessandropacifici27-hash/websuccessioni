@@ -122,15 +122,30 @@ const Footer = () => {
             <div className="flex gap-3 mt-6">
               {socialLinks.map((s) => (
                 <div key={s.label} className="relative group">
+                  {(() => {
+                    const isComingSoon = s.icon === "instagram" || s.icon === "tiktok";
+                    return (
                   <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.icon === "facebook" ? "Seguici su Facebook" : s.label}
-                    className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300"
+                    href={isComingSoon ? "#" : s.href}
+                    target={isComingSoon ? undefined : "_blank"}
+                    rel={isComingSoon ? undefined : "noopener noreferrer"}
+                    title={isComingSoon ? "Profilo in allestimento" : undefined}
+                    onClick={isComingSoon ? (e) => e.preventDefault() : undefined}
+                    aria-label={
+                      s.icon === "facebook"
+                        ? "Seguici su Facebook"
+                        : isComingSoon
+                          ? `${s.label} - profilo in allestimento`
+                          : s.label
+                    }
+                    className={`w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300 ${
+                      isComingSoon ? "cursor-not-allowed" : ""
+                    }`}
                   >
                     <SocialIcon icon={s.icon} />
                   </a>
+                    );
+                  })()}
                 </div>
               ))}
             </div>

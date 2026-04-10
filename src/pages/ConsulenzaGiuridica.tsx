@@ -376,7 +376,7 @@ const ConsulenzaGiuridica = () => {
                 <Button
                   variant="gold"
                   size="lg"
-                  className="rounded-full py-3 px-8 min-w-[260px] font-body font-medium transition-all duration-200"
+                  className="rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-semibold text-base py-4 px-10 shadow-lg shadow-yellow-500/30 hover:shadow-yellow-500/50 hover:scale-105 transition-all duration-200 w-full sm:w-auto min-w-[200px]"
                   onClick={() => scrollToSection("form-consulenza")}
                 >
                   Consulenza Scritta
@@ -387,7 +387,7 @@ const ConsulenzaGiuridica = () => {
                 <Button
                   variant="heroOutline"
                   size="lg"
-                  className="rounded-full py-3 px-8 min-w-[260px] font-body font-medium border border-primary/40 transition-all duration-200"
+                  className="rounded-full bg-gradient-to-r from-yellow-600 to-yellow-400 text-black font-semibold text-base py-4 px-10 shadow-lg shadow-yellow-500/30 hover:shadow-yellow-500/50 hover:scale-105 transition-all duration-200 w-full sm:w-auto min-w-[200px]"
                   onClick={() => scrollToSection("card-telefonica")}
                 >
                   Consulenza Telefonica
