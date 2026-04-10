@@ -407,7 +407,7 @@ const ConsulenzaGiuridica = () => {
             ].map((item) => (
               <div
                 key={item.testo}
-                className="flex items-center gap-2 py-1 px-3 rounded-full border border-white/10 bg-white/5"
+                className="flex items-center gap-2 rounded-full sm:py-1 sm:px-3 sm:border sm:border-white/10 sm:bg-white/5"
               >
                 <span className="text-lg leading-none flex-shrink-0">{item.emoji}</span>
                 <span className="font-body text-xs text-gray-400 font-medium whitespace-nowrap">{item.testo}</span>
