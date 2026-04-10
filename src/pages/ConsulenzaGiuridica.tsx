@@ -371,9 +371,14 @@ const ConsulenzaGiuridica = () => {
               redatti su misura e risposte concrete - non risposte generiche.
             </p>
 
-            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 mt-10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-3 mt-10">
               <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
-                <Button variant="gold" size="lg" className="h-12 w-full md:w-auto font-body" onClick={() => scrollToSection("form-consulenza")}>
+                <Button
+                  variant="gold"
+                  size="lg"
+                  className="rounded-full py-3 px-8 min-w-[260px] font-body font-medium transition-all duration-200"
+                  onClick={() => scrollToSection("form-consulenza")}
+                >
                   Consulenza Scritta
                 </Button>
               </motion.div>
@@ -382,7 +387,7 @@ const ConsulenzaGiuridica = () => {
                 <Button
                   variant="heroOutline"
                   size="lg"
-                  className="h-12 w-full md:w-auto font-body border border-primary/40"
+                  className="rounded-full py-3 px-8 min-w-[260px] font-body font-medium border border-primary/40 transition-all duration-200"
                   onClick={() => scrollToSection("card-telefonica")}
                 >
                   Consulenza Telefonica
@@ -580,8 +585,13 @@ const ConsulenzaGiuridica = () => {
                 <p className="font-body text-xs text-white/50">Saldo di €100 solo dopo aver ricevuto la consulenza</p>
               </div>
 
-              <div className="mt-6">
-                <Button variant="gold" size="lg" className="w-full font-body" onClick={() => scrollToSection("form-consulenza")}>
+              <div className="mt-6 flex justify-center">
+                <Button
+                  variant="gold"
+                  size="lg"
+                  className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold transition-all duration-200"
+                  onClick={() => scrollToSection("form-consulenza")}
+                >
                   Richiedi Consulenza Scritta
                 </Button>
               </div>
@@ -599,7 +609,7 @@ const ConsulenzaGiuridica = () => {
                 <Phone className="w-5 h-5 text-primary" />
               </div>
               <h3 className="font-display text-3xl font-semibold text-foreground">Consulenza Telefonica</h3>
-              <p className="font-body text-muted-foreground text-sm mt-2">Chiamata diretta con un esperto (20-30 min)</p>
+              <p className="font-body text-muted-foreground text-sm mt-2">Chiamata diretta con un esperto</p>
 
               <ul className="mt-7 space-y-3">
                 {[
@@ -622,11 +632,11 @@ const ConsulenzaGiuridica = () => {
                 <p className="font-body text-xs text-white/50">Saldo di €80 solo al termine della chiamata</p>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-6 flex justify-center">
                 <Button
                   variant="heroOutline"
                   size="lg"
-                  className="w-full font-body border border-primary/40"
+                  className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold border border-primary/40 transition-all duration-200"
                   onClick={() => callStripeCheckout("telefonica_acconto")}
                 >
                   Prenota ora la chiamata

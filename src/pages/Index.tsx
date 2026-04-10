@@ -51,6 +51,9 @@ const Index = () => {
             <h2 className="font-display text-4xl font-bold text-foreground text-center mb-3">
               Consulenza <span className="text-gradient-gold italic">Gratuita</span>
             </h2>
+            <p className="font-body text-sm text-muted-foreground text-center mb-3">
+              per la pratica successoria
+            </p>
             <p className="font-body text-muted-foreground text-center mb-10">
               Raccontaci la tua situazione. Un nostro esperto ti ricontatterà entro 24 ore.
             </p>
