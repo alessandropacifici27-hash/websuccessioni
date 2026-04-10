@@ -555,34 +555,45 @@ const ConsulenzaGiuridica = () => {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.25 }}
-              className="bg-card border border-primary/25 rounded-2xl p-7 md:p-9"
+              transition={{ duration: 0.25, delay: 0.12 }}
+              className="relative bg-card bg-gradient-to-b from-yellow-950/20 to-transparent border border-yellow-500/35 rounded-2xl p-7 md:p-9 shadow-lg shadow-yellow-500/10"
             >
-              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                <FileText className="w-5 h-5 text-primary" />
-              </div>
-              <h3 className="font-display text-3xl font-semibold text-foreground">Consulenza Scritta</h3>
-              <p className="font-body text-muted-foreground text-sm mt-2">Risposta approfondita via PDF entro 24 ore</p>
+              <span className="absolute top-3 right-3 text-xs uppercase tracking-widest text-yellow-500/70 font-medium">
+                PREMIUM
+              </span>
+
+              <p className="text-[hsl(40,55%,55%)] uppercase tracking-[0.2em] text-xs font-medium mb-4 flex items-center gap-3">
+                <span className="block w-8 h-px bg-[hsl(40,55%,55%)]" />
+                — Servizio Completo —
+                <span className="block w-8 h-px bg-[hsl(40,55%,55%)]" />
+              </p>
+
+              <h3 className="font-display text-3xl font-semibold text-foreground">Assistenza Premium Mensile</h3>
+              <p className="font-body text-muted-foreground text-sm mt-2 leading-relaxed">
+                Supporto completo per un mese intero. Consulenza telefonica e scritta senza limiti, assistenza nella raccolta documenti, analisi approfondita
+                della tua situazione e indicazione della migliore strategia operativa per il tuo caso.
+              </p>
 
               <ul className="mt-7 space-y-3">
                 {[
-                  { emoji: "📄", testo: "Analisi dettagliata del tuo caso specifico" },
-                  { emoji: "📋", testo: "Documento PDF professionale da conservare" },
-                  { emoji: "📚", testo: "Riferimenti normativi e giurisprudenziali" },
-                  { emoji: "📩", testo: "Follow-up via email incluso" },
-                  { emoji: "✅", testo: "Rimborso garantito se non consegniamo in tempo" },
-                ].map((item) => (
-                  <li key={item.testo} className="flex items-start gap-3">
-                    <span className="text-lg leading-none mt-0.5 flex-shrink-0">{item.emoji}</span>
-                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{item.testo}</span>
+                  "Consulenza telefonica illimitata per 30 giorni",
+                  "Consulenza scritta illimitata per 30 giorni",
+                  "Assistenza completa nella raccolta documenti",
+                  "Analisi della situazione ereditaria",
+                  "Strategia operativa personalizzata",
+                  "Supporto WhatsApp ed email prioritario",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{t}</span>
                   </li>
                 ))}
               </ul>
 
               <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
-                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €149</p>
-                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €49</p>
-                <p className="font-body text-xs text-white/50">Saldo di €100 solo dopo aver ricevuto la consulenza</p>
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €499</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €99</p>
+                <p className="font-body text-xs text-white/50">Saldo €399 solo dopo la prima sessione</p>
               </div>
 
               <div className="mt-6 flex justify-center">
@@ -590,9 +601,15 @@ const ConsulenzaGiuridica = () => {
                   variant="gold"
                   size="lg"
                   className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold transition-all duration-200"
-                  onClick={() => scrollToSection("form-consulenza")}
+                  asChild
                 >
-                  Richiedi Consulenza Scritta
+                  <a
+                    href="https://wa.me/393793511586?text=Ciao%2C%20sono%20interessato%20all%27Assistenza%20Premium%20Mensile%20di%20WebSuccessioni"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Richiedi assistenza premium
+                  </a>
                 </Button>
               </div>
             </motion.div>
@@ -602,7 +619,7 @@ const ConsulenzaGiuridica = () => {
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.25, delay: 0.06 }}
+              transition={{ duration: 0.25 }}
               className="bg-card border border-primary/25 rounded-2xl p-7 md:p-9"
             >
               <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
@@ -634,12 +651,58 @@ const ConsulenzaGiuridica = () => {
 
               <div className="mt-6 flex justify-center">
                 <Button
-                  variant="heroOutline"
+                  variant="gold"
                   size="lg"
-                  className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold border border-primary/40 transition-all duration-200"
+                  className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold transition-all duration-200"
                   onClick={() => callStripeCheckout("telefonica_acconto")}
                 >
                   Prenota ora la chiamata
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.25, delay: 0.06 }}
+              className="bg-card border border-primary/25 rounded-2xl p-7 md:p-9"
+            >
+              <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+                <FileText className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-3xl font-semibold text-foreground">Consulenza Scritta</h3>
+              <p className="font-body text-muted-foreground text-sm mt-2">Risposta approfondita via PDF entro 24 ore</p>
+
+              <ul className="mt-7 space-y-3">
+                {[
+                  { emoji: "📄", testo: "Analisi dettagliata del tuo caso specifico" },
+                  { emoji: "📋", testo: "Documento PDF professionale da conservare" },
+                  { emoji: "📚", testo: "Riferimenti normativi e giurisprudenziali" },
+                  { emoji: "📩", testo: "Follow-up via email incluso" },
+                  { emoji: "✅", testo: "Rimborso garantito se non consegniamo in tempo" },
+                ].map((item) => (
+                  <li key={item.testo} className="flex items-start gap-3">
+                    <span className="text-lg leading-none mt-0.5 flex-shrink-0">{item.emoji}</span>
+                    <span className="font-body text-muted-foreground text-sm leading-relaxed">{item.testo}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-6 rounded-xl border border-white/8 bg-white/3 p-4 space-y-1">
+                <p className="font-body text-sm font-semibold text-white/90">Consulenza completa: €149</p>
+                <p className="font-body text-sm text-[hsl(40,55%,55%)] font-medium">Inizia oggi con soli €49</p>
+                <p className="font-body text-xs text-white/50">Saldo di €100 solo dopo aver ricevuto la consulenza</p>
+              </div>
+
+              <div className="mt-6 flex justify-center">
+                <Button
+                  variant="heroOutline"
+                  size="lg"
+                  className="rounded-full py-4 px-10 min-w-[300px] font-body font-semibold border border-primary/40 transition-all duration-200"
+                  onClick={() => scrollToSection("form-consulenza")}
+                >
+                  Richiedi Consulenza Scritta
                 </Button>
               </div>
             </motion.div>
