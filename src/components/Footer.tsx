@@ -126,16 +126,11 @@ const Footer = () => {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={s.label}
+                    aria-label={s.icon === "facebook" ? "Seguici su Facebook" : s.label}
                     className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors duration-300"
                   >
                     <SocialIcon icon={s.icon} />
                   </a>
-                  {(s.icon === "instagram" || s.icon === "facebook" || s.icon === "tiktok") && (
-                    <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 text-xs text-white bg-gray-900 border border-yellow-500/40 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-50">
-                      Profilo in allestimento
-                    </span>
-                  )}
                 </div>
               ))}
             </div>

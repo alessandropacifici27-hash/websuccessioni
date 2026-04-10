@@ -407,10 +407,10 @@ const ConsulenzaGiuridica = () => {
             ].map((item) => (
               <div
                 key={item.testo}
-                className="flex items-center gap-3 px-5 py-3 rounded-full border border-yellow-500/20 bg-gradient-to-r from-yellow-500/5 to-transparent backdrop-blur-sm shadow-[0_0_20px_-8px_rgba(184,142,67,0.12)]"
+                className="flex items-center gap-2 py-1 px-3 rounded-full border border-white/10 bg-white/5"
               >
                 <span className="text-lg leading-none flex-shrink-0">{item.emoji}</span>
-                <span className="font-body text-sm text-white/90 font-medium whitespace-nowrap">{item.testo}</span>
+                <span className="font-body text-xs text-gray-400 font-medium whitespace-nowrap">{item.testo}</span>
               </div>
             ))}
           </div>

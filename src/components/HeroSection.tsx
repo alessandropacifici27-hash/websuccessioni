@@ -70,7 +70,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`tel:${PHONE_NUMBER}`}>
@@ -81,7 +81,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Salve,%20vorrei%20richiedere%20un%20preventivo%20gratuito%20per%20una%20dichiarazione%20di%20successione.`} target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@ const HeroSection = () => {
           <Button
             variant="heroOutline"
             size="default"
-            className="rounded-full py-3 px-8 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
+            className="rounded-full py-3 px-5 min-w-[240px] font-medium transition-all duration-200 md:text-[0.7rem] text-[0.65rem]"
             asChild
           >
             <a href={`mailto:${EMAIL}?subject=Richiesta%20Preventivo%20Gratuito`}>
@@ -109,16 +109,12 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-5 flex justify-center"
         >
-          <Button
-            variant="heroOutline"
-            size="sm"
-            className="transform scale-95 opacity-90 border border-yellow-500/50 rounded-full py-3 px-10 text-xs md:text-[0.7rem] transition-all duration-200"
-            asChild
+          <Link
+            to="/inizia-pratica-online"
+            className="font-body text-sm text-white/50 underline underline-offset-4 hover:text-white/80 transition-colors"
           >
-            <Link to="/inizia-pratica-online">
-              Inizia Pratica Online
-            </Link>
-          </Button>
+            Inizia pratica online
+          </Link>
         </motion.div>
 
         {/* Link Calcola scadenze - solo desktop */}
@@ -130,13 +126,9 @@ const HeroSection = () => {
         >
           <Link
             to="/calcola-scadenze-e-imposte"
-            className="hidden md:inline-flex items-center gap-2 mt-6 group"
+            className="hidden md:inline-flex font-body text-sm text-white/50 underline underline-offset-4 hover:text-white/80 transition-colors mt-6"
           >
-            <span className="h-px w-8 bg-yellow-500/40 group-hover:w-14 group-hover:bg-yellow-400 transition-all duration-500 shrink-0" />
-            <span className="text-sm uppercase tracking-[0.2em] text-yellow-500/60 group-hover:text-yellow-400 transition-colors duration-300 font-body">
-              Calcola scadenze e imposte
-            </span>
-            <span className="h-px w-8 bg-yellow-500/40 group-hover:w-14 group-hover:bg-yellow-400 transition-all duration-500" />
+            Calcola scadenze e imposte
           </Link>
         </motion.div>
 
@@ -158,11 +150,9 @@ const HeroSection = () => {
         >
           <Link
             to="/calcola-scadenze-e-imposte"
-            className="md:hidden inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/5 backdrop-blur-sm text-yellow-400 text-sm font-medium tracking-wide hover:border-yellow-500/60 hover:bg-yellow-500/10 transition-all duration-300"
+            className="md:hidden inline-flex font-body text-sm text-white/50 underline underline-offset-4 hover:text-white/80 transition-colors mt-4"
           >
-            <span>📅</span>
-            <span>Calcola scadenze e imposte</span>
-            <span className="text-yellow-500/60">→</span>
+            Calcola scadenze e imposte
           </Link>
         </motion.div>
       </div>
