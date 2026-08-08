@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Phone, Mail, Menu, X } from "lucide-react";
+import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import logo from "@/assets/logo.webp";
@@ -11,19 +11,26 @@ const navLinks = [
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
+  { label: "Cancellazione Pignoramenti", href: "/cancellazione-pignoramento-immobiliare" },
   { label: "Calcola scadenze e imposte", href: "/calcola-scadenze-e-imposte" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
   { label: "Contatti", href: "/#contatti" },
 ];
 
+const SERVIZI_LEGALI = [
+  { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
+  { label: "Cancellazione Pignoramenti", href: "/cancellazione-pignoramento-immobiliare" },
+];
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servizisOpen, setServiziOpen] = useState(false);
   const pathname = window.location.pathname;
   const hash = window.location.hash;
-  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-scadenze-e-imposte', '/inizia-pratica-online', '/guide'];
+  const SUBPAGES = ['/chi-siamo', '/come-funziona', '/faq', '/servizi-proposti', '/calcola-scadenze-e-imposte', '/inizia-pratica-online', '/guide', '/consulenza-giuridica', '/cancellazione-pignoramento-immobiliare'];
   const isSubpage = SUBPAGES.includes(pathname) || pathname.startsWith('/guide/');
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -147,7 +154,58 @@ const Navbar = () => {
           className="hidden md:flex absolute left-1/2 items-center gap-5 will-change-transform transition-[transform] duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{ transform: "translate(-50%, 0)" }}
         >
-          {navLinks.map(renderLink)}
+          {navLinks
+            .filter((l) => l.href !== "/consulenza-giuridica" && l.href !== "/cancellazione-pignoramento-immobiliare")
+            .map((l) => {
+              // Inserisce il dropdown "Servizi Legali" nella posizione in cui stava "Consulenza Giuridica"
+              if (l.href === "/calcola-scadenze-e-imposte") {
+                const serviziAttivi = SERVIZI_LEGALI.some((s) => isActive(s.href));
+                return (
+                  <div
+                    key="servizi-legali-dropdown"
+                    className="relative flex items-center gap-5"
+                    onMouseEnter={() => setServiziOpen(true)}
+                    onMouseLeave={() => setServiziOpen(false)}
+                  >
+                    <button
+                      type="button"
+                      className={`flex items-center gap-1 text-sm font-body font-medium tracking-[0.12em] uppercase transition-colors duration-300 whitespace-nowrap ${
+                        serviziAttivi ? "text-primary" : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      Servizi Legali
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servizisOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    <AnimatePresence>
+                      {servizisOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute top-full left-0 mt-3 min-w-[240px] bg-background/95 backdrop-blur-md border border-border/50 rounded-xl shadow-xl py-2 z-50"
+                        >
+                          {SERVIZI_LEGALI.map((s) => (
+                            <Link
+                              key={s.href}
+                              to={s.href}
+                              onClick={() => setServiziOpen(false)}
+                              className={`block px-4 py-2.5 text-sm font-body tracking-wide transition-colors duration-200 ${
+                                isActive(s.href) ? "text-primary" : "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                              }`}
+                            >
+                              {s.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    {renderLink(l)}
+                  </div>
+                );
+              }
+              return renderLink(l);
+            })}
         </div>
 
         {/* Desktop CTA buttons */}

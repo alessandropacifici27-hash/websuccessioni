@@ -36,6 +36,16 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://websuccessioni.it/consulenza-giuridica</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://websuccessioni.it/cancellazione-pignoramento-immobiliare</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://websuccessioni.it/privacy-policy</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
