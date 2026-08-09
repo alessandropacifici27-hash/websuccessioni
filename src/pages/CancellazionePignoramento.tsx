@@ -163,20 +163,6 @@ const CancellazionePignoramento = () => {
                 </p>
               </div>
             </div>
-
-            <div className="flex gap-4 bg-card/50 border border-border/50 rounded-2xl p-6">
-              <Check className="w-5 h-5 text-primary shrink-0 mt-1" />
-              <div>
-                <h3 className="font-display text-base font-semibold text-foreground mb-1">Un chiarimento importante</h3>
-                <p className="font-body text-muted-foreground text-sm leading-relaxed">
-                  Il solo atto di consenso o rinuncia alla procedura esecutiva rilasciato dal creditore{" "}
-                  <strong className="text-foreground">non è di per sé sufficiente</strong> a far cancellare il
-                  pignoramento: senza il provvedimento del giudice, la trascrizione resta iscritta anche a debito
-                  saldato. È uno degli equivoci più frequenti in questa materia, ed è spesso il primo punto che
-                  chiariamo a chi ci contatta.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
