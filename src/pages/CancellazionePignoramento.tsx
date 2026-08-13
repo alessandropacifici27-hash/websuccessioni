@@ -82,23 +82,60 @@ const CancellazionePignoramento = () => {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 max-w-5xl mb-16">
-          <div className="bg-card/50 border border-border/50 rounded-2xl p-8 md:p-10">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
+        <section className="container mx-auto px-4 max-w-6xl mb-16">
+          <div className="text-center mb-10">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
               Perché serve un intervento specifico
             </h2>
-            <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
-              Quando un pignoramento immobiliare si estingue — perché il debito è stato saldato, perché è stato
-              raggiunto un accordo con il creditore, o perché la procedura esecutiva si è conclusa in altro modo —
-              la sua cancellazione dai Registri Immobiliari <strong className="text-foreground">non è automatica</strong>.
-              Il solo pagamento del debito, o l'atto di rinuncia del creditore, non fanno venir meno la trascrizione:
-              serve sempre un provvedimento del giudice dell'esecuzione che ne ordini espressamente la cancellazione,
-              da presentare poi in Conservatoria con un'apposita nota.
+            <p className="font-body text-muted-foreground text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+              Una competenza di matrice notarile, spesso poco conosciuta: ecco perché non basta pagare il debito.
             </p>
-            <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed">
-              Finché questa formalità resta iscritta, l'immobile risulta gravato agli occhi di chiunque consulti i
-              registri — una banca in fase di erogazione di un mutuo, un notaio prima di un rogito, un acquirente
-              interessato. Ce ne occupiamo noi, dalla verifica dei documenti al deposito della nota di cancellazione.
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            <div className="relative bg-card bg-gradient-to-b from-yellow-950/20 to-transparent border border-yellow-500/35 rounded-2xl p-6 md:p-7 shadow-lg shadow-yellow-500/10">
+              <p className="text-[hsl(40,55%,55%)] uppercase tracking-[0.2em] text-xs font-medium mb-4 flex items-center gap-3">
+                <span className="block w-6 h-px bg-[hsl(40,55%,55%)]" />
+                Il problema
+              </p>
+              <h3 className="font-display text-lg font-semibold text-foreground mb-3">Non è automatica</h3>
+              <p className="font-body text-muted-foreground text-sm leading-relaxed">
+                Quando un pignoramento si estingue — debito saldato, accordo con il creditore, o procedura esecutiva
+                conclusa in altro modo — la cancellazione dai Registri Immobiliari{" "}
+                <strong className="text-foreground">non avviene da sola</strong>.
+              </p>
+            </div>
+
+            <div className="relative bg-card bg-gradient-to-b from-yellow-950/20 to-transparent border border-yellow-500/35 rounded-2xl p-6 md:p-7 shadow-lg shadow-yellow-500/10">
+              <p className="text-[hsl(40,55%,55%)] uppercase tracking-[0.2em] text-xs font-medium mb-4 flex items-center gap-3">
+                <span className="block w-6 h-px bg-[hsl(40,55%,55%)]" />
+                La procedura
+              </p>
+              <h3 className="font-display text-lg font-semibold text-foreground mb-3">Serve un provvedimento del giudice</h3>
+              <p className="font-body text-muted-foreground text-sm leading-relaxed">
+                Il solo pagamento, o la rinuncia del creditore, non bastano: occorre un provvedimento del giudice
+                dell'esecuzione che ordini espressamente la cancellazione, da depositare poi in Conservatoria con
+                un'apposita nota.
+              </p>
+            </div>
+
+            <div className="relative bg-card bg-gradient-to-b from-yellow-950/20 to-transparent border border-yellow-500/35 rounded-2xl p-6 md:p-7 shadow-lg shadow-yellow-500/10">
+              <p className="text-[hsl(40,55%,55%)] uppercase tracking-[0.2em] text-xs font-medium mb-4 flex items-center gap-3">
+                <span className="block w-6 h-px bg-[hsl(40,55%,55%)]" />
+                Il rischio
+              </p>
+              <h3 className="font-display text-lg font-semibold text-foreground mb-3">Finché resta iscritta</h3>
+              <p className="font-body text-muted-foreground text-sm leading-relaxed">
+                L'immobile risulta gravato agli occhi di chiunque consulti i registri: una banca in fase di mutuo,
+                un notaio prima di un rogito, un acquirente interessato.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-5 rounded-xl border border-white/8 bg-white/3 p-4 text-center">
+            <p className="font-body text-sm text-muted-foreground">
+              Ce ne occupiamo <span className="text-[hsl(40,55%,55%)] font-medium">noi</span>, dalla verifica dei
+              documenti al deposito della nota di cancellazione.
             </p>
           </div>
         </section>

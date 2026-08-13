@@ -59,6 +59,7 @@ const footerNavLinks = [
   { label: "Chi Siamo", href: "/chi-siamo" },
   { label: "Inizia Pratica Online", href: "/inizia-pratica-online" },
   { label: "Consulenza Giuridica", href: "/consulenza-giuridica" },
+  { label: "Cancellazione Pignoramenti Immobiliari", href: "/cancellazione-pignoramento-immobiliare" },
   { label: "Calcola scadenze e imposte", href: "/calcola-scadenze-e-imposte" },
   { label: "Guide", href: "/guide" },
   { label: "FAQ", href: "/faq" },
