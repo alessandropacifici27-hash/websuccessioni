@@ -65,10 +65,10 @@ const CancellazionePignoramento = () => {
 
             <div className="grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 items-center justify-center mt-8">
               {[
-                { emoji: "⚖️", testo: "Competenza notarile specifica" },
-                { emoji: "🔒", testo: "Documenti trattati con riservatezza" },
+                { emoji: "⚖️", testo: "Competenza notarile" },
+                { emoji: "🔒", testo: "Massima riservatezza" },
                 { emoji: "📩", testo: "Risposta entro 24h" },
-                { emoji: "✅", testo: "Costi trasparenti, nessuna sorpresa" },
+                { emoji: "✅", testo: "Costi trasparenti" },
               ].map((item) => (
                 <div
                   key={item.testo}
@@ -85,7 +85,7 @@ const CancellazionePignoramento = () => {
         <section className="container mx-auto px-4 max-w-5xl mb-16">
           <div className="bg-card/50 border border-border/50 rounded-2xl p-8 md:p-10">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              🏛️ Perché serve un intervento specifico
+              Perché serve un intervento specifico
             </h2>
             <p className="font-body text-muted-foreground text-sm md:text-base leading-relaxed mb-4">
               Quando un pignoramento immobiliare si estingue — perché il debito è stato saldato, perché è stato
@@ -106,7 +106,7 @@ const CancellazionePignoramento = () => {
         <section id="form-pignoramento" className="container mx-auto px-4 max-w-3xl mb-16 scroll-mt-24">
           <div className="text-center mb-10">
             <Scale className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">🙋 Richiedi una valutazione gratuita</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Richiedi una valutazione gratuita</h2>
             <p className="font-body text-muted-foreground text-sm max-w-xl mx-auto leading-relaxed">
               Descrivici la tua situazione — privato o studio legale — e ti diciamo entro 24 ore come procedere.
             </p>
@@ -116,7 +116,7 @@ const CancellazionePignoramento = () => {
 
         <section className="container mx-auto px-4 max-w-6xl mb-16">
           <div className="text-center mb-10">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">🤝 A chi ci rivolgiamo</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">A chi ci rivolgiamo</h2>
             <p className="font-body text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
               Lo stesso servizio, con un accompagnamento pensato per esigenze diverse.
             </p>
@@ -125,7 +125,7 @@ const CancellazionePignoramento = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-card/50 border border-border/50 rounded-2xl p-8">
               <Users className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">🏠 Per i privati</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">Per i privati</h3>
               <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
                 Hai saldato un debito, o la procedura esecutiva a carico del tuo immobile si è conclusa, e vuoi
                 essere sicuro che non resti traccia del pignoramento nei registri — magari perché stai per vendere
@@ -136,7 +136,7 @@ const CancellazionePignoramento = () => {
 
             <div className="bg-card/50 border border-border/50 rounded-2xl p-8">
               <Briefcase className="w-8 h-8 text-primary mb-4" />
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">⚖️ Per studi legali e professionisti</h3>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-3">Per studi legali e professionisti</h3>
               <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
                 La cancellazione delle formalità pregiudizievoli in Conservatoria è una materia di matrice
                 prevalentemente notarile, con cui molti studi legali hanno poca dimestichezza operativa pur
@@ -151,7 +151,7 @@ const CancellazionePignoramento = () => {
         <section id="documenti-necessari" className="container mx-auto px-4 max-w-5xl mb-16 scroll-mt-24">
           <div className="text-center mb-10">
             <FileText className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">📋 Quali documenti servono</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Quali documenti servono</h2>
             <p className="font-body text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
               La documentazione richiesta dalla Conservatoria è precisa: un errore o un documento incompleto porta
               al rigetto della nota.
@@ -163,7 +163,7 @@ const CancellazionePignoramento = () => {
               <Check className="w-5 h-5 text-primary shrink-0 mt-1" />
               <div>
                 <h3 className="font-display text-base font-semibold text-foreground mb-1">
-                  📄 Ordinanza di cancellazione del pignoramento
+                  Ordinanza di cancellazione del pignoramento
                 </h3>
                 <p className="font-body text-muted-foreground text-sm leading-relaxed">
                   Il provvedimento con cui il giudice dell'esecuzione ordina espressamente la cancellazione della
@@ -180,7 +180,7 @@ const CancellazionePignoramento = () => {
               <Check className="w-5 h-5 text-primary shrink-0 mt-1" />
               <div>
                 <h3 className="font-display text-base font-semibold text-foreground mb-1">
-                  ✅ Attestazione di definitività del provvedimento
+                  Attestazione di definitività del provvedimento
                 </h3>
                 <p className="font-body text-muted-foreground text-sm leading-relaxed">
                   L'ordinanza deve essere definitiva, cioè non più impugnabile. Serve quindi anche il timbro o la
@@ -197,7 +197,7 @@ const CancellazionePignoramento = () => {
         <section className="container mx-auto px-4 max-w-4xl mb-16">
           <div className="text-center mb-8">
             <Landmark className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">💶 Costi, in modo trasparente</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Costi, in modo trasparente</h2>
           </div>
 
           <div className="bg-card/50 border border-border/50 rounded-2xl overflow-hidden">
@@ -248,43 +248,43 @@ const CancellazionePignoramento = () => {
         <section className="container mx-auto px-4 max-w-5xl mb-16">
           <div className="text-center mb-10">
             <ClipboardList className="w-8 h-8 text-primary mx-auto mb-4" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">🛠️ Come funziona</h2>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Come funziona</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
-                n: "1",
                 emoji: "📨",
                 t: "Ci invii la tua situazione",
                 d: "Compili il form con i dati del pignoramento e, se già in tuo possesso, il provvedimento del giudice.",
               },
               {
-                n: "2",
                 emoji: "🔍",
                 t: "Verifichiamo la documentazione",
                 d: "Controlliamo che l'ordinanza sia completa e definitiva, o ti indichiamo esattamente cosa richiedere in cancelleria.",
               },
               {
-                n: "3",
                 emoji: "🏛️",
                 t: "Depositiamo la nota",
                 d: "Predisponiamo e presentiamo la nota di cancellazione in Conservatoria, seguendo la pratica fino alla formalità cancellata.",
               },
             ].map((s) => (
-              <div key={s.n} className="bg-card/50 border border-border/50 rounded-2xl p-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-display text-3xl font-bold text-primary/40">{s.n}</span>
-                  <span className="text-2xl leading-none">{s.emoji}</span>
+              <div key={s.t} className="bg-card/50 border border-border/50 rounded-2xl p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 mt-0.5">
+                    <span className="text-3xl leading-none">{s.emoji}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-base font-semibold text-foreground mb-2">{s.t}</h3>
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed">{s.d}</p>
+                  </div>
                 </div>
-                <h3 className="font-display text-base font-semibold text-foreground mt-3 mb-2">{s.t}</h3>
-                <p className="font-body text-muted-foreground text-sm leading-relaxed">{s.d}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="container mx-auto px-4 max-w-3xl">
-          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">❓ Domande frequenti</h2>
+          <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">Domande frequenti</h2>
           <Accordion type="single" collapsible className="space-y-3">
             <AccordionItem value="q1" className="bg-card/50 border border-border/50 rounded-xl px-5">
               <AccordionTrigger className="font-body text-sm font-medium text-left">
