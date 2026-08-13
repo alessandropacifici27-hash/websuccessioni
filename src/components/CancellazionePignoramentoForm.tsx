@@ -181,11 +181,11 @@ const CancellazionePignoramentoForm = () => {
         <Button
           variant="gold"
           size="lg"
-          className="w-full h-12 text-sm tracking-[0.15em] uppercase font-semibold shadow-[0_0_30px_-8px_rgba(184,142,67,0.4)] hover:shadow-[0_0_40px_-8px_rgba(184,142,67,0.6)] transition-all duration-300"
+          className="w-full h-auto min-h-12 py-3 px-4 sm:px-8 text-xs sm:text-sm tracking-[0.05em] sm:tracking-[0.15em] uppercase font-semibold shadow-[0_0_30px_-8px_rgba(184,142,67,0.4)] hover:shadow-[0_0_40px_-8px_rgba(184,142,67,0.6)] transition-all duration-300 whitespace-normal text-center leading-snug"
           type="submit"
           disabled={sending}
         >
-          <Send className="w-4 h-4 mr-2" />
+          <Send className="w-4 h-4 mr-2 shrink-0" />
           {sending ? "Invio in corso..." : "Richiedi una valutazione gratuita"}
         </Button>
         <div className="flex items-center justify-center gap-2">
